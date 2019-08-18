@@ -41,20 +41,21 @@
     * [X] Knex
     * [X] JWT
     * [X] Nodemon
-    * [ ] Validator 
-* [ ] Authentication 
-    * [ ] Add auth router
-    * [ ] Create user with POST /auth/signup
-	    * [ ] validate required fields
-	    * [ ] Check if username is unique
-	    * [ ] hash password with bcrypt
-	    * [ ] insert into db
+    * [X] Validator 
+* [X] Authentication 
+    * [X] Add auth router
+    * [X] Create user with POST /auth/signup
+	    * [X] validate required fields
+	    * [X] Check if username is unique
+	    * [X] hash password with bcrypt
+	    * [X] insert into db
     * [ ] Login user with POST /auth/login
-    	* [ ] validate the user
-	    * [ ] check if username in db
-		* [ ] compare password with hashed password in db
-		* [ ] Create and sign a JWT
-        * [ ] Respond with JWT
+    	* [X] validate the user
+	    * [X] check if username in db
+		* [X] compare password with hashed password in db
+		* [X] Create and sign a JWT
+        * [ ] Store JWT in session
+        * [X] Respond with JWT
     
 ***
 ### Frontend 

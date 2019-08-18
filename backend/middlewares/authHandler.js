@@ -17,7 +17,7 @@ const auth = async (req, res, next) => {
         })
       }
 
-      const gtoken = jwt.verify(token, AUTH_TOKEN)
+      const gtoken = await jwt.verify(token, AUTH_TOKEN)
       req.state = {
         ...req.state,
         ...gtoken
