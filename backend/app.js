@@ -1,17 +1,19 @@
 const express = require('express');
-
-
 const app = express();
 
+require('./database')
+
 const { notFound, errorHandler } = require('./middlewares')
-const route = require('./routes')
+const authRouter = require('./routes/authRoute')
+
+app.use(express.urlencoded({ extended: true }))
+app.use('/auth', authRouter)
 
 app.get('/', (req, res) => {
   res.json({
     message: 'Hello World'
   });
 });
-
 
 app.use(notFound);
 app.use(errorHandler);
