@@ -1,8 +1,9 @@
-const knex = require('../database')
-const { AUTH_TOKEN } = require('../config')
 const validator = require('validator')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+
+const knex = require('../database')
+const { AUTH_TOKEN } = require('../config')
 
 const login = async (req, res, next) => {
   try {
@@ -24,11 +25,11 @@ const login = async (req, res, next) => {
       throw new Error('username or password is incorrect')
     }
 
-    const token = await jwt.sign({ userId: userExists.id }, AUTH_TOKEN, { expiresIn: '365d' })
+    const token = await jwt.sign({ userId: userExists.id }, AUTH_TOKEN, { expiresIn: '7d' })
     return res.status(200).send({
       userId: userExists.id,
       token: token,
-      tokenExp: 365
+      tokenExp: 7
     })
   } catch (error) {
     next(error)
