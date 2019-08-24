@@ -41,11 +41,9 @@ switch (NODE_ENV) {
 
 const DATABASE = database
 const AUTH_TOKEN = process.env.AUTH_TOKEN
-const SESSION_TOKEN = process.env.SESSION_TOKEN
 
 module.exports = {
   NODE_ENV,
   DATABASE,
-  AUTH_TOKEN,
-  SESSION_TOKEN
+  AUTH_TOKEN
 }

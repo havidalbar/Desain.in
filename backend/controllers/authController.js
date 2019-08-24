@@ -8,8 +8,8 @@ const { AUTH_TOKEN } = require('../config')
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body,
-      validPassword = await validator.isLength(password, { min: 6, max: 15 }),
-      validEmail = await validator.isEmail(email)
+      validEmail = await validator.isEmail(email),
+      validPassword = await validator.isLength(password, { min: 8 })
 
     if (!validEmail || !validPassword) {
       throw new Error('Validation failed please check your input')
@@ -38,9 +38,9 @@ const login = async (req, res, next) => {
 
 const signup = async (req, res, next) => {
   try {
-    const { email, password, nama } = req.body,
+    const { email, password, nama, phone_number } = req.body,
       validEmail = await validator.isEmail(email),
-      validPassword = await validator.isLength(password, { min: 6, max: 15 }),
+      validPassword = await validator.isLength(password, { min: 8 }),
       hashedPassword = await bcrypt.hash(password, 12)
 
     if (!validEmail || !validPassword) {
@@ -55,7 +55,8 @@ const signup = async (req, res, next) => {
     let user = {
       nama,
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      phone_number
     }
     await knex('user').insert(user)
     return res.status(200).send({
