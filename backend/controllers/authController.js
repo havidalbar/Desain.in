@@ -38,7 +38,7 @@ const login = async (req, res, next) => {
 
 const signup = async (req, res, next) => {
   try {
-    const { email, password, nama, phone } = req.body,
+    const { email, password, nama, phone_number } = req.body,
       validEmail = await validator.isEmail(email),
       validPassword = await validator.isLength(password, { min: 8 }),
       hashedPassword = await bcrypt.hash(password, 12)
@@ -56,7 +56,7 @@ const signup = async (req, res, next) => {
       nama,
       email,
       password: hashedPassword,
-      phone
+      phone_number
     }
     await knex('user').insert(user)
     return res.status(200).send({
