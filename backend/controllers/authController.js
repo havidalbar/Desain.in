@@ -25,11 +25,11 @@ const login = async (req, res, next) => {
       throw new Error('username or password is incorrect')
     }
 
-    const token = await jwt.sign({ userId: userExists.id }, AUTH_TOKEN, { expiresIn: '7d' })
+    const token = await jwt.sign({ userId: userExists.id }, AUTH_TOKEN, { expiresIn: '365d' })
     return res.status(200).send({
       userId: userExists.id,
       token: token,
-      tokenExp: 7
+      tokenExp: 365
     })
   } catch (error) {
     next(error)

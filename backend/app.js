@@ -5,12 +5,17 @@ require('./database')
 
 const { NODE_ENV } = require('./config')
 const { notFound, errorHandler } = require('./middlewares')
-const authRouter = require('./routes/authRoute')
 
+// Routes
+const authRouter = require('./routes/authRoute')
+const userRouter = require('./routes/userRoute')
+
+// Middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/auth', authRouter)
+app.use('/user', userRouter)
 
 app.get('/', (req, res) => {
   res.json({
@@ -18,6 +23,7 @@ app.get('/', (req, res) => {
   });
 });
 
+// Error Handling
 app.use(notFound);
 app.use(errorHandler);
 

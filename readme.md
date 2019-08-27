@@ -56,6 +56,8 @@
 		* [X] Create and sign a JWT
         * [X] Respond with JWT
     
+* [ ] User     
+* [ ] Desainer
 ***
 ### Frontend 
 * [X] Frontend Dependecies
