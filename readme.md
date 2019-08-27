@@ -31,9 +31,9 @@
 ------------
 ###  Global
 * [X] Setup Project
-    *  [X] Install dependencies
-    * [ ] Setup Database
-    * [ ] Setup environment Variable
+    * [X] Install dependencies
+    * [X] Setup Database
+    * [X] Setup environment Variable
 ***
  ### Backend
  * [X] Backend Dependencies
@@ -49,12 +49,11 @@
 	    * [X] Check if username is unique
 	    * [X] hash password with bcrypt
 	    * [X] insert into db
-    * [ ] Login user with POST /auth/login
+    * [X] Login user with POST /auth/login
     	* [X] validate the user
 	    * [X] check if username in db
 		* [X] compare password with hashed password in db
 		* [X] Create and sign a JWT
-        * [ ] Store JWT in session
         * [X] Respond with JWT
     
 ***

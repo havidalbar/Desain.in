@@ -3,11 +3,12 @@ const app = express();
 
 require('./database')
 
-const { NODE_ENV, SESSION_TOKEN } = require('./config')
+const { NODE_ENV } = require('./config')
 const { notFound, errorHandler } = require('./middlewares')
 const authRouter = require('./routes/authRoute')
 
-
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
