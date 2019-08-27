@@ -10,7 +10,7 @@ const login = async (req, res, next) => {
     const { email, password } = req.body,
       validPassword = await validator.isLength(password, { min: 6, max: 15 }),
       validEmail = await validator.isEmail(email)
-
+                                                                                                                                                                                                                                            
     if (!validEmail || !validPassword) {
       throw new Error('Validation failed please check your input')
     }

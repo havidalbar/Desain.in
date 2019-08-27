@@ -3,7 +3,6 @@ const { AUTH_TOKEN } = require('../config')
 
 const auth = async (req, res, next) => {
 
-  req.state = { scope: [] }
 
   try {
     const authHeader = req.headers.authorization || req.headers.Authorization
