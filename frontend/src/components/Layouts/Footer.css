@@ -1,0 +1,276 @@
+@import '~antd/dist/antd.css';
+@font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    src: local("Nunito"), url(../../assets/fonts/Nunito/Nunito-Regular.ttf);
+}
+
+@font-face {
+    font-family: "PtSans";
+    font-style: normal;
+    src: local("PtSans"), url(../../assets/fonts/PtSans/PTSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    src: local("Roboto"), url(../../assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+
+footer {
+    z-index: 9;
+    clear: both;
+    margin-left: -1px;
+    color: white;
+    font-size: 16px;
+    background-color: #989898;
+    width: 100%;
+    bottom: 0;
+}
+
+footer .footer-wrap {
+    border: 1px solid red;
+    position: relative;
+    margin: auto;
+    padding-left: 87px;
+    padding-right: 87px;
+    padding-top: 64px;
+    padding-bottom: 45px
+}
+
+footer .footer-wrap .footer-intro {
+    border: 1px solid red;
+}
+
+footer .footer-wrap .footer-intro .footer-logo {
+    width: 192px;
+    height: 44px;
+}
+
+footer .footer-wrap .footer-intro .footer-title {
+    font-family: "PtSans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 31px;
+    margin-top: 13px;
+}
+
+footer .footer-wrap .footer-intro .footer-deskripsi {
+    margin-top: 40px;
+    margin-bottom: 133px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+footer .footer-wrap .footer-about {
+    border: 1px solid red;
+    margin-left: 137px;
+}
+
+footer .footer-wrap .footer-about .footer-desain {
+    margin-top: 15px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+footer .footer-wrap .footer-about .footer-tentang {
+    margin-top: 24px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+footer .footer-wrap .footer-about .footer-bantuan {
+    margin-top: 8px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+footer .footer-wrap .footer-about .footer-kontak {
+    margin-top: 8px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+footer .footer-wrap .footer-about .footer-kontes {
+    margin-top: 8px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+footer .footer-wrap .footer-about .footer-portofolio {
+    margin-top: 8px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+footer .footer-wrap .footer-menu {
+    border: 1px solid red;
+    margin-left: 59px;
+}
+
+footer .footer-wrap .footer-menu .footer-tanya {
+    margin-top: 15px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+footer .footer-wrap .footer-menu .footer-menu-kontes {
+    margin-top: 24px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+footer .footer-wrap .footer-menu .footer-menu-pesan {
+    margin-top: 8px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+footer .footer-wrap .footer-menu .footer-menu-portofolio {
+    margin-top: 8px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+footer .footer-wrap .footer-kontes-atas {
+    border: 1px solid red;
+    margin-left: 36px;
+}
+
+footer .footer-wrap .footer-kontes-atas .footer-display-kontes {
+    margin-top: 15px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+footer .footer-wrap .footer-kontes-atas .footer-item-kontes {
+    margin-top: 24px;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+footer .footer-wrap .footer-kontes-atas .footer-item-kontes .gambar-kontes {
+    border: 1px solid red;
+    width: 50px;
+    height: 50px;
+}
+
+footer .footer-wrap .footer-kontes-atas .footer-item-kontes .judul-center {
+    margin-left: 16px;
+}
+
+footer .footer-wrap .footer-kontes-atas .footer-item-kontes .judul-center .judul-kontes {
+    border: 1px solid red;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: white;
+}
+
+footer .footer-wrap .footer-kontes-atas .footer-item-kontes .judul-center .nama-pembuat {
+    font-family: "PtSans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 8px;
+    line-height: 10px;
+}
+
+footer .footer-wrap .footer-kontes-atas .footer-item-kontes2 {
+    margin-top: 24px;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+footer .footer-wrap .footer-kontes-atas .footer-item-kontes2 .gambar-kontes {
+    border: 1px solid red;
+    width: 50px;
+    height: 50px;
+}
+
+footer .footer-wrap .footer-kontes-atas .footer-item-kontes2 .judul-center {
+    margin-left: 16px;
+}
+
+footer .footer-wrap .footer-kontes-atas .footer-item-kontes2 .judul-center .judul-kontes {
+    border: 1px solid red;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: white;
+}
+
+footer .footer-wrap .footer-kontes-atas .footer-item-kontes2 .judul-center .nama-pembuat {
+    font-family: "PtSans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 8px;
+    line-height: 10px;
+}
+
+footer .footer-wrap .author {
+    margin-left: 44%;
+    border: 1px solid red;
+}
+
+@media(max-width: 767px) {
+    footer .footer-wrap .footer-about {
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+    footer .footer-wrap .footer-menu {
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+    footer .footer-wrap .footer-kontes-atas {
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+    footer .footer-wrap .author {
+        margin-top: 10px;
+        margin-left: 0%;
+    }
+}

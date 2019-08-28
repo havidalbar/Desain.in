@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import LeftMenu from './LeftMenu'
-import RightMenu from './RightMenu'
+import './Nav.css';
+import LeftMenu from './LeftMenu';
+import RightMenu from './RightMenu';
 import { Drawer, Button } from 'antd';
-import Logo from '../assets/img/desain-in-footer.svg';
+import Logo from '../../assets/img/desain-in-footer.svg';
 
 class Navbar extends Component {
     state = {
@@ -32,7 +33,7 @@ class Navbar extends Component {
                         <LeftMenu mode="horizontal" />
                     </div>
                     <div className="rightMenu">
-                        <RightMenu mode="horizontal"/>
+                        <RightMenu mode="horizontal" />
                     </div>
                     <Button className="barsMenu" type="primary" onClick={this.showDrawer}>
                         <span className="barsBtn"></span>
@@ -42,10 +43,9 @@ class Navbar extends Component {
                         placement="right"
                         closable={!false}
                         onClose={this.onClose}
-                        visible={this.state.visible}
-                    >
+                        visible={this.state.visible}>
                         <LeftMenu mode="vertical" />
-                        <RightMenu mode="vertical"/>
+                        <RightMenu mode="vertical" />
                     </Drawer>
 
                 </div>

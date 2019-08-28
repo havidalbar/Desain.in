@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu,Anchor } from 'antd';
+import { Menu } from 'antd';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -8,12 +8,12 @@ class LeftMenu extends Component {
         return (
             <Menu mode={this.props.mode}>
                 <Menu.Item key="mail">
-                    <Anchor href="">Home</Anchor>
+                    <a href="/#">BERANDA</a>
                 </Menu.Item>
                 <Menu.Item key="alipay">
-                    <Anchor href="">Contact Us</Anchor>
+                    <a href="/#">KONTES</a>
                 </Menu.Item>
-                <SubMenu title={<span>Blogs</span>}>
+                <SubMenu title={<span>PESAN DESAIN</span>}>
                     <MenuItemGroup title="Item 1">
                         <Menu.Item key="setting:1">Option 1</Menu.Item>
                         <Menu.Item key="setting:2">Option 2</Menu.Item>

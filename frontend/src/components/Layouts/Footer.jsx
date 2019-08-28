@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Footer.css'
 import { Row, Col } from 'antd';
 import Logo from '../../assets/img/desain-in-footer.svg';
 import Gambar from '../../assets/img/Ellipse.png';
@@ -67,7 +68,7 @@ class Footer extends Component {
                             </div>
                         </Col>
                     </Row>
-                    <div className="author">Made with a dari BCC untuk Malang dan Indonesia</div>
+                    <div className="author">Made with ♥ dari BCC untuk Malang dan Indonesia</div>
                 </div>
             </footer>
         );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../pages/layouts/Footer';
+import Navbar from '../components/Layouts/Navbar';
+import Footer from '../components/Layouts/Footer';
 
 class App extends Component {
   render() {
