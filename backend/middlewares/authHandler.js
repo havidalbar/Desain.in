@@ -16,10 +16,7 @@ const auth = async (req, res, next) => {
       }
 
       const verified = await jwt.verify(token, AUTH_TOKEN)
-      req.state = {
-        ...req.state,
-        ...verified
-      }
+      req.state = verified
     }
 
     await next()
