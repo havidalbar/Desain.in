@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './Button.css';
+import './button.scss';
 
 class Primary extends Component {
 render(){
     return(
-        <button className="button-warna">{this.props.text}</button>
+        <button className="button primary">{this.props.text}</button>
     );
 }
 }

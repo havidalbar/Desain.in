@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Navbar from './components/layouts/Navbar';
+
 
 class App extends Component {
   render() {
     return (
-        <Navbar />
+      <h1>Hello World</h1>
     );
   }
 }
