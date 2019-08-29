@@ -210,7 +210,6 @@ const USER = {
   uploadPortofolio,
   gabungKontes,
   menerimaInvitasi,
-  membatalkanInvitasi,
   depositJasa
 }
 
