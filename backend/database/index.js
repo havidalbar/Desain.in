@@ -1,4 +1,4 @@
-const { DATABASE } = require('../config')
+const { DATABASE } = require('../config');
 const knex = require('knex')({
   client: DATABASE.DB_DIALECT,
   connection: {
@@ -11,6 +11,6 @@ const knex = require('knex')({
       encrypt: true
     }
   }
-})
+});
 
 module.exports = knex

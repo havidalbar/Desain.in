@@ -1,27 +1,29 @@
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
-const swaggerConf = require('./swagger.json');
 const app = express();
 
-require('./database')
+// database init
+require('./database');
 
-const { NODE_ENV } = require('./config')
-const { notFound, errorHandler } = require('./middlewares')
+// config, error handler, & etc
+const { NODE_ENV, swaggerConfigurations } = require('./config');
+const { notFound, errorHandler } = require('./middlewares');
 
 // Routes
-const authRouter = require('./routes/authRoute')
-const userRouter = require('./routes/userRoute')
+const authRouter = require('./routes/authRoute');
+const userRouter = require('./routes/userRoute');
 
 // Middlewares
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerConf))
-app.use('/auth', authRouter)
-app.use('/user', userRouter)
+// Endpoint
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerConfigurations));
+app.use('/auth', authRouter);
+app.use('/user', userRouter);
 
 app.get('/', (req, res) => {
-  res.json({
+  res.status(200).json({
     message: 'Hello World'
   });
 });

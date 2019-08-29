@@ -8,13 +8,13 @@ const login = async (req, res, next) => {
   try {
     const { email, password } = req.body,
       validEmail = validator.isEmail(email),
-      validPassword = validator.isLength(password, { min: 8 })
+      validPassword = validator.isLength(password, { min: 8 });
 
     if (!validEmail || !validPassword) {
-      const error = new Error('Validation failed please check your input')
+      const error = new Error('Validation failed please check your input');
       return res.status(400).json({
         message: error.message
-      })
+      });
     }
 
     let userExists = await knex('user').where({ email }).first();
@@ -22,7 +22,7 @@ const login = async (req, res, next) => {
       const error = new Error('User isn\'t exist');
       return res.status(404).json({
         error: error.message
-      })
+      });
     }
 
     const isEqual = await bcrypt.compare(password, userExists.password);
@@ -30,7 +30,7 @@ const login = async (req, res, next) => {
       const error = new Error('username or password is incorrect');
       return res.status(401).json({
         message: error.message
-      })
+      });
     }
 
     const token = await jwt.sign({ userId: userExists.id }, AUTH_TOKEN, { expiresIn: '365d' });
@@ -38,7 +38,7 @@ const login = async (req, res, next) => {
       userId: userExists.id,
       token: token,
       tokenExp: 365
-    })
+    });
   } catch (error) {
     next(error);
   }
@@ -49,21 +49,21 @@ const signup = async (req, res, next) => {
     const { email, password, nama, phone_number } = req.body,
       validEmail = validator.isEmail(email),
       validPassword = validator.isLength(password, { min: 8 }),
-      hashedPassword = await bcrypt.hash(password, 12)
+      hashedPassword = await bcrypt.hash(password, 12);
 
     if (!validEmail || !validPassword) {
-      const error = new Error('Validation failed please check your input')
+      const error = new Error('Validation failed please check your input');
       return res.status(400).json({
         message: error.message
-      })
+      });
     }
 
-    let userExists = await knex('user').where({ email }).first()
+    let userExists = await knex('user').where({ email }).first();
     if (userExists) {
-      const error = new Error('User already exist')
+      const error = new Error('User already exist');
       return res.status(409).json({
         message: error.message
-      })
+      });
     }
 
     let user = {
@@ -72,14 +72,14 @@ const signup = async (req, res, next) => {
       password: hashedPassword,
       phone_number
     }
-    await knex('user').insert(user)
+    await knex('user').insert(user);
     return res.status(200).json({
       nama,
       email
-    })
+    });
 
   } catch (error) {
-    next(error)
+    next(error);
   }
 }
 

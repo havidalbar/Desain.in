@@ -9,10 +9,10 @@ let storage = multer.diskStorage({
   filename: function (req, file, cb) {
     cb(null, Date.now() + "-" + file.originalname)
   }
-})
+});
 
 const maxSize = 10 * 1000 * 1000 // 10MB
-let upload = multer({ storage : storage, limits: { fileSize: maxSize} })
+let upload = multer({ storage : storage, limits: { fileSize: maxSize} });
 
 /*
  * User's behaviour as main function,
@@ -21,8 +21,8 @@ let upload = multer({ storage : storage, limits: { fileSize: maxSize} })
 
 const buatKontes = async (req, res, next) => {
   try {
-    const { title, deskripsi, deadline, kategoriId, note, payment, npwp } = req.body
-    const validDeskripsi = validator.isLength(deskripsi, { max: 400 })
+    const { title, deskripsi, deadline, kategoriId, note, payment, npwp } = req.body;
+    const validDeskripsi = validator.isLength(deskripsi, { max: 400 });
     
     /*
      * Lampiran adalah attachment yang menyimpan link gambar 
@@ -40,66 +40,17 @@ const buatKontes = async (req, res, next) => {
     next(error)
   }
 }
-const depositJasa = async (req, res, next) => {
-  try {
-    const { invoiceId, deposit } = req.body
 
-    /*
-     * 1. cek invoice dengan id = invoiceId
-     * 2. cek batas waktu invoice 
-     * 3.
-     * 4. 
-     * 
-     * 2.a jika batas waktu melewati 1 jam 
-     * 2.a.1 hapus data invoice pada tabel dengan id = invoiceId
-     * 
-     * set pesan { link: ... } jika validasi berhasil
-     * mengembalikan pesan ke frontend untuk mengarahkan ke kolom chat dengan desainer
-     */
-
-  } catch (error) {
-    next(error)
-  }
-}
-const beliJasa = async (req, res, next) => {
-  try {
-    const { userId, desainerId, paketId, subject, deskripsi } = req.body
-    const validDeskripsi = validator.isLength(deskripsi, { max: 4000 })
-
-    /*
-     * Lampiran adalah attachment yang menyimpan link gambar, dengan max file 10MB
-     * Butuh tabel paket 
-     * 
-     * 1. validasi input
-     * 2. cek invoice  
-     * 3. insert invoice 
-     * 4. 
-     * 5.
-     * 6.
-     * 
-     * 2.a jika ada invoice dengan userId + desainerId + paketId 
-     * 2.a.1 arahkan link ke chat user dengan desainer berdasarkan paket yang telah dipesan 
-     * 2.a.2 set pesan { link: ..., message: ...} 
-     * 2.a.3 mengembalikan pesan ke frontend
-     * 
-     * set pesan { message: ... }
-     * mengembalikan pesan ke frontend untuk validasi
-     */
-
-  } catch (error) {
-    next(error)
-  }
-}
 const rekomendasi = async (req, res, next) => {}
 const uploadPortofolio = async (req, res, next) => {
 
   try {
-    const { judul, deskripsi, tag } = req.body
-    const validJudul = validator.isLength(judul, { max: 255})
-    const validDeskripsi = validator.isLength( deskripsi, { max: 1500 })
+    const { judul, deskripsi, tag } = req.body;
+    const validJudul = validator.isLength(judul, { max: 255});
+    const validDeskripsi = validator.isLength( deskripsi, { max: 1500 });
 
     if(!validJudul || !validDeskripsi) {
-      throw new Error('Unable to process, please check your input is valid')
+      throw new Error('Unable to process, please check your input is valid');
     }
 
     /*
@@ -111,7 +62,7 @@ const uploadPortofolio = async (req, res, next) => {
      */ 
 
   } catch (error) {
-    next(error)
+    next(error);
   }
 }
 const gabungKontes = async (req, res, next) => {
@@ -120,7 +71,7 @@ const gabungKontes = async (req, res, next) => {
 
 const menerimaInvitasi = async (req, res, next) => {
   try {
-    const { invitationId, status } = req.body
+    const { invitationId, status } = req.body;
 
     /* 
      * 1. cek invitationId di tabel invitation 
@@ -149,30 +100,10 @@ const menerimaInvitasi = async (req, res, next) => {
  * give another function for supporting each main function
  */
 
-const jualJasa = async (req, res, next) => {
-  try {
-    const { kategoriId, deskripsi, tag, paket } = req.body
-    const validDeskripsi = validator.isLength(deskripsi, { max: 400 })
 
-    /*
-     * portofolio 
-     * tag bertipe array
-     * paket bertipe objek
-     * 
-     * 1. 
-     * 2. 
-     * 3.
-     * 4. 
-     */
-
-
-  } catch (error) {
-    next(error)
-  }
-}
 const memberiInvitasi = async (req, res, next) => {
   try {
-    const { userId } = req.body
+    const { userId } = req.body;
 
     /*
      * invitationId (dalam bentuk random / encoded)
@@ -192,11 +123,8 @@ const memberiInvitasi = async (req, res, next) => {
      */
 
   } catch (error) {
-    next(error)
+    next(error);
   }
-}
-const doStep = async (req, res, next) => {
-
 }
 
 /*
@@ -205,25 +133,16 @@ const doStep = async (req, res, next) => {
 
 const USER = {
   buatKontes,
-  beliJasa,
   rekomendasi,
   uploadPortofolio,
   gabungKontes,
-  menerimaInvitasi,
-  depositJasa
+  menerimaInvitasi
 }
 
 /*
  * Store DESAINER main function
  */
 
-const DESAINER = {
-  jualJasa,
-  memberiInvitasi,
-  doStep
-}
+const DESAINER = { memberiInvitasi }
 
-module.exports = {
-  ...USER,
-  ...DESAINER
-}
+module.exports = { ...USER, ...DESAINER }

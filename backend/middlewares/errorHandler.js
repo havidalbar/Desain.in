@@ -1,4 +1,4 @@
-const { NODE_ENV } = require('../config')
+const { NODE_ENV } = require('../config');
 
 function notFound(req, res, next) {
   res.status(404);
