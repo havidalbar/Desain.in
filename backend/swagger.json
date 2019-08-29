@@ -1,0 +1,13 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Desainin Documentation",
+    "version": "1.0.0",
+    "description": "Desainin API Documentation using swagger"
+  },
+  "host": "http://localhost:5000",
+  "basePath": "/docs",
+  "apis": [
+    "path"
+  ]
+}

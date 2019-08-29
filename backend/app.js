@@ -1,4 +1,6 @@
 const express = require('express');
+const swaggerUi = require('swagger-ui-express');
+const swaggerConf = require('./swagger.json');
 const app = express();
 
 require('./database')
@@ -14,6 +16,7 @@ const userRouter = require('./routes/userRoute')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerConf))
 app.use('/auth', authRouter)
 app.use('/user', userRouter)
 

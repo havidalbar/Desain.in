@@ -11,21 +11,30 @@ const login = async (req, res, next) => {
       validPassword = validator.isLength(password, { min: 8 })
 
     if (!validEmail || !validPassword) {
-      throw new Error('Validation failed please check your input')
+      const error = new Error('Validation failed please check your input')
+      return res.status(400).json({
+        message: error.message
+      })
     }
 
     let userExists = await knex('user').where({ email }).first();
     if (!userExists) {
-      throw new Error('User isn\'t exist');
+      const error = new Error('User isn\'t exist');
+      return res.status(404).json({
+        error: error.message
+      })
     }
 
     const isEqual = await bcrypt.compare(password, userExists.password);
     if (!isEqual) {
-      throw new Error('username or password is incorrect');
+      const error = new Error('username or password is incorrect');
+      return res.status(401).json({
+        message: error.message
+      })
     }
 
     const token = await jwt.sign({ userId: userExists.id }, AUTH_TOKEN, { expiresIn: '365d' });
-    return res.status(200).send({
+    return res.status(200).json({
       userId: userExists.id,
       token: token,
       tokenExp: 365
@@ -43,12 +52,18 @@ const signup = async (req, res, next) => {
       hashedPassword = await bcrypt.hash(password, 12)
 
     if (!validEmail || !validPassword) {
-      throw new Error('Validation failed please check your input')
+      const error = new Error('Validation failed please check your input')
+      return res.status(400).json({
+        message: error.message
+      })
     }
 
     let userExists = await knex('user').where({ email }).first()
     if (userExists) {
-      throw new Error('User already exist')
+      const error = new Error('User already exist')
+      return res.status(409).json({
+        message: error.message
+      })
     }
 
     let user = {
@@ -58,7 +73,7 @@ const signup = async (req, res, next) => {
       phone_number
     }
     await knex('user').insert(user)
-    return res.status(200).send({
+    return res.status(200).json({
       nama,
       email
     })
