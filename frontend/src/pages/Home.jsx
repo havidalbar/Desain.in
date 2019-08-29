@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import Navbar from '../components/layouts/navbar/NavBar';
+import Footer from '../components/layouts/footer/Footer';
+import NavBar from '../components/layouts/navbar/NavBar';
 
 class App extends Component {
   render() {
     return (
         <div>
-            <Navbar/>
+            <NavBar/>
+            <Footer/>
         </div>
     );
   }

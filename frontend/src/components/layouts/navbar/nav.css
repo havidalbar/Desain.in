@@ -11,7 +11,7 @@
 .menuBar {
     overflow: hidden;
     height: 12vh;
-    padding: 16px 32px;
+    padding: 16px 5vw;
 }   
 
 .menuCon {
@@ -22,14 +22,6 @@
 }
 
 .menuCon .ant-menu-item {
-    padding: 0 24px;
-    margin: 0px;
-
-    font-family: "Nunito-lt";
-    letter-spacing: 0.2em;
-}
-
-.ant-menu-item {
     padding: 0 24px;
     margin: 0px;
 
@@ -59,6 +51,14 @@
 }
 
 @media screen and (max-width: 1024px) {
+
+    .ant-menu-item {
+        padding: 0 24px;
+        margin: 0px;
+    
+        font-family: "Nunito-lt";
+        letter-spacing: 0.2em;
+    }
 
     .ant-menu-submenu.ant-menu-submenu-horizontal {
         padding: 0 24px;
