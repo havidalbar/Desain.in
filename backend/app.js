@@ -1,6 +1,7 @@
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const app = express();
+const knex = require('./database');
 
 // database init
 require('./database');
@@ -27,6 +28,14 @@ app.get('/', (req, res) => {
     message: 'Hello World'
   });
 });
+try{
+knex.raw('select 1+1 as result').then(function () {
+  console.log("Connected Properly");
+});
+}
+catch (err){
+  console.log(err);
+}
 
 // Error Handling
 app.use(notFound);
