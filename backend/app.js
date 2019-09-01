@@ -13,6 +13,8 @@ const { notFound, errorHandler } = require('./middlewares');
 const authRouter = require('./routes/authRoute');
 const userRouter = require('./routes/userRoute');
 const contesRouter = require('./routes/contesRoute');
+const transacRouter = require('./routes/transacRoute');
+
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +23,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerConfigurations));
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
-app.use('/contes',contesRouter);
+app.use('/contes', contesRouter);
+app.use('/transac', transacRouter);
+
 app.get('/', (req, res) => {
   res.status(200).json({
     message: 'Hello World'
