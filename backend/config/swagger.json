@@ -10,11 +10,21 @@
   "schemes": [
     "http"
   ],
+  "tags":[
+    {
+      "name":"Auth",
+      "description":"authenticate user"
+    },
+    {
+      "name":"User",
+      "description":"User Operation"
+    }
+  ],
   "paths": {
     "/auth/login": {
       "post": {
         "tags": [
-          "auth"
+          "Auth"
         ],
         "summary": "log user into the system",
         "description": "",
@@ -33,10 +43,12 @@
             ],
             "properties": {
               "email": {
-                "type": "string"
+                "type": "string",
+                "example":"nabilaelazri@student.ub.ac.id"
               },
               "password": {
-                "type": "string"
+                "type": "string",
+                "example":"kakadamgantengbanget"
               }
             }
           }
@@ -60,7 +72,7 @@
     "/auth/register": {
       "post": {
         "tags": [
-          "auth"
+          "Auth"
         ],
         "summary": "register a new user",
         "description": "",
@@ -70,25 +82,32 @@
         "parameters": [{
           "in": "body",
           "name": "user",
-          "description": "register a new user",
+          "description": "register a new user email must be valid and password minimum 8",
+          "required":"true",
           "schema": {
             "type": "object",
             "required": [
               "email",
-              "password"
+              "password",
+              "phone_number",
+              "nama"
             ],
             "properties": {
               "nama": {
-                "type": "string"
+                "type": "string",
+                "example":"Adam"
               },
               "email": {
-                "type": "string"
+                "type": "string",
+                "example":"graha.asa@gmail.com"
               },
               "password": {
-                "type": "string"
+                "type": "string",
+                "example":"g@md1234"
               },
               "phone_number": {
-                "type": "string"
+                "type": "string",
+                "example":"0874562157"
               }
             }
           }

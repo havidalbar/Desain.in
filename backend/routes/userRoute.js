@@ -8,8 +8,6 @@ const { auth } = require('../middlewares/authHandler');
  * USER routes 
  */
 
-router.post('/kontes/buat', auth, userController.buatKontes);
-router.post('/kontes/gabung', auth, userController.gabungKontes);
 router.post('/rekomendasi', userController.rekomendasi);
 router.post('/portofolio/upload', auth, userController.uploadPortofolio);
 router.post('/invitasi/terima', auth, userController.menerimaInvitasi);

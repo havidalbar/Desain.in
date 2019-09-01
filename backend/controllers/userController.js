@@ -19,27 +19,6 @@ let upload = multer({ storage : storage, limits: { fileSize: maxSize} });
  * give another function for supporting each main function
  */
 
-const buatKontes = async (req, res, next) => {
-  try {
-    const { title, deskripsi, deadline, kategoriId, note, payment, npwp } = req.body;
-    const validDeskripsi = validator.isLength(deskripsi, { max: 400 });
-    
-    /*
-     * Lampiran adalah attachment yang menyimpan link gambar 
-     * 
-     * 1. validasi input
-     * 2. cek 
-     * 3. 
-     * 4.
-     * 
-     * set pesan { message: ... }
-     * mengembalikan pesan ke frontend untuk validasi
-     */
-
-  } catch (error) {
-    next(error)
-  }
-}
 
 const rekomendasi = async (req, res, next) => {}
 const uploadPortofolio = async (req, res, next) => {
@@ -64,9 +43,6 @@ const uploadPortofolio = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-}
-const gabungKontes = async (req, res, next) => {
-
 }
 
 const menerimaInvitasi = async (req, res, next) => {
@@ -132,10 +108,8 @@ const memberiInvitasi = async (req, res, next) => {
  */
 
 const USER = {
-  buatKontes,
   rekomendasi,
   uploadPortofolio,
-  gabungKontes,
   menerimaInvitasi
 }
 
