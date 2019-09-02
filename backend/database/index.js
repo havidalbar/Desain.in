@@ -13,4 +13,13 @@ const knex = require('knex')({
   }
 });
 
+try {
+  knex.raw('select 1+1 as result').then(function () {
+    console.log("Connected Properly");
+  });
+}
+catch (err) {
+  console.log(err);
+}
+
 module.exports = knex

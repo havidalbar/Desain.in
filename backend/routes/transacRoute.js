@@ -7,3 +7,5 @@ const { auth } = require('../middlewares/index');
 router.post('/jasa/beli', auth, transController.beliJasa);
 router.post('/jasa/jual', auth, transController.jualJasa);
 router.post('/step', auth, transController.doStep);
+
+module.exports = router
