@@ -3,7 +3,6 @@ const { AUTH_TOKEN } = require('../config')
 
 const auth = async (req, res, next) => {
 
-  req.state = { scope: [] }
 
   try {
     const authHeader = req.headers.authorization || req.headers.Authorization
@@ -17,10 +16,10 @@ const auth = async (req, res, next) => {
         })
       }
 
-      const gtoken = jwt.verify(token, AUTH_TOKEN)
+      const verified = await jwt.verify(token, AUTH_TOKEN)
       req.state = {
         ...req.state,
-        ...gtoken
+        ...verified
       }
     }
 
