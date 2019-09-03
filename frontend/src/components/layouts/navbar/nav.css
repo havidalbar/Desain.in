@@ -29,6 +29,11 @@
     letter-spacing: 0.2em;
 }
 
+li .ant-menu-item a::before {
+    font-family: "Nunito-lt" !important;
+    letter-spacing: 0.2em;
+}
+
 .ant-menu-submenu.ant-menu-submenu-horizontal {
     padding: 0 24px;
     margin: 0px;

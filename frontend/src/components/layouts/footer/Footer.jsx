@@ -2,6 +2,27 @@ import React, { Component } from 'react';
 import Logo from '../../../assets/images/logo.svg';
 import './footer.scss'
 
+let indents = [];
+
+for (let i = 0; i < 3; i++) {
+    indents.push(
+        <li>
+            <div className="avatar-wrap">
+                <div className="avatar">
+                </div>
+                <div className="avatar-content">
+                <p className="title">
+                    Judul Kontes
+                </p>
+                <p className="meta-info">
+                    oleh <span className="link">PT. Bahu Membahu</span>
+                </p>
+                </div>
+            </div>
+        </li>
+    );
+}
+
 class Footer extends Component {
     render() {
         return (
@@ -41,7 +62,7 @@ class Footer extends Component {
                         <div className="item grow">
                             <span className="item-title">Kontes Hangat</span>
                             <ul>
-                                <li></li>
+                                {indents}
                             </ul>
                         </div>
                     </div>

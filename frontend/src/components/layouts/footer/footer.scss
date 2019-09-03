@@ -26,6 +26,12 @@
     src: local("Roboto"), url(../../../assets/fonts/Roboto/Roboto-Regular.ttf);
 }
 
+
+p {
+    margin-bottom: 0;
+}
+
+
 .footer {
     padding: 5vw 5vw;
     background-color: #989898;
@@ -52,8 +58,7 @@
 .des {
     @include font-size(1rem !important);
     font-family: "Roboto-reg";
-    width: 22vw;
-    
+    width: 30vw;
 }
 
 .right-item {
@@ -89,7 +94,7 @@ li {
 
 li a {
     @include font-size(1rem !important);
-    font-family: "Roboto-reg";
+    font-family: "Nunito-lt";
     text-decoration: none;
     color: white;
 }
@@ -109,17 +114,80 @@ li a {
     width: 25vw;
 }
 
+.avatar-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 20vw;
+}
+
+.avatar {
+    border-radius: 30px;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.avatar-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    font-family: "Roboto-reg";
+    @include font-size(1.7rem !important);
+}
+
+.meta-info {
+    font-size: 0.8em;
+}
+
+.link {
+    font-family: "Nunito-bold";
+    color: #0020da;
+}
+
 @media screen and (max-width: 1024px) {
     .des {
         width: 100%;
     }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .title {
+        @include font-size(1.5rem !important);
+    }
 }
 
 @media screen and (max-width: 768px) {
+    
+    .footer {
+        padding: 5vh 10vw;
+    }
+
+    
     .footer-logo {
         width: 50vw;
     }
     
+    .footer-content {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .right-item {
+        width: 100%;
+    }
+
+    .avatar-wrap {
+        width: 28vw;
+    }
+
     .left-item {
         width: 100vw;
         margin-bottom: 5vh;
@@ -134,20 +202,13 @@ li a {
         width: 80%;
     }
 
-    .right-item {
-        width: 100vw;
-    }
-
     .signature {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        text-align: center;
     }
 }
 
 @media screen and (max-width: 426px) {
     .des {
-        
         @include font-size(0.8rem !important);
         width: 100%;
     }
@@ -163,6 +224,19 @@ li a {
 
     .signature {
         @include font-size(0.8rem !important);
+    }
+
+    .right-item {
+        width: 100%;
+    }
+
+    .grow {
+        margin-top: 2vh;
+        flex-grow: 10;
+    }
+
+    .avatar-wrap {
+        width: 80vw;
     }
     
 }
