@@ -4,19 +4,21 @@ const jwt = require('jsonwebtoken');
 const knex = require('../database');
 const { AUTH_TOKEN } = require('../config');
 
+function validation (email,password,res){
+  if (!email || !password) {
+    const error = new Error('Validation failed please check your input');
+    return res.status(400).json({
+      message: error.message
+    });
+  }
+}
+
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body,
       validEmail = validator.isEmail(email),
       validPassword = validator.isLength(password, { min: 8 });
-
-    if (!validEmail || !validPassword) {
-      const error = new Error('Validation failed please check your input');
-      return res.status(400).json({
-        message: error.message
-      });
-    }
-
+      validation (validEmail,validPassword,res);
     let userExists = await knex('user').where({ email }).first();
     if (!userExists) {
       const error = new Error('User isn\'t exist');
@@ -50,14 +52,7 @@ const signup = async (req, res, next) => {
       validEmail = validator.isEmail(email),
       validPassword = validator.isLength(password, { min: 8 }),
       hashedPassword = await bcrypt.hash(password, 12);
-
-    if (!validEmail || !validPassword) {
-      const error = new Error('Validation failed please check your input');
-      return res.status(400).json({
-        message: error.message
-      });
-    }
-
+      validation (validEmail,validPassword,res);
     let userExists = await knex('user').where({ email }).first();
     if (userExists) {
       const error = new Error('User already exist');
@@ -65,7 +60,6 @@ const signup = async (req, res, next) => {
         message: error.message
       });
     }
-
     let user = {
       nama,
       email,
@@ -77,11 +71,8 @@ const signup = async (req, res, next) => {
       nama,
       email
     });
-
   } catch (error) {
     next(error);
   }
 }
-
-
 module.exports = { login, signup }
