@@ -93,7 +93,6 @@ li {
 }
 
 li a {
-    @include font-size(1rem !important);
     font-family: "Nunito-lt";
     text-decoration: none;
     color: white;
