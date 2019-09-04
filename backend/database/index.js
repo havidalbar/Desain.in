@@ -1,4 +1,4 @@
-const { DATABASE } = require('../config')
+const { DATABASE } = require('../config');
 const knex = require('knex')({
   client: DATABASE.DB_DIALECT,
   connection: {
@@ -11,6 +11,15 @@ const knex = require('knex')({
       encrypt: true
     }
   }
-})
+});
+
+try {
+  knex.raw('select 1+1 as result').then(function () {
+    console.log("Connected Properly");
+  });
+}
+catch (err) {
+  console.log(err);
+}
 
 module.exports = knex

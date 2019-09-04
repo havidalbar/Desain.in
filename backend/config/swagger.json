@@ -1,0 +1,129 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Desainin",
+    "description": "Desainin Documentation"
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "tags":[
+    {
+      "name":"Auth",
+      "description":"authenticate user"
+    },
+    {
+      "name":"User",
+      "description":"User Operation"
+    }
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "log user into the system",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "user",
+          "description": "login user",
+          "schema": {
+            "type": "object",
+            "required": [
+              "email",
+              "password"
+            ],
+            "properties": {
+              "email": {
+                "type": "string",
+                "example":"nabilaelazri@student.ub.ac.id"
+              },
+              "password": {
+                "type": "string",
+                "example":"kakadamgantengbanget"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Validation failed, please check your input"
+          },
+          "401": {
+            "description": "Unauthorized, username or password is incorrect"
+          },
+          "404": {
+            "description": "User is not exist"
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "register a new user",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "user",
+          "description": "register a new user email must be valid and password minimum 8",
+          "required":"true",
+          "schema": {
+            "type": "object",
+            "required": [
+              "email",
+              "password",
+              "phone_number",
+              "nama"
+            ],
+            "properties": {
+              "nama": {
+                "type": "string",
+                "example":"Adam"
+              },
+              "email": {
+                "type": "string",
+                "example":"graha.asa@gmail.com"
+              },
+              "password": {
+                "type": "string",
+                "example":"g@md1234"
+              },
+              "phone_number": {
+                "type": "string",
+                "example":"0874562157"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Validation failed, please check your input"
+          },
+          "409": {
+            "description": "User already exist"
+          }
+        }
+      }
+    }
+  }
+}
