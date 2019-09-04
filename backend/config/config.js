@@ -1,6 +1,6 @@
-require('dotenv').config()
-const NODE_ENV = process.env.NODE_ENV
-let database
+require('dotenv').config();
+const NODE_ENV = process.env.NODE_ENV;
+let database;
 
 // default set to production
 switch (NODE_ENV) {
@@ -39,8 +39,8 @@ switch (NODE_ENV) {
     break;
 }
 
-const DATABASE = database
-const AUTH_TOKEN = process.env.AUTH_TOKEN
+const DATABASE = database;
+const AUTH_TOKEN = process.env.AUTH_TOKEN;
 
 module.exports = {
   NODE_ENV,
