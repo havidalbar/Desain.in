@@ -18,7 +18,7 @@ const login = async (req, res, next) => {
     const { email, password } = req.body,
       validEmail = validator.isEmail(email),
       validPassword = validator.isLength(password, { min: 8 });
-      validation (validEmail,validPassword,res);
+      validation (validEmail, validPassword, res);
     let userExists = await knex('user').where({ email }).first();
     if (!userExists) {
       const error = new Error('User isn\'t exist');
@@ -52,7 +52,7 @@ const signup = async (req, res, next) => {
       validEmail = validator.isEmail(email),
       validPassword = validator.isLength(password, { min: 8 }),
       hashedPassword = await bcrypt.hash(password, 12);
-      validation (validEmail,validPassword,res);
+      validation (validEmail, validPassword, res);
     let userExists = await knex('user').where({ email }).first();
     if (userExists) {
       const error = new Error('User already exist');
@@ -75,4 +75,5 @@ const signup = async (req, res, next) => {
     next(error);
   }
 }
+
 module.exports = { login, signup }
