@@ -27,7 +27,7 @@ const buatKontes = async (req, res, next) => {
   }
   
 const gabungKontes = async (req, res, next) => {
- 
+  
 }
 
 module.exports = { buatKontes,gabungKontes}

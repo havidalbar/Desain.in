@@ -1,5 +1,6 @@
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
+const logger = require('morgan');
 const app = express();
 
 // database init
@@ -18,6 +19,7 @@ const transacRouter = require('./routes/transacRoute');
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(logger(NODE_ENV === 'production' ? 'combined' : 'dev'));
 
 // Endpoint
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerConfigurations));
