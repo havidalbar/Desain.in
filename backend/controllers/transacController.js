@@ -20,7 +20,7 @@ const depositJasa = async (req, res, next) => {
      */
 
   } catch (error) {
-    next(error)
+    next(error);
   }
 }
 const beliJasa = async (req, res, next) => {
@@ -49,7 +49,7 @@ const beliJasa = async (req, res, next) => {
      */
 
   } catch (error) {
-    next(error)
+    next(error);
   }
 }
 
@@ -71,7 +71,7 @@ const jualJasa = async (req, res, next) => {
 
 
   } catch (error) {
-    next(error)
+    next(error);
   }
 }
 
@@ -83,7 +83,7 @@ const TRANSACTION = {
   beliJasa,
   jualJasa,
   depositJasa,
-  doStep,
+  doStep
 }
 
 module.exports = { ...TRANSACTION }
