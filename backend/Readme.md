@@ -1,8 +1,8 @@
-### BACKEND TODO LIST
+# BACKEND TODO LIST
 
 ## Kontes
 
-    /contest/create
+* [ ] /contest/create
     
     * [X] Create route
     * [X] Check if user authenticace
@@ -18,7 +18,7 @@
         * [X] return error
     * [X] if all succses insert to db
 
-    /contest/getContestById:contestId
+* [ ] /contest/getContestById:contestId
     
     * [X] Create route
     * [X] check parameter (Contestid)
@@ -27,7 +27,7 @@
         * [X] return data
         * [X] return error with code 404
 
-    /contest/getContestByUser:idUser
+* [ ] /contest/getContestByUser:idUser
     
     * [X] create router
     * [X] check parameter
@@ -36,28 +36,28 @@
         * [X] return data
         * [X] return error with code 404
 
-    /contest/getHotContest
+* [ ] /contest/getHotContest
     
-    ## pending
+    `pending`
 
-    /contest/joinContest
+* [ ] /contest/joinContest
 
     * [X] create router
     * [X] check authenticate user
         * [X] return 402 not authenticate
     * [ ] check body (userId,ContestId,Upload)
     
-    ## pending
+    `pending`
 
 ## User
 
-    Create table for invitation
+* [ ] Create table for invitation
 
      * [X] Create table for invitation
      * [X] Column (uuid:primary key, userId,userIdInvited)
      * [ ] Create table for package
 
-    /user/createInvitation
+* [ ] /user/createInvitation
 
      * [X] create router
      * [X] check user authenticate
@@ -69,7 +69,7 @@
      * [ ] create random uuid
      * [ ] insert to database (uuid:PK,userId,UserIdInvited)
 
-    /user/acceptInvitation
+* [ ] /user/acceptInvitation
      
      * [X] create router
      * [X] check user authenticate
@@ -82,7 +82,7 @@
      * [ ] reject
         * [ ] delete invitation by uuid 
     
-    /user/cancelInvitation
+* [ ] /user/cancelInvitation
 
     * [X] create router
     * [X] check user authenticate
@@ -95,7 +95,7 @@
     * [ ] check uuid valid
         * [ ] delete invitation by uuid
 
-    /user/updateUser:idUser
+* [ ] /user/updateUser:idUser
     
     * [X] create router
     * [X] check user authenticate
@@ -111,7 +111,7 @@
                     * [ ] return error
             * [ ] update to db
 
-    /user/updatepassword:idUser 
+* [ ] /user/updatepassword:idUser 
 
     *[X] create router
     *[X] check user authenticate
@@ -126,7 +126,7 @@
                 * [ ] hash newPassword
                 * [ ] update Password
   
-    /user/getUserProfile:idUser
+* [ ] /user/getUserProfile:idUser
 
     * [X] create router
     * [ ] check param (idUser)
@@ -137,22 +137,23 @@
     
 ## Transaction 
 
-    /transaction/jualJasa
+* [ ] /transaction/jualJasa
     
-      * [ ] create router
-      * [ ] check user authenticate 
-      * [ ] check body (kategori, tag[] , deskripsi, paket[] )
-      * [ ] validate decs (max 400)
-      * [ ] if all success insert to ...
+    * [ ] create router
+    * [ ] check user authenticate 
+    * [ ] check body (kategori, tag[] , deskripsi, paket[] )
+    * [ ] validate decs (max 400)
+    * [ ] if all success insert to ...
     
-    ## pending 
+    `pending` 
 
-    /transaction/getKategori
-      * 
+* [ ] /transaction/getKategori
+    
+    `pending`
 
 ## Portfolio
 
-    /portfolio/getByUserId:userId
+* [ ] /portfolio/getByUserId:userId
 
     * [X] create router
     * [ ] check params (userId)
@@ -161,7 +162,7 @@
         * [ ] user found
             * [ ] return all portofolio []
 
-    /portfolio/uploadImage
+* [ ] /portfolio/uploadImage
 
     * [X] create router
     * [X] check user authenticate
@@ -170,9 +171,9 @@
         * [ ] return 402 not authorized
     * [ ] ... 
         
-    ## pending 
+    `pending` 
 
-    /portfolio/uploadData
+* [ ] /portfolio/uploadData
 
     * [X] create router
     * [X] check user authenticate
@@ -191,7 +192,7 @@
                 * [ ] return error
             * [ ] store to database
     
-    /portfolio/updateData
+* [ ] /portfolio/updateData
 
     * [X] create router
     * [X] check user authenticate 
@@ -213,7 +214,7 @@
                 * [ ] skip upload
             * [ ] update to database
 
-    /portfolio/getDetailById:portofId
+* [ ] /portfolio/getDetailById:portofId
 
     * [X] create rotuer
     * [ ] check body (portofId)
@@ -223,7 +224,7 @@
         * [ ] get portof data
         * [ ] return portof detail
 
-    /portfolio/deleteById:portofId
+* [ ] /portfolio/deleteById:portofId
 
     * [X] create router
     * [X] check user authenticate 
