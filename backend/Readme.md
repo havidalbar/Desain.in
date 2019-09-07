@@ -113,18 +113,18 @@
 
 * [ ] /user/updatepassword:idUser 
 
-    *[X] create router
-    *[X] check user authenticate
+    * [X] create router
+    * [X] check user authenticate
         * [X] return 402 not authenticate
-    *[ ] check parameter (idUser)
-        *[ ] user Not Found
-            *[ ] return 404 
+    * [ ] check parameter (idUser)
+        * [ ] user Not Found
+            * [ ] return 404 
         * [ ] user found
-                * [ ] check body (oldPassword,newPassword)
-                * [ ] compare oldPssword
-                * [ ] return oldPassword not match
-                * [ ] hash newPassword
-                * [ ] update Password
+            * [ ] check body (oldPassword,newPassword)
+            * [ ] compare oldPssword
+            * [ ] return oldPassword not match
+            * [ ] hash newPassword
+            * [ ] update Password
   
 * [ ] /user/getUserProfile:idUser
 
