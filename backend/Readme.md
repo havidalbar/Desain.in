@@ -38,7 +38,7 @@
 
 * [ ] /contest/getHotContest
     
-    `pending`
+    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
 * [ ] /contest/joinContest
 
@@ -47,7 +47,7 @@
         * [X] return 402 not authenticate
     * [ ] check body (userId,ContestId,Upload)
     
-    `pending`
+    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
 ## User
 
@@ -145,11 +145,11 @@
     * [ ] validate decs (max 400)
     * [ ] if all success insert to ...
     
-    `pending` 
+    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
 * [ ] /transaction/getKategori
     
-    `pending`
+    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
 ## Portfolio
 
@@ -171,7 +171,7 @@
         * [ ] return 402 not authorized
     * [ ] ... 
         
-    `pending` 
+    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending` 
 
 * [ ] /portfolio/uploadData
 
