@@ -4,61 +4,64 @@
 
     /contest/create
     
-    * [ ] Create route
-    * [ ] Check if user authenticace
-        * [ ] return 402 not authenticate
-    * [ ] Check body (desc,deadline,criteria,category,notes,attachment,attachment 2,payment method,payment total,userId,start Date,Deadline,npwp)
-    * [ ] validate decs (max 400 char)
+    * [X] Create route
+    * [X] Check if user authenticace
+        * [X] return 402 not authenticate
+    * [X] Check body (desc,deadline,criteria,category,notes,attachment,attachment 2,payment method,payment total,userId,start date,npwp)
+    * [X] validate decs (max 400 char)
         * [ ] return error
     * [ ]  validate attachemnt jpeg/png
         * [ ] return error
     * [ ] validate attachment 2 .doc/.pdf
         * [ ] return error
-    * [ ] check if payment more than 10bills , npwp required
-        * [ ] return error
-    * [ ] if all succses insert to db
+    * [X] check if payment more than 10bills , npwp required
+        * [X] return error
+    * [X] if all succses insert to db
 
     /contest/getContestById:contestId
     
-    * [ ] Create route
-    * [ ] check parameter (Contestid)
-        * [ ] if parameter ===       null response with 422
-    * [ ] getFrom database by contest id
-        * [ ] return data
-        * [ ] return error with code 404
+    * [X] Create route
+    * [X] check parameter (Contestid)
+        * [X] if parameter ===       null response with 422
+    * [X] getFrom database by contest id
+        * [X] return data
+        * [X] return error with code 404
 
     /contest/getContestByUser:idUser
     
-    * [ ] create router
-    * [ ] check parameter
-        * [ ] if parameter === null respone with 422
-    * [ ] getFrom database by userId
-        * [ ] return data
-        * [ ] return error with code 404
+    * [X] create router
+    * [X] check parameter
+        * [X] if parameter === null respone with 422
+    * [X] getFrom database by userId
+        * [X] return data
+        * [X] return error with code 404
 
     /contest/getHotContest
     
-    #### pending
+    ## pending
 
     /contest/joinContest
 
-    * [ ] create router
-    * [ ] check authenticate user
-        * [ ] return 402 not authenticate
+    * [X] create router
+    * [X] check authenticate user
+        * [X] return 402 not authenticate
     * [ ] check body (userId,ContestId,Upload)
+    
+    ## pending
 
 ## User
 
     Create table for invitation
 
-     * [ ] Create table for invitation
-     * [ ] Column (uuid:primary key, userId,userIdInvited)
+     * [X] Create table for invitation
+     * [X] Column (uuid:primary key, userId,userIdInvited)
+     * [ ] Create table for package
 
     /user/createInvitation
 
-     * [ ] create router
-     * [ ] check user authenticate
-        * [ ] 402 not authenticate
+     * [X] create router
+     * [X] check user authenticate
+        * [X] 402 not authenticate
      * [ ] check user already have designer
         * [ ] return error 
      * [ ] check invited user are non designer
@@ -68,9 +71,9 @@
 
     /user/acceptInvitation
      
-     * [ ] create router
-     * [ ] check user authenticate
-        * [ ] return 402 not authenticate
+     * [X] create router
+     * [X] check user authenticate
+        * [X] return 402 not authenticate
      * [ ] check body (status,invitation uuId)
      * [ ] check uuid valid
      * [ ] accept
@@ -81,9 +84,9 @@
     
     /user/cancelInvitation
 
-    * [ ] create router
-    * [ ] check user authenticate
-        * [ ] return 402 not authenticate
+    * [X] create router
+    * [X] check user authenticate
+        * [X] return 402 not authenticate
     * [ ] check user authorized
         * [ ] return 402 not authorized
     * [ ] check body (invitation uuid)
@@ -94,9 +97,9 @@
 
     /user/updateUser:idUser
     
-    * [ ] create router
-    * [ ] check user authenticate
-        * [ ] return 402 not authenticate
+    * [X] create router
+    * [X] check user authenticate
+        * [X] return 402 not authenticate
     * [ ] check parameter (idUser)
         * [ ] user not found
             * [ ] return 404
@@ -110,9 +113,9 @@
 
     /user/updatepassword:idUser 
 
-    *[ ] create router
-    *[ ] check user authenticate
-        * [ ] return 402 not authenticate
+    *[X] create router
+    *[X] check user authenticate
+        * [X] return 402 not authenticate
     *[ ] check parameter (idUser)
         *[ ] user Not Found
             *[ ] return 404 
@@ -125,7 +128,7 @@
   
     /user/getUserProfile:idUser
 
-    * [ ] create router
+    * [X] create router
     * [ ] check param (idUser)
         * [ ] user notFound
             * [ ] return 404
@@ -147,33 +150,33 @@
     /transaction/getKategori
       * 
 
-## Portofolio
+## Portfolio
 
-    /portofolio/getByUserId:userId
+    /portfolio/getByUserId:userId
 
-    * [ ] create router
+    * [X] create router
     * [ ] check params (userId)
         * [ ] user not found
             * [ ] return 404
         * [ ] user found
             * [ ] return all portofolio []
 
-    /portofolio/uploadImage
+    /portfolio/uploadImage
 
-    * [ ] create router
-    * [ ] check user authenticate
-        * [ ] return 402 not authenticate
+    * [X] create router
+    * [X] check user authenticate
+        * [X] return 402 not authenticate
     * [ ] check user designer
         * [ ] return 402 not authorized
     * [ ] ... 
         
     ## pending 
 
-    /portofolio/uploadData
+    /portfolio/uploadData
 
-    * [ ] create router
-    * [ ] check user authenticate
-        * [ ] return 402 not authenticate
+    * [X] create router
+    * [X] check user authenticate
+        * [X] return 402 not authenticate
     * [ ] check user designer
         * [ ] return 402 not authorized
     * [ ] check body (file,userId,judul,desc,tag)
@@ -188,11 +191,11 @@
                 * [ ] return error
             * [ ] store to database
     
-    /porotoflio/updateData
+    /portfolio/updateData
 
-    * [ ] create router
-    * [ ] check user authenticate 
-        * [ ] return 402 not authenticate
+    * [X] create router
+    * [X] check user authenticate 
+        * [X] return 402 not authenticate
     * [ ] check user designer
         * [ ] return 402 not authorized
     * [ ] check body (userId, judul, tag, desc, file)
@@ -210,9 +213,9 @@
                 * [ ] skip upload
             * [ ] update to database
 
-    /portofolio/getPortofDetailById:portofId
+    /portfolio/getDetailById:portofId
 
-    * [ ] create rotuer
+    * [X] create rotuer
     * [ ] check body (portofId)
     * [ ] check portof doesnt exist
         * [ ] return 404 not found
@@ -220,11 +223,11 @@
         * [ ] get portof data
         * [ ] return portof detail
 
-    /portofolio/deletePortofById:portofId
+    /portfolio/deleteById:portofId
 
-    * [ ] create router
-    * [ ] check user authenticate 
-        * [ ] return 402 not authenticate
+    * [X] create router
+    * [X] check user authenticate 
+        * [X] return 402 not authenticate
     * [ ] check user designer
         * [ ] return 402 not authorized
     * [ ] check body (portofId)
@@ -234,4 +237,3 @@
         * [ ] delete in database
         * [ ] return 200
     
-

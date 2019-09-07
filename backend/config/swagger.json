@@ -13,11 +13,23 @@
   "tags":[
     {
       "name":"Auth",
-      "description":"authenticate user"
+      "description":"Authenticate User"
     },
     {
       "name":"User",
       "description":"User Operation"
+    },
+    {
+      "name":"Contest",
+      "description":"Contest Services"
+    },
+    {
+      "name":"Transaction",
+      "description":"Transaction Services"
+    },
+    {
+      "name":"Portfolio",
+      "description":"Portfolio Services"
     }
   ],
   "paths": {
@@ -57,7 +69,7 @@
           "200": {
             "description": "OK"
           },
-          "400": {
+          "422": {
             "description": "Validation failed, please check your input"
           },
           "401": {
@@ -116,7 +128,7 @@
           "200": {
             "description": "OK"
           },
-          "400": {
+          "422": {
             "description": "Validation failed, please check your input"
           },
           "409": {

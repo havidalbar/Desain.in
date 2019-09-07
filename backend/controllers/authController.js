@@ -7,7 +7,7 @@ const { AUTH_TOKEN } = require('../config');
 function validation (email,password,res){
   if (!email || !password) {
     const error = new Error('Validation failed please check your input');
-    return res.status(400).json({
+    return res.status(422).json({
       message: error.message
     });
   }
@@ -21,7 +21,7 @@ const login = async (req, res, next) => {
     
     validation (validEmail, validPassword, res);
     
-      let userExists = await knex('user').where({ email }).first();
+    let userExists = await knex('user').where({ email }).first();
     if (!userExists) {
       const error = new Error('User isn\'t exist');
       return res.status(404).json({
