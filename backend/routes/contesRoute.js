@@ -6,9 +6,9 @@ const { auth } = require('../middlewares/authHandler');
 
 router.post('/buat', auth, contesController.buatKontes);
 router.post('/gabung', auth, contesController.gabungKontes);
-router.get('/',(req,res,next)=>{
+router.get('/', (req, res, next) => {
     res.json({
-        message:"Contes Route"
+        message: "Contes Route"
     })
 })
 

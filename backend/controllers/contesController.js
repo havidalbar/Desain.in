@@ -22,12 +22,48 @@ const buatKontes = async (req, res, next) => {
        */
   
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
   
 const gabungKontes = async (req, res, next) => {
-  
+  try {
+
+    const { kategoriId, kontesId } = req.body;
+
+    /*
+     * 1. cek kategori dan kontes di database 
+     * 2. simpan kontes + kategori ke dalam db 
+     * 3. 
+     * 4. 
+     */
+
+  } catch (error) {
+    next(error);
+  }
 }
 
-module.exports = { buatKontes,gabungKontes}
+const submitKontes = async (req, res, next) => {
+  try {
+    const { subject } = req.body;
+
+    /*
+     * 1. validasi subject
+     * 2. generate nama file 
+     * 3. upload file
+     * 4.  
+     * 
+     */
+
+  } catch (error) {
+    next(error);
+  }
+}
+
+const CONTEST = { 
+  buatKontes,
+  gabungKontes,
+  submitKontes
+}
+
+module.exports = { ...CONTEST }
