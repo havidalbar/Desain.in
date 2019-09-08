@@ -1,5 +1,6 @@
 # BACKEND TODO LIST
 
+
 ## Kontes
 
 * [ ] /contest/create
@@ -60,8 +61,8 @@
 * [ ] /user/createInvitation
 
      * [X] create router
-     * [X] check user authenticate
-        * [X] 402 not authenticate
+     * [ ] check user authenticate
+        * [ ] 402 not authenticate
      * [ ] check user already have designer
         * [ ] return error 
      * [ ] check invited user are non designer
@@ -71,9 +72,9 @@
 
 * [ ] /user/acceptInvitation
      
-     * [X] create router
-     * [X] check user authenticate
-        * [X] return 402 not authenticate
+     * [ ] create router
+     * [ ] check user authenticate
+        * [ ] return 402 not authenticate
      * [ ] check body (status,invitation uuId)
      * [ ] check uuid valid
      * [ ] accept
@@ -84,9 +85,9 @@
     
 * [ ] /user/cancelInvitation
 
-    * [X] create router
-    * [X] check user authenticate
-        * [X] return 402 not authenticate
+    * [ ] create router
+    * [ ] check user authenticate
+        * [ ] return 402 not authenticate
     * [ ] check user authorized
         * [ ] return 402 not authorized
     * [ ] check body (invitation uuid)
@@ -97,9 +98,9 @@
 
 * [ ] /user/updateUser:idUser
     
-    * [X] create router
-    * [X] check user authenticate
-        * [X] return 402 not authenticate
+    * [ ] create router
+    * [ ] check user authenticate
+        * [ ] return 402 not authenticate
     * [ ] check parameter (idUser)
         * [ ] user not found
             * [ ] return 404
@@ -128,7 +129,7 @@
   
 * [ ] /user/getUserProfile:idUser
 
-    * [X] create router
+    * [ ] create router
     * [ ] check param (idUser)
         * [ ] user notFound
             * [ ] return 404

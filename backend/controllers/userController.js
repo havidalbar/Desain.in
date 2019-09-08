@@ -47,7 +47,9 @@ const updateUser = async (req, res, next) => {
 
 const updatePassword = async (req, res, next) => {
   try {
-    
+  res.json({message:"Hello World"});    
+
+
   } catch (error) {
     next(error);
   }

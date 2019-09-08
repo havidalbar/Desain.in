@@ -31,7 +31,7 @@ const login = async (req, res, next) => {
 
     const isEqual = await bcrypt.compare(password, userExists.password);
     if (!isEqual) {
-      const error = new Error('username or password is incorrect');
+      const error = new Error('Wrong Password');
       return res.status(401).json({
         message: error.message
       });
