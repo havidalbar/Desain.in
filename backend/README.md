@@ -112,20 +112,23 @@
                     * [ ] return error
             * [ ] update to db
 
-* [ ] /user/updatepassword:idUser 
+* [X] /user/updatepassword:idUser 
 
     * [X] create router
     * [X] check user authenticate
         * [X] return 402 not authenticate
-    * [ ] check parameter (idUser)
-        * [ ] user Not Found
-            * [ ] return 404 
-        * [ ] user found
-            * [ ] check body (oldPassword,newPassword)
-            * [ ] compare oldPssword
-            * [ ] return oldPassword not match
-            * [ ] hash newPassword
-            * [ ] update Password
+    * [x] check parameter (idUser)
+        * [x] user Not Found
+            * [x] return 404 
+        * [X] user found
+            * [X] check body (oldPassword,newPassword)
+                * [X] return error
+            * [X] compare oldPssword
+                * [X] return oldPassword not match
+            * [X] validate new Password
+                * [X] return not validated
+            * [X] hash newPassword
+            * [X] update Password
   
 * [ ] /user/getUserProfile:idUser
 

@@ -3,15 +3,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const knex = require('../database');
 const { AUTH_TOKEN } = require('../config');
+const {validation } = require('../middlewares/index');
 
-function validation (email,password,res){
-  if (!email || !password) {
-    const error = new Error('Validation failed please check your input');
-    return res.status(422).json({
-      message: error.message
-    });
-  }
-}
+
 
 const login = async (req, res, next) => {
   try {
@@ -19,7 +13,7 @@ const login = async (req, res, next) => {
       validEmail = validator.isEmail(email),
       validPassword = validator.isLength(password, { min: 8 });
     
-    validation (validEmail, validPassword, res);
+    validation (res,validEmail, validPassword);
     
     let userExists = await knex('user').where({ email }).first();
     if (!userExists) {
