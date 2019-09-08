@@ -47,8 +47,10 @@ const updateUser = async (req, res, next) => {
 
 const updatePassword = async (req, res, next) => {
   try {
-  res.json({message:"Hello World"});    
-
+   let {userId} = req.params;
+   if (userId){
+     console.log(userId);
+   }
 
   } catch (error) {
     next(error);

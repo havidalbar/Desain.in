@@ -22,7 +22,8 @@ const auth = async (req, res, next) => {
       next(error);
     }
     await next();
-  } catch (error) {
+  } catch (err) {
+    const error = new Error (err);
     res.status(500);
     next(error);
   }
