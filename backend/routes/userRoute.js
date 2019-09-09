@@ -2,20 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const userController = require('../controllers/userController');
-const { auth } = require('../middlewares/authHandler');
+const { auth } = require('../middlewares/index');
 
-/*
- * USER routes 
- */
 
-router.post('/rekomendasi', userController.rekomendasi);
-router.post('/portofolio/upload', auth, userController.uploadPortofolio);
-router.post('/invitasi/terima', auth, userController.menerimaInvitasi);
+router.get('/updatePassword/:userId',auth,userController.updatePassword);
 
-/*
- * DESAINER routes 
- */
-
-router.post('/invitasi/berikan', auth, userController.memberiInvitasi);
 
 module.exports = router
