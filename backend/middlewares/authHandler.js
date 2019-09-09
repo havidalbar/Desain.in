@@ -2,6 +2,9 @@ const jwt = require('jsonwebtoken');
 const { AUTH_TOKEN } = require('../config');
 
 const auth = async (req, res, next) => {
+
+
+
   try {
     const authHeader = req.headers.authorization || req.headers.Authorization;
     if (authHeader && authHeader.length > 0) {

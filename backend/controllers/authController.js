@@ -37,6 +37,7 @@ const login = async (req, res, next) => {
       token: token,
       tokenExp: 365
     });
+
   } catch (error) {
     next(error);
   }
