@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Row, Col, Carousel } from 'antd';
-import PrimaryButton from '../../button/Primary';
 import './homeHero.scss';
 
 class HomeHero extends Component {
@@ -24,8 +23,8 @@ class HomeHero extends Component {
                             </div>
                         </Carousel>
                     </Col>
-                    <Col className="side-hero" span={6} gutter={8}>
-                        <Row type="flex" justify="space-between">
+                    <Col  span={6}>
+                        <Row className="side-hero" justify="space-arround">
                             <div className="side-menu-item">
                                 <span className="side-menu-title">
                                     PORTFOLIO
