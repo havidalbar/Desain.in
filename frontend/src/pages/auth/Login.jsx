@@ -48,6 +48,9 @@ class Login extends Component {
                             <Form.Item>
                                 <Button style="button primary fluid" text="masuk"  htmlType="submit"/>
                             </Form.Item>
+                            <Form.Item>
+                            <p className="regular-body"> <a className="link" href="">Belum Punya Akun?</a> Buat baru yuk</p>
+                            </Form.Item>
                         </Form>                        
                 </Col>
                 <Col className="fancy-image" span={14}>

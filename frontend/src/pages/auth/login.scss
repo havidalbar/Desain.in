@@ -56,3 +56,12 @@ label {
 .fancy-image-content {
     height: 100vh;
 }
+
+.regular-body {
+    font-family: "Nunito-rg";
+    @include font-size(1rem !important);
+}
+
+.link {
+    font-family: "Nunito-bld";
+}
