@@ -7,9 +7,6 @@ import './login.scss';
 
 const URL_LOGIN = 'http://localhost:5000/auth/login';
 
-function hasErrors(fieldsError) {
-    return Object.keys(fieldsError).some(field => fieldsError[field]);
-}
 class Login extends Component {
 
 
@@ -24,10 +21,6 @@ class Login extends Component {
                 password: "",
             },
         }
-    }
-
-    componentDidMount() {
-        this.props.form.validateFields();
     }
 
     handleSubmit = e => {
@@ -71,12 +64,9 @@ class Login extends Component {
 
     render() {
 
-        // const formItemLayout = "vertical";
-        const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
+        const formItemLayout = "vertical";
+        const { getFieldDecorator } = this.props.form;
 
-
-        const emailError = isFieldTouched('email') && getFieldError('email');
-        const passwordError = isFieldTouched('password') && getFieldError('password');
         return (
             <Row>
                 <Col className="login" span={10}>
@@ -85,7 +75,7 @@ class Login extends Component {
                     </div>
                     <h1 className="title-3">Login</h1>
                     <Form layout="vertical" onSubmit={this.handleSubmit} className="login-form">
-                        <Form.Item label="Email" validateStatus={emailError ? 'error' : ''} help={emailError || ''} >
+                        <Form.Item label="Email" {...formItemLayout} >
                             {getFieldDecorator('email', {
                                 rules: [{ required: true, message: 'Please input your email!' }],
                             }
@@ -93,7 +83,7 @@ class Login extends Component {
                                 <Input placeholder="improudtodesign@mail.com" />)
                             }
                         </Form.Item>
-                        <Form.Item label="Password" type="password" validateStatus={passwordError ? 'error' : ''} help={passwordError || ''}>
+                        <Form.Item label="Password" type="password" {...formItemLayout}>
                             {getFieldDecorator('password', {
                                 rules: [{ required: true, message: 'Please input your password!' }],
                             }
@@ -102,7 +92,7 @@ class Login extends Component {
                             }
                         </Form.Item>
                         <Form.Item>
-                            <Button style="button primary fluid" text="masuk" htmlType="submit" onClick={this.handleSubmit} disabled={hasErrors(getFieldsError())}/>
+                            <Button style="button primary fluid" text="masuk" htmlType="submit" onClick={this.handleSubmit}/>
                         </Form.Item>
                         <Form.Item>
                             <p className="regular-body"> <a className="link" href="/#">Belum Punya Akun?</a> Buat baru yuk</p>
