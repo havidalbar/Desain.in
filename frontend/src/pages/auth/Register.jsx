@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Form, Input } from 'antd';
-import Button from '../../components/button/Button';
+import Button from '../../components/Button/Button';
 import './register.scss';
 
 class Register extends Component {
@@ -62,7 +62,7 @@ class Register extends Component {
                             }
                         </Form.Item>
                         <Form.Item>
-                            <p>Dengan bergabung dengan kami anda akan dinyatakan setuju  dengan segala <a className="link" href="">kebijakan kami</a></p>
+                            <p>Dengan bergabung dengan kami anda akan dinyatakan setuju  dengan segala <a className="link" href="/#">kebijakan kami</a></p>
                         </Form.Item>
                         <Form.Item>
                             <Button style="button primary" text="daftar"  htmlType="submit"/>
@@ -76,7 +76,7 @@ class Register extends Component {
                         </h2>
                         <p className="regular-body">
                             Menjual jasa, mengunggah protofolio dan memberikan komentar terhadap 
-                            karya desainer lain <a className="link" href=""> membutuhkan invitasi </a> dari pengguna yang telah 
+                            karya desainer lain <a className="link" href="/#"> membutuhkan invitasi </a> dari pengguna yang telah 
                             menjadi bagian dari komunitas kami.
                         </p>
                     </div>

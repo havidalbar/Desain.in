@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col, Form, Input } from 'antd';
 import Logo from '../../assets/images/logo-2.svg';
 import Deco from '../../assets/images/login-people.svg';
-import Button from '../../components/button/Button';
+import Button from '../../components/Button/Button';
 import './login.scss';
 
 class Login extends Component {
@@ -49,7 +49,7 @@ class Login extends Component {
                                 <Button style="button primary fluid" text="masuk"  htmlType="submit"/>
                             </Form.Item>
                             <Form.Item>
-                            <p className="regular-body"> <a className="link" href="">Belum Punya Akun?</a> Buat baru yuk</p>
+                            <p className="regular-body"> <a className="link" href="/#">Belum Punya Akun?</a> Buat baru yuk</p>
                             </Form.Item>
                         </Form>                        
                 </Col>
