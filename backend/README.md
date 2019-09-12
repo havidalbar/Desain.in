@@ -132,7 +132,7 @@
             * [X] hash newPassword
             * [X] update Password
   
-* [ ] /user/getUserProfile:idUser
+* [ ] /user/profile:userId
 
     * [ ] create router
     * [ ] check param (idUser)
