@@ -41,23 +41,23 @@ const acceptInvitation = async (req, res, next) => {
     const isValidConfirmation = confirmation == 1 || confirmation == 0;
 
     if (!isUUID && !isValidConfirmation) {
-      return res.status(422).json({
-        message: "Validation failed please check your input"
-      });
+      const error = new Error('Validation failed please check your input');
+      res.status(422);
+      next(error);
     }
 
     let { 'status': checkUserIsDesigner } = await knex('user').select('status').where('id', userInvitedId).first();
     if (checkUserIsDesigner) {
-      return res.status(406).json({
-        message: "User invited already a designer"
-      });
+      const error = new Error('User invited already a designer');
+      res.status(406);
+      next(error);
     }
 
     let checkUserIsInvited = await knex('user_invitation').where({ id_invited_user: userInvitedId }).first();
     if (!checkUserIsInvited) {
-      return res.status(404).json({
-        message: "Invitation not found"
-      });
+      const error = new Error('Invitation not found');
+      res.status(404);
+      next(error);
     }
 
     if (confirmation) await knex('user').update({ status: 1 }).where({ id: userInvitedId });
@@ -66,7 +66,8 @@ const acceptInvitation = async (req, res, next) => {
     invitationDeleteTrx(userInvitedId, UUIDHex);
 
     return res.status(200).json({
-      confirmation: confirmation ? "Accepted" : "Rejected"
+      confirmation: confirmation,
+      message: confirmation ? "Accepted" : "Rejected"
     })
   } catch (error) {
     next(error);
@@ -81,23 +82,23 @@ const createInvitation = async (req, res, next) => {
 
     let checkIsAlreadyInvited = await knex('user_invitation').where({ id_user: userId, id_invited_user: userInvitedId }).first();
     if (checkIsAlreadyInvited) {
-      return res.status(406).json({
-        message: "This user has already invited"
-      });
+      const error = new Error('This user has already invited');
+      res.status(406);
+      next(error);
     }
 
     let { 'status': checkUserIsDesigner } = await knex('user').select('status').where('id', userId).first();
     if (!checkUserIsDesigner) {
-      return res.status(403).json({
-        message: "You don\'t have permission to create Invitation"
-      });
+      const error = new Error('You don\'t have permission to create Invitation');
+      res.status(403);
+      next(error);
     }
 
     let { 'status': checkUserInvitedIsDesigner } = await knex('user').select('status').where('id', userInvitedId).first();
     if (checkUserInvitedIsDesigner) {
-      return res.status(406).json({
-        message: "User invited already a designer"
-      });
+      const error = new Error('User invited already a designer');
+      res.status(406);
+      next(error);
     }
 
     let userInvited = { id: UUID, id_invited_user: userInvitedId }
@@ -108,7 +109,7 @@ const createInvitation = async (req, res, next) => {
 
     return res.status(201).json({
       UUID: UUID.toString('hex'),
-      user: userInvitedId
+      userId: userInvitedId
     });
 
   } catch (error) {
@@ -124,24 +125,24 @@ const cancelInvitation = async (req, res, next) => {
       isUserInvitedIdValid = userInvitedId > 0;
 
     if (!isUUID && !isUserInvitedIdValid) {
-      return res.status(422).json({
-        message: "Validation failed please check your input"
-      })
+      const error = new Error('Validation failed please check your input');
+      res.status(422);
+      next(error);
     }
 
     let checkUserIsInviter = await knex('user_invitation').where({ id_user: userId, id_invited_user: userInvitedId }).first();
     if (!checkUserIsInviter) {
-      return res.status(403).json({
-        message: "You don\'t have permission to cancel Invitation"
-      })
+      const error = new Error('You don\'t have permission to cancel Invitation');
+      res.status(403);
+      next(error);
     }
 
     let UUIDHex = unhexUUID(uuid);
     let checkInvitationValid = await knex('invitation').where('id', UUIDHex).first();
     if (!checkInvitationValid) {
-      return res.status(404).json({
-        message: "Invitation not found"
-      })
+      const error = new Error('Invitation not found');
+      res.status(404);
+      next(error);
     }
 
     invitationDeleteTrx(userInvitedId, UUIDHex);
@@ -158,9 +159,9 @@ const getUserProfile = async (req, res, next) => {
     const { userId } = req.params;
     let checkUser = await knex('user').select('nama', 'email', 'phone_number', 'status', 'rating').where('id', userId).first();
     if (!checkUser) {
-      return res.status(404).json({
-        message: "User not found"
-      })
+      const error = new Error('User not found');
+      res.status(404);
+      next(error);
     }
 
     return res.status(200).json({ user: checkUser })
