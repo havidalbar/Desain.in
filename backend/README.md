@@ -58,43 +58,45 @@
      * [X] Column (uuid:primary key, userId,userIdInvited)
      * [ ] Create table for package
 
-* [ ] /user/createInvitation
+* [X] /user/createInvitation
 
      * [X] create router
-     * [ ] check user authenticate
-        * [ ] 402 not authenticate
-     * [ ] check user already have designer
-        * [ ] return error 
-     * [ ] check invited user are non designer
-        * [ ] return error
-     * [ ] create random uuid
-     * [ ] insert to database (uuid:PK,userId,UserIdInvited)
+     * [X] check user authenticate
+        * [X] 402 not authenticate
+     * [X] check user already have designer
+        * [X] return error 
+     * [X] check invited user are non designer
+        * [X] return error
+     * [X] create random uuid
+     * [X] insert to database (uuid:PK,userId,UserIdInvited)
+     * [X] return (uuid, user)
 
-* [ ] /user/acceptInvitation
+* [X] /user/acceptInvitation
      
-     * [ ] create router
-     * [ ] check user authenticate
-        * [ ] return 402 not authenticate
-     * [ ] check body (status,invitation uuId)
-     * [ ] check uuid valid
-     * [ ] accept
-        * [ ] Update User to designer
-        * [ ] delete invitation by uuid
-     * [ ] reject
-        * [ ] delete invitation by uuid 
+     * [X] create router
+     * [X] check user authenticate
+        * [X] return 402 not authenticate
+     * [X] check body (uuid, confirmation)
+     * [X] check user invited is designer
+        * [X] return error 
+     * [X] accept confirmation
+        * [X] Update User to designer
+        * [X] delete invitation by uuid
+     * [X] reject confirmation
+        * [X] delete invitation by uuid 
     
-* [ ] /user/cancelInvitation
+* [X] /user/cancelInvitation
 
-    * [ ] create router
-    * [ ] check user authenticate
-        * [ ] return 402 not authenticate
-    * [ ] check user authorized
-        * [ ] return 402 not authorized
-    * [ ] check body (invitation uuid)
-    * [ ] check uuid invalid
-        * [ ] return 404 not found
-    * [ ] check uuid valid
-        * [ ] delete invitation by uuid
+    * [X] create router
+    * [X] check user authenticate
+        * [X] return 402 not authenticate
+    * [X] check body (invitation uuid)
+    * [X] check user authorized
+        * [X] return 403 forbidden
+    * [X] check uuid invalid
+        * [X] return 404 not found
+    * [X] check uuid valid
+        * [X] delete invitation by uuid
 
 * [ ] /user/updateUser:idUser
     
