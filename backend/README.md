@@ -132,14 +132,14 @@
             * [X] hash newPassword
             * [X] update Password
   
-* [ ] /user/profile:userId
+* [X] /user/profile:userId
 
-    * [ ] create router
-    * [ ] check param (idUser)
-        * [ ] user notFound
-            * [ ] return 404
-        * [ ] user Found
-            * [ ] return all column execpt password
+    * [X] create router
+    * [X] check param (idUser)
+        * [X] user notFound
+            * [X] return 404
+        * [X] user Found
+            * [X] return all column execpt password
     
 ## Transaction 
 
