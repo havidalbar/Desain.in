@@ -183,7 +183,7 @@
         }
       }
     },
-    "/user/updatePassword/{userId}": {
+    "/user/updatePassword": {
       "post": {
         "tags": [
           "User"
@@ -221,13 +221,6 @@
                 }
               }
             }
-          },
-          {
-            "name": "userId",
-            "in": "path",
-            "description": "user's id that want to password to be change",
-            "required": true,
-            "type": "string"
           }
         ],
         "responses": {
@@ -271,13 +264,6 @@
             "description": "Which user id will be given an invitation",
             "required": true,
             "type": "integer"
-          },
-          {
-            "in": "query",
-            "name": "userId",
-            "description": "User as designer who create an invitation",
-            "required": true,
-            "type": "integer"
           }
         ],
         "responses": {
@@ -296,7 +282,7 @@
         }
       }
     },
-    "/user/acceptInvitation/": {
+    "/user/acceptInvitation": {
       "post": {
         "tags": [
           "User"
@@ -307,7 +293,7 @@
           }
         ],
         "summary": "Accept or reject invitation",
-        "description": "",
+        "description": "Please log in with user who get an invitation",
         "consumes": [
           "application/json"
         ],
@@ -334,13 +320,6 @@
                 }
               }
             }
-          },
-          {
-            "in": "query",
-            "name": "userId",
-            "description": "User who logged in to system",
-            "required": true,
-            "type": "integer"
           }
         ],
         "responses": {
@@ -400,13 +379,6 @@
                 }
               }
             }
-          },
-          {
-            "in": "query",
-            "name": "userId",
-            "description": "User as designer who create an invitation",
-            "required": true,
-            "type": "integer"
           }
         ],
         "responses": {
