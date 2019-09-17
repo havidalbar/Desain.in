@@ -52,11 +52,14 @@
 
 ## User
 
-* [ ] Create table for invitation
+* [X] Create table for invitation
 
      * [X] Create table for invitation
      * [X] Column (uuid:primary key, userId,userIdInvited)
-     * [ ] Create table for package
+
+* [X] Create table for paket
+     * [X] Create table for table
+     * [X] Column same as UI 
 
 * [X] /user/createInvitation
 
