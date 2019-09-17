@@ -143,19 +143,20 @@
             * [X] return 404
         * [X] user Found
             * [X] return all column execpt password
-    
+            * [ ] join kategori
+            * [ ] join tag
+            * [ ] join portofolio    
+
 ## Transaction 
 
 * [ ] /transaction/jualJasa
     
-    * [ ] create router
-    * [ ] check user authenticate 
-    * [ ] check body (kategori, tag[] , deskripsi, paket[] )
-    * [ ] validate decs (max 400)
-    * [ ] if all success insert to ...
+    * [X] create router
+    * [X] check user authenticate 
+    * [X] check body (kategori, tag[] , deskripsi, paket[] )
+    * [X] validate decs (max 400)
+    * [ ] if all success insert to paket and porotf
     
-    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
-
 * [ ] /transaction/getKategori
     
     ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`

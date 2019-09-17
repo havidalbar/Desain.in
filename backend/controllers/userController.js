@@ -171,7 +171,9 @@ const cancelInvitation = async (req, res, next) => {
 const getUserProfile = async (req, res, next) => {
   try {
     const { userId } = req.params;
-    let checkUser = await knex('user').select('nama', 'email', 'phone_number', 'status', 'rating').where('id', userId).first();
+    let checkUser = 
+    await knex('user').select('nama', 'email', 'phone_number', 'status', 'rating')
+    .where('id', userId).first();
     if (!checkUser) {
       const error = new Error('User not found');
       res.status(404);
