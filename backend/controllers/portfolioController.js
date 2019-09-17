@@ -47,7 +47,9 @@ const updateData = async (req, res, next) => {
 
 const getByUserId = async (req, res, next) => {
   try {
-
+    if (req.body){
+      
+    }
   } catch (error) {
     next(error);
   }
