@@ -40,8 +40,8 @@ const acceptInvitation = async (req, res, next) => {
     const { uuid, confirmation } = req.body;
     const { 'userId': userInvitedId } = req.state;
 
-    const isUUID = validator.isLength(uuid, { min: 32, max:32 });
-    const isValidConfirmation = confirmation == 1 || confirmation == 0;
+    const isUUID = await validator.isLength(uuid, { min: 32, max:32 });
+    const isValidConfirmation = await confirmation == 1 || confirmation == 0;
 
     if (!isUUID || !isValidConfirmation) {
       const error = new Error('Validation failed please check your input');
@@ -129,8 +129,8 @@ const cancelInvitation = async (req, res, next) => {
   try {
     const { uuid, userInvitedId } = req.body,
       { userId } = req.state,
-      isUUID = validator.isLength(uuid, { min: 32, max: 32 }),
-      isUserInvitedIdValid = userInvitedId > 0;
+      isUUID = await validator.isLength(uuid, { min: 32, max: 32 }),
+      isUserInvitedIdValid = await userInvitedId > 0;
 
     if (!isUUID || !isUserInvitedIdValid) {
       const error = new Error('Validation failed please check your input');
@@ -171,9 +171,9 @@ const cancelInvitation = async (req, res, next) => {
 const getUserProfile = async (req, res, next) => {
   try {
     const { userId } = req.params;
-    let checkUser = 
-    await knex('user').select('nama', 'email', 'phone_number', 'status', 'rating')
-    .where('id', userId).first();
+    let checkUser = await knex('user')
+      .select('nama', 'email', 'phone_number', 'status', 'rating')
+      .where('id', userId).first();
     if (!checkUser) {
       const error = new Error('User not found');
       res.status(404);
