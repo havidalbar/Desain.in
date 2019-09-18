@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const transtionController = require('../controllers/transactionController');
+const transactionController = require('../controllers/transactionController');
 const { auth } = require('../middlewares');
 
-router.post('/jualJasa', auth, transtionController.jualJasa);
+router.get('/getKategori', transactionController.getKategori);
+
+router.post('/jualJasa', auth, transactionController.jualJasa);
+router.post('/beliJasa', auth, transactionController.beliJasa);
 
 
 module.exports = router

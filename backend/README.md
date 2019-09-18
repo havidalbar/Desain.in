@@ -149,7 +149,7 @@
 
 ## Transaction 
 
-* [ ] /transaction/jualJasa
+* [X] /transaction/jualJasa
     
     * [X] create router
     * [X] check user authenticate 
@@ -164,7 +164,25 @@
 
 * [ ] /transaction/beliJasa
 
+    * [X] create router
+    * [X] check user authenticate
+    * [X] check body (paketId, subject, deskripsi, lampiran)
+    * [X] validate deskripsi (max 4000) & lampiran (max 10MB)
+        * [X] invalid
+            * [X] return error validation
+    * [ ] save into db 
+
     ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
+
+* [ ] /transaction/depositJasa
+
+    * [ ] create router
+    * [ ] check user authenticate
+    * [ ] check body (invoiceId, deposit)
+    * [ ] validate user if already registered, 
+        * [ ] deposit > 1 hour
+            * [ ] delete invoice in db, and image file
+    
 
 * [ ] /transaction/editJasaPaket
 
@@ -174,11 +192,17 @@
 
     ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
-* [ ] /transaction/getKategori
+* [X] /transaction/getKategori
     
-    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
+    * [X] create router
+    * [X] load kategori from db with id 1 - 3
+    * [X] validate kategori 
+    * [X] return kategori 
 
 * [ ] /transaction/getTag
+
+    * [ ] create router
+    * [ ] 
 
     ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
