@@ -156,14 +156,30 @@
     * [X] check user is authorized
     * [X] check body (kategori, tag[] , deskripsi, paket[] )
     * [X] validate decs (max 400)
-    * [ ] if all success update user
+    * [X] if all success update user
     * [X] check body (nama, jenis, deskripsi, harga, logo transparan, kualitas, file_desain, desain_atk, sosmed_kit, revisi, waktu_pengerjaan) 
     * [X] validate paket length (paket min 0 max 3)
     * [X] validate logo transparan, kualitas, file_desain, desain_atk, sosmed_kit, revisi, waktu_pengerjaan (accepted value 0 and 1), (deskripsi) (max 200)
     * [X] insert all to paket
 
+* [ ] /transaction/beliJasa
+
+    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
+
+* [ ] /transaction/editJasaPaket
+
+    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
+
+* [ ] /transaction/editJasaDesainer
+
+    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
+
 * [ ] /transaction/getKategori
     
+    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
+
+* [ ] /transaction/getTag
+
     ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
 ## Portfolio
