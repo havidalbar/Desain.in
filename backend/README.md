@@ -182,7 +182,9 @@
     * [ ] validate user if already registered, 
         * [ ] deposit > 1 hour
             * [ ] delete invoice in db, and image file
+    * [ ] 
     
+    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
 * [ ] /transaction/editJasaPaket
 
@@ -199,12 +201,16 @@
     * [X] validate kategori 
     * [X] return kategori 
 
-* [ ] /transaction/getTag
+* [X] /transaction/getTag/:tag
 
-    * [ ] create router
-    * [ ] 
-
-    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
+    * [X] create router
+    * [X] check user authenticate
+    * [X] check params (tags)
+    * [X] validate params 
+        * [X] tag found 
+            * [X] return 200 tags[]
+        * [X] tag not found
+            * [X] return 404 tags[]
 
 ## Portfolio
 

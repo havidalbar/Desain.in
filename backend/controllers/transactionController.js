@@ -75,7 +75,7 @@ const depositJasa = async (req, res, next) => {
       return next(error);
     }
 
-    
+
 
 
   } catch (error) {
@@ -209,6 +209,22 @@ const jualJasa = async (req, res, next) => {
   }
 }
 
+const editJasaDesainer = async (req, res, next) => {
+  try {
+
+  } catch (error) {
+    next(error);
+  }
+}
+
+const editJasaPaket = async (req, res, next) => {
+  try {
+
+  } catch (error) {
+    next(error);
+  }
+}
+
 const getKategori = async (req, res, next) => {
   try {
     let kategoriResult = await knex('kategori').whereIn('id', [1, 2, 3]);
@@ -227,6 +243,32 @@ const getKategori = async (req, res, next) => {
   }
 }
 
+const getTag = async (req, res, next) => {
+  try {
+    let { tag } = req.params;
+    const rejectedTag = validator.matches(tag, /^[a-zA-Z ]{0,50}$/);
+    if (!rejectedTag) {
+      const error = new Error('Only alphabet allowed with maximum 50 char length');
+      res.status(406);
+      return next(error);
+    }
+
+    let tagResult = await knex('tag').where('title', 'like', `%${tag}%`).limit(20);
+    console.log(tagResult);
+
+    const tagResultSummary = {
+      statusCode: tagResult.length > 0 ? 200 : 404,
+      tags: tagResult.length > 0 ? tagResult : []
+    };
+
+    return res.status(tagResultSummary.statusCode)
+      .json({ tags: tagResultSummary.tags });
+
+  } catch (error) {
+    next(error);
+  }
+}
+
 const doStep = async (req, res, next) => {
 
 }
@@ -235,8 +277,11 @@ const TRANSACTION = {
   beliJasa,
   jualJasa,
   depositJasa,
+  editJasaDesainer,
+  editJasaPaket,
   doStep,
-  getKategori
+  getKategori,
+  getTag
 }
 
 module.exports = { ...TRANSACTION }
