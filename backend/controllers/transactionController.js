@@ -246,15 +246,14 @@ const getKategori = async (req, res, next) => {
 const getTag = async (req, res, next) => {
   try {
     let { tag } = req.params;
-    const rejectedTag = validator.matches(tag, /^[a-zA-Z ]{0,50}$/);
-    if (!rejectedTag) {
+    const allowedTag = validator.matches(tag, /^[a-zA-Z ]{0,50}$/);
+    if (!allowedTag) {
       const error = new Error('Only alphabet allowed with maximum 50 char length');
       res.status(406);
       return next(error);
     }
 
     let tagResult = await knex('tag').where('title', 'like', `%${tag}%`).limit(20);
-    console.log(tagResult);
 
     const tagResultSummary = {
       statusCode: tagResult.length > 0 ? 200 : 404,
@@ -263,6 +262,19 @@ const getTag = async (req, res, next) => {
 
     return res.status(tagResultSummary.statusCode)
       .json({ tags: tagResultSummary.tags });
+
+  } catch (error) {
+    next(error);
+  }
+}
+
+const getAllTag = async (req, res, next) => {
+  try {
+    let tagResult = await knex('tag').limit(30);
+
+    return res.status(200).json({
+      tags: tagResult
+    });
 
   } catch (error) {
     next(error);
@@ -281,7 +293,8 @@ const TRANSACTION = {
   editJasaPaket,
   doStep,
   getKategori,
-  getTag
+  getTag,
+  getAllTag
 }
 
 module.exports = { ...TRANSACTION }

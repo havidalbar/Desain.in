@@ -182,7 +182,8 @@
     * [ ] validate user if already registered, 
         * [ ] deposit > 1 hour
             * [ ] delete invoice in db, and image file
-    * [ ] 
+        * [ ] deposit <= 1 hour
+            * [ ] update  
     
     ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
@@ -200,6 +201,13 @@
     * [X] load kategori from db with id 1 - 3
     * [X] validate kategori 
     * [X] return kategori 
+
+* [X] /transaction/getTag
+
+    * [X] create router
+    * [X] check user authenticate
+    * [X] load tag from db with limit 30
+    * [X] return tag
 
 * [X] /transaction/getTag/:tag
 
