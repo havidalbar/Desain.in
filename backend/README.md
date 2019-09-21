@@ -222,14 +222,14 @@
 
 ## Portfolio
 
-* [ ] /portfolio/getByUserId:userId
+* [X] /portfolio/getByUserId:userId
 
     * [X] create router
-    * [ ] check params (userId)
-        * [ ] user not found
-            * [ ] return 404
-        * [ ] user found
-            * [ ] return all portofolio []
+    * [X] check params (userId)
+        * [X] user not found
+            * [X] return 404
+        * [X] user found
+            * [X] return all portofolio []
 
 * [ ] /portfolio/uploadImage
 
@@ -279,24 +279,24 @@
 * [ ] /portfolio/getDetailById:portofId
 
     * [X] create rotuer
-    * [ ] check body (portofId)
-    * [ ] check portof doesnt exist
-        * [ ] return 404 not found
-    * [ ] check portof exist
-        * [ ] get portof data
-        * [ ] return portof detail
+    * [X] check body (portofId)
+    * [X] check portof doesnt exist
+        * [X] return 404 not found
+    * [X] check portof exist
+        * [X] get portof data
+        * [X] return portof detail
 
-* [ ] /portfolio/deleteById:portofId
+* [X] /portfolio/deleteById:portofId
 
     * [X] create router
     * [X] check user authenticate 
         * [X] return 402 not authenticate
-    * [ ] check user designer
-        * [ ] return 402 not authorized
-    * [ ] check body (portofId)
-    * [ ] check portof (userid, portofid) doesnt exist 
-        * [ ] return 404 not found
-    * [ ] check portof (userid, portofid) exist 
-        * [ ] delete in database
-        * [ ] return 200
+    * [X] check user designer
+        * [X] return 402 not authorized
+    * [X] check body (portofId)
+    * [X] check portof (userid, portofid) doesnt exist 
+        * [X] return 404 not found
+    * [X] check portof (userid, portofid) exist 
+        * [X] delete in database
+        * [X] return 200
     
