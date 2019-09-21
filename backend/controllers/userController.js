@@ -215,7 +215,6 @@ const updatePassword = async (req, res, next) => {
                 next(error);
               }
               try {
-                // console.log(hashedPassword);
                 let update = await knex('user')
                   .where({ id: userExists.id })
                   .update({

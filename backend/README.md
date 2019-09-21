@@ -242,24 +242,17 @@
         
     ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending` 
 
-* [ ] /portfolio/uploadData
+* [X] /portfolio/uploadData
 
     * [X] create router
     * [X] check user authenticate
         * [X] return 402 not authenticate
-    * [ ] check user designer
-        * [ ] return 402 not authorized
-    * [ ] check body (file,userId,judul,desc,tag)
-        * [ ] user Id not found
-            * [ ] return 404 userNot Found
-        * [ ] user found
-            * [ ] validate decs max 1500 char
-                * [ ] return error
-            * [ ] validate file format 
-                * [ ] return error
-            * [ ] validate file size
-                * [ ] return error
-            * [ ] store to database
+    * [X] check user designer
+        * [X] return 402 not authorized
+    * [X] check body (file,userId,judul,desc,tag)
+        * [X] validate decs max 1500 char
+            * [X] return error
+        * [X] store to database
     
 * [ ] /portfolio/updateData
 
