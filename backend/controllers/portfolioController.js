@@ -29,15 +29,6 @@ const uploadImage = async (req, res, next) => {
 }
 
 const uploadData = async (req, res, next) => {
-  try {
-
-
-  } catch (error) {
-    next(error);
-  }
-}
-
-const updateData = async (req, res, next) => {
   const { userId } = req.state;
   const id_user=userId;
   const { image, judul, desc } = req.body;
@@ -74,6 +65,15 @@ const updateData = async (req, res, next) => {
       }
     }
 
+  } catch (error) {
+    next(error);
+  }
+}
+
+const updateData = async (req, res, next) => {
+
+  try {
+  
   } catch (error) {
     next(error);
   }
