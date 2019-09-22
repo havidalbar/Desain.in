@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const portfolioController = require('../controllers/portfolioController');
-const { auth } = require('../middlewares');
+const { auth, uploadFileToGCS } = require('../middlewares');
 
 router.get('/getByUserId/:userId', portfolioController.getByUserId);
 router.get('/getPortfolioDetailById/:postId', portfolioController.getDetailById);

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const contestController = require('../controllers/contestController');
-const { auth } = require('../middlewares');
+const { auth, uploadFileToGCS } = require('../middlewares');
 
 router.get('/', contestController.contest);
 router.get('/getContestByUserId', contestController.getContestById);
