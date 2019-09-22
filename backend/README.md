@@ -19,7 +19,7 @@
         * [X] return error
     * [X] if all succses insert to db
 
-* [ ] /contest/getContestById:contestId
+* [X] /contest/getContestById:contestId
     
     * [X] Create route
     * [X] check parameter (Contestid)
@@ -28,7 +28,7 @@
         * [X] return data
         * [X] return error with code 404
 
-* [ ] /contest/getContestByUser:idUser
+* [X] /contest/getContestByUser:idUser
     
     * [X] create router
     * [X] check parameter
@@ -157,10 +157,12 @@
     * [X] check body (kategori, tag[] , deskripsi, paket[] )
     * [X] validate decs (max 400)
     * [X] if all success update user
-    * [X] check body (nama, jenis, deskripsi, harga, logo transparan, kualitas, file_desain, desain_atk, sosmed_kit, revisi, waktu_pengerjaan) 
-    * [X] validate paket length (paket min 0 max 3)
-    * [X] validate logo transparan, kualitas, file_desain, desain_atk, sosmed_kit, revisi, waktu_pengerjaan (accepted value 0 and 1), (deskripsi) (max 200)
-    * [X] insert all to paket
+        * [X] check paket body (nama, jenis, deskripsi, harga, logo transparan, kualitas, file_desain, desain_atk, sosmed_kit, revisi, waktu_pengerjaan) 
+        * [X] validate paket length (paket min 0 max 3)
+        * [X] validate logo transparan, kualitas, file_desain, desain_atk, sosmed_kit, revisi, waktu_pengerjaan (accepted value 0 and 1), (deskripsi) (max 200)
+        * [X] insert all to paket
+    * [X] if failed
+        * [X] return error
 
 * [ ] /transaction/beliJasa
 
@@ -170,30 +172,45 @@
     * [X] validate deskripsi (max 4000) & lampiran (max 10MB)
         * [X] invalid
             * [X] return error validation
-    * [ ] save into db 
-
-    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
+    * [ ] save into db (transaction & transaction_step)
+    * [ ] return notif to client
 
 * [ ] /transaction/depositJasa
 
     * [ ] create router
     * [ ] check user authenticate
-    * [ ] check body (invoiceId, deposit)
+    * [ ] check body (transactionId, deposit)
+    * [ ] check is user authorized
     * [ ] validate user if already registered, 
         * [ ] deposit > 1 hour
             * [ ] delete invoice in db, and image file
+            * [ ] return 404
         * [ ] deposit <= 1 hour
-            * [ ] update  
-    
-    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
+            * [ ] update db
+            * [ ] return 200
 
 * [ ] /transaction/editJasaPaket
 
-    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
+    * [ ] create router
+    * [ ] check user authenticate
+    * [ ] check user authorized
+    * [ ] check body (paket) 
+    * [ ] validate paket length (paket min 0 max 3)
+    * [ ] validate logo transparan, kualitas, file_desain, desain_atk, sosmed_kit, revisi, waktu_pengerjaan (accepted value 0 and 1), (deskripsi) (max 200)
+    * [ ] update all to paket
 
 * [ ] /transaction/editJasaDesainer
 
-    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
+    * [ ] create router
+    * [ ] check user authenticate
+    * [ ] check user authorized
+    * [ ] check body (kategori, tag[] , deskripsi)
+    * [ ] validate deskripsi (max 400)
+    * [ ] if all success 
+        * [ ] update user
+        * [ ] return 200
+    * [ ] if failed
+        * [ ] return error
 
 * [X] /transaction/getKategori
     
@@ -219,6 +236,80 @@
             * [X] return 200 tags[]
         * [X] tag not found
             * [X] return 404 tags[]
+
+* [ ] /transaction/createStep/:invoiceId
+
+    * [ ] create router
+    * [ ] check user authenticate
+    * [ ] check user authorized
+    * [ ] check body (nama, persen)
+    * [ ] validate nama (max 100), persen (number)
+        * [ ] valid 
+            * [ ] insert into db step
+            * [ ] return 200
+        * [ ] invalid
+            * [ ] return 406 message
+
+* [ ] /transaction/updateStep/:invoiceId
+
+    * [ ] create router
+    * [ ] check user authenticate
+    * [ ] check user authorized
+    * [ ] check body (nama, persen)
+    * [ ] validate nama (max 100), persen (number)
+        * [ ] valid 
+            * [ ] update to db step
+            * [ ] return 200
+        * [ ] invalid
+            * [ ] return 406 message
+
+* [ ] /transaction/deleteStep/:invoiceId
+
+    * [ ] create router
+    * [ ] check user authenticate
+    * [ ] check user authorized
+    * [ ] check body (nama, persen)
+    * [ ] validate nama (max 100), persen (number)
+        * [ ] valid 
+            * [ ] delete step
+            * [ ] update current step in invoice table
+            * [ ] return 200
+        * [ ] invalid
+            * [ ] return 406 message
+
+* [ ] /transaction/:invoiceId/submitStep/:step
+    
+    `figma : chat-designer-desainer`
+
+    * [ ] create router
+    * [ ] check user authenticate
+    * [ ] check body (image)
+    * [ ] validate image
+        * [ ] valid
+            * [ ] update to db
+            * [ ] return 200
+        * [ ] invalid 
+            * [ ] return error
+    
+* [ ] /transaction/:invoiceId/acceptStep/:step
+
+    `figma : chat-designer-pengguna`
+
+    * [ ] create router
+    * [ ] check user authenticate
+    * [ ] check body (confirmation, bukti_bayar)
+    * [ ] validate confirmation
+        * [ ] if 0 
+            * [ ] delete step :step on db
+            * [ ] return message
+        * [ ] if 1 
+            * [ ] check bukti_bayar
+                * [ ] if null or undefined
+                    * [ ] return 406
+            * [ ] upload bukti_bayar
+            * [ ] update bukti_bayar in db
+            * [ ] update db step
+            * [ ] return 200
 
 ## Portfolio
 
