@@ -285,6 +285,35 @@ const doStep = async (req, res, next) => {
 
 }
 
+const createStep = async (req, res, next) => {
+  try {
+    let { userId } = req.state;
+    let { nama, persen } = req.body;
+
+    const validateNama = validator.isLength(nama, { max: 100 });
+    const validatePersen = validator.isInt(persen, { min: 0, max: 100 });
+
+    if(!validateNama || !validatePersen){
+      const error = new Error('Failed to validate nama or persen');
+      res.status(406);
+      return next(error);
+    }
+
+    let checkUserIsDesigner = await knex('user').select('status').where('id', userId).first();
+    if(!checkUserIsDesigner) {
+      const error = new Error('You don\'t have permission to create step');
+      res.status(403);
+      return next(error);
+    }
+
+
+    // PENDING
+    
+  } catch (error) {
+    next(error);
+  }
+}
+
 const TRANSACTION = {
   beliJasa,
   jualJasa,
@@ -294,7 +323,8 @@ const TRANSACTION = {
   doStep,
   getKategori,
   getTag,
-  getAllTag
+  getAllTag,
+  createStep
 }
 
 module.exports = { ...TRANSACTION }

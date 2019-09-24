@@ -241,14 +241,21 @@
 
     * [ ] create router
     * [ ] check user authenticate
-    * [ ] check user authorized
-    * [ ] check body (nama, persen)
-    * [ ] validate nama (max 100), persen (number)
-        * [ ] valid 
-            * [ ] insert into db step
-            * [ ] return 200
-        * [ ] invalid
-            * [ ] return 406 message
+    * [X] check user authorized
+    * [X] check body (nama, persen)
+    * [X] validate nama (max 100), persen (number)
+        * [X] invalid 
+            * [X] return 406 message
+    * [ ] load all step params (invoiceId)
+    * [ ] count all persen, 100 - total_persen (max_persen)
+    * [ ] validate persen (persen <= max_persen) 
+        * [ ] invalid 
+            * [ ] return 409 
+    * [ ] insert into db step
+    * [ ] update total step in invoice table
+    * [ ] return 200
+
+    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
 * [ ] /transaction/updateStep/:invoiceId
 
@@ -257,25 +264,29 @@
     * [ ] check user authorized
     * [ ] check body (nama, persen)
     * [ ] validate nama (max 100), persen (number)
-        * [ ] valid 
-            * [ ] update to db step
-            * [ ] return 200
         * [ ] invalid
             * [ ] return 406 message
+    * [ ] 
+    * [ ] update to db step
+    * [ ] return 200
+        
+    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
-* [ ] /transaction/deleteStep/:invoiceId
+* [ ] /transaction/deleteStep/:stepId
 
     * [ ] create router
     * [ ] check user authenticate
     * [ ] check user authorized
-    * [ ] check body (nama, persen)
-    * [ ] validate nama (max 100), persen (number)
+    * [ ] check body (stepId)
+    * [ ] validate step (stepId)
         * [ ] valid 
             * [ ] delete step
-            * [ ] update current step in invoice table
+            * [ ] update total step in invoice table
             * [ ] return 200
         * [ ] invalid
             * [ ] return 406 message
+
+    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
 * [ ] /transaction/:invoiceId/submitStep/:step
     
@@ -308,7 +319,8 @@
                     * [ ] return 406
             * [ ] upload bukti_bayar
             * [ ] update bukti_bayar in db
-            * [ ] update db step
+            * [ ] update table step
+            * [ ] update current_step table invoice
             * [ ] return 200
 
 ## Portfolio
