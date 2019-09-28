@@ -270,7 +270,7 @@
         
     ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
-* [ ] /transaction/deleteStep/:stepId
+* [X] /transaction/deleteStep/:stepId
 
     * [X] create router
     * [X] check user authenticate
@@ -279,12 +279,9 @@
     * [X] validate step (stepId)
         * [X] valid 
             * [X] delete step
-            * [ ] update total step in invoice table
-            * [ ] return 200
+            * [X] return 200
         * [X] invalid
             * [X] return 406 message
-
-    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
 * [ ] /transaction/:transactionId/submitStep/:stepId
     
