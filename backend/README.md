@@ -238,7 +238,7 @@
         * [X] tag not found
             * [X] return 404 tags[]
 
-* [ ] /transaction/createStep/:transactionId
+* [X] /transaction/createStep/:transactionId
 
     * [X] create router
     * [X] check user authenticate
@@ -272,17 +272,17 @@
 
 * [ ] /transaction/deleteStep/:stepId
 
-    * [ ] create router
-    * [ ] check user authenticate
-    * [ ] check user authorized
-    * [ ] check body (stepId)
-    * [ ] validate step (stepId)
-        * [ ] valid 
-            * [ ] delete step
+    * [X] create router
+    * [X] check user authenticate
+    * [X] check user authorized
+    * [X] check body (stepId)
+    * [X] validate step (stepId)
+        * [X] valid 
+            * [X] delete step
             * [ ] update total step in invoice table
             * [ ] return 200
-        * [ ] invalid
-            * [ ] return 406 message
+        * [X] invalid
+            * [X] return 406 message
 
     ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 

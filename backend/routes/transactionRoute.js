@@ -13,4 +13,6 @@ router.post('/beli', auth, transactionController.beliJasa);
 router.post('/deposit', auth, transactionController.depositJasa);
 router.post('/create_step/:transactionId', auth, transactionController.createStep);
 
+router.delete('/step/:stepId', auth, transactionController.deleteStep);
+
 module.exports = router

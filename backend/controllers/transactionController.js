@@ -28,6 +28,30 @@ const stepInsertTrx = (step, transactionId) => {
   })
 }
 
+const stepDeleteTrx = (stepId) => {
+  return new Promise((resolve, reject) => {
+    knex.transaction(async trx => {
+      try {
+
+        await trx.from('transaction_step')
+          .where('id_step', stepId)
+          .del();
+
+        await trx.from('step')
+          .where('id', stepId)
+          .del();
+
+        resolve(true);
+      } catch (error) {
+        console.log(error);
+        reject(false);
+      } finally {
+        console.log('Delete Step Executed');
+      }
+    })
+  })
+}
+
 const paketInsertTrx = paket => {
   // console.log(paket);
   return new Promise((resolve, reject) => {
@@ -118,7 +142,7 @@ const depositJasa = async (req, res, next) => {
       let deleteTransaction = await knex('transaction').where('id', transactionId).delete();
       if (!deleteTransaction) {
         const error = new Error('Failed to delete transaction please check any input');
-        res.status(406);
+        res.status(409);
         return next(error);
       }
 
@@ -136,7 +160,7 @@ const depositJasa = async (req, res, next) => {
     let updateDeposit = await knex('transaction').update({ deposit }).where({ 'id': transactionId, id_user });
     if (!updateDeposit) {
       const error = new Error('Failed to update deposit please check any input');
-      res.status(406);
+      res.status(409);
       return next(error);
     }
 
@@ -457,6 +481,80 @@ const createStep = async (req, res, next) => {
   }
 }
 
+const updateStep = async (req, res, next) => {
+  try {
+
+  } catch (error) {
+    next(error);
+  }
+}
+
+const deleteStep = async (req, res, next) => {
+  try {
+    let { stepId } = req.params;
+    let { userId } = req.state;
+
+    const validateStepId = validator.isInt(stepId, { allow_leading_zeroes: false });
+    if (!validateStepId) {
+      const error = new Error('Validation failed please check your input');
+      res.status(406);
+      return next(error);
+    }
+
+    let checkUserIsDesigner = await knex('user').select('status').where('id', userId).first();
+    if (!checkUserIsDesigner) {
+      const error = new Error('User isn\'t authorized');
+      res.status(403);
+      return next(error);
+    }
+
+    let checkUserHasTransaction = await knex({ s: 'step' })
+      .join({ ts: 'transaction_step' }, 'ts.id_step', 's.id')
+      .join({ t: 'transaction' }, 't.id', 'ts.id_transaction')
+      .where({
+        't.id_desainer': userId,
+        'ts.id_step': stepId
+      })
+      .first();
+    if (!checkUserHasTransaction) {
+      const error = new Error('Failed to find your step, please check your authorization or input');
+      res.status(406);
+      return next(error);
+    }
+
+    let deleteStep = await stepDeleteTrx(stepId);
+    if (!deleteStep) {
+      const error = new Error('Failed to delete step, please check your input');
+      res.status(409);
+      return next(error);
+    }
+
+    return res.status(200).json({
+      userId,
+      stepId,
+      message: "Step deleted"
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+const submitStep = async (req, res, next) => {
+  try {
+
+  } catch (error) {
+    next(error);
+  }
+}
+
+const acceptStep = async (req, res, next) => {
+  try {
+
+  } catch (error) {
+    next(error);
+  }
+}
+
 const TRANSACTION = {
   beliJasa,
   jualJasa,
@@ -467,7 +565,11 @@ const TRANSACTION = {
   getKategori,
   getTag,
   getAllTag,
-  createStep
+  createStep,
+  updateStep,
+  deleteStep,
+  submitStep,
+  acceptStep
 }
 
 module.exports = { ...TRANSACTION }

@@ -15,16 +15,16 @@ const invitationDeleteTrx = (userInvitedId, UUIDHex) => {
   return new Promise((resolve, reject) => {
     knex.transaction(async trx => {
       try {
-  
+
         await trx.from('user_invitation')
           .where('id_invited_user', userInvitedId)
           .del();
-  
+
         await trx.from('invitation')
           .where('id', UUIDHex)
           .del();
-        
-      } catch (error) {      
+
+      } catch (error) {
         console.log(error);
         reject(false);
       } finally {
@@ -32,7 +32,7 @@ const invitationDeleteTrx = (userInvitedId, UUIDHex) => {
       }
     });
     resolve(true);
-  }); 
+  });
 }
 
 const acceptInvitation = async (req, res, next) => {
@@ -40,7 +40,7 @@ const acceptInvitation = async (req, res, next) => {
     const { uuid, confirmation } = req.body;
     const { 'userId': userInvitedId } = req.state;
 
-    const isUUID = await validator.isLength(uuid, { min: 32, max:32 });
+    const isUUID = await validator.isLength(uuid, { min: 32, max: 32 });
     const isValidConfirmation = await confirmation == 1 || confirmation == 0;
 
     if (!isUUID || !isValidConfirmation) {
@@ -63,11 +63,11 @@ const acceptInvitation = async (req, res, next) => {
       res.status(404);
       return next(error);
     }
-    
+
     if (confirmation) await knex('user').update({ status: 1 }).where({ id: userInvitedId });
-    
+
     let isTransactionSuccess = await invitationDeleteTrx(userInvitedId, UUIDHex);
-    if(!isTransactionSuccess) {
+    if (!isTransactionSuccess) {
       const error = new Error('Failed to delete invitation');
       res.status(409);
       return next(error);
@@ -154,7 +154,7 @@ const cancelInvitation = async (req, res, next) => {
     }
 
     let isTransactionSuccess = await invitationDeleteTrx(userInvitedId, UUIDHex);
-    if(!isTransactionSuccess) {
+    if (!isTransactionSuccess) {
       const error = new Error('Failed to delete invitation');
       res.status(409);
       return next(error);
