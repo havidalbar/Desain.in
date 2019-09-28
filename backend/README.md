@@ -164,7 +164,7 @@
     * [X] if failed
         * [X] return error
 
-* [ ] /transaction/beliJasa
+* [X] /transaction/beliJasa
 
     * [X] create router
     * [X] check user authenticate
@@ -172,22 +172,23 @@
     * [X] validate deskripsi (max 4000) & lampiran (max 10MB)
         * [X] invalid
             * [X] return error validation
-    * [ ] save into db (transaction & transaction_step)
-    * [ ] return notif to client
+    * [X] validate authorized
+    * [X] save into db (transaction)
+    * [X] return notif to client
 
-* [ ] /transaction/depositJasa
+* [X] /transaction/depositJasa
 
-    * [ ] create router
-    * [ ] check user authenticate
-    * [ ] check body (transactionId, deposit)
-    * [ ] check is user authorized
-    * [ ] validate user if already registered, 
-        * [ ] deposit > 1 hour
-            * [ ] delete invoice in db, and image file
-            * [ ] return 404
-        * [ ] deposit <= 1 hour
-            * [ ] update db
-            * [ ] return 200
+    * [X] create router
+    * [X] check user authenticate
+    * [X] check body (transactionId, deposit)
+    * [X] check is user authorized
+    * [X] validate user if already registered, 
+        * [X] deposit > 1 hour
+            * [X] delete invoice in db, and image file
+            * [X] return 408
+        * [X] deposit <= 1 hour
+            * [X] update db
+            * [X] return 200
 
 * [ ] /transaction/editJasaPaket
 
@@ -237,7 +238,7 @@
         * [X] tag not found
             * [X] return 404 tags[]
 
-* [ ] /transaction/createStep/:invoiceId
+* [ ] /transaction/createStep/:transactionId
 
     * [ ] create router
     * [ ] check user authenticate
@@ -257,7 +258,7 @@
 
     ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
-* [ ] /transaction/updateStep/:invoiceId
+* [ ] /transaction/updateStep/:stepId
 
     * [ ] create router
     * [ ] check user authenticate
@@ -288,7 +289,7 @@
 
     ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
-* [ ] /transaction/:invoiceId/submitStep/:step
+* [ ] /transaction/:transactionId/submitStep/:stepId
     
     `figma : chat-designer-desainer`
 
@@ -302,7 +303,7 @@
         * [ ] invalid 
             * [ ] return error
     
-* [ ] /transaction/:invoiceId/acceptStep/:step
+* [ ] /transaction/:transactionId/acceptStep/:stepId
 
     `figma : chat-designer-pengguna`
 
