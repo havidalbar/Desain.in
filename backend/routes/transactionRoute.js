@@ -11,5 +11,6 @@ router.get('/tag/:tag', auth, transactionController.getTag);
 router.post('/jual', auth, transactionController.jualJasa);
 router.post('/beli', auth, transactionController.beliJasa);
 router.post('/deposit', auth, transactionController.depositJasa);
+router.post('/create_step/:transactionId', auth, transactionController.createStep);
 
 module.exports = router

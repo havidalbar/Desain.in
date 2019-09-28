@@ -5,6 +5,29 @@ const _ = require('lodash');
 
 // const chunkSize = 5;
 
+const stepInsertTrx = (step, transactionId) => {
+  return new Promise((resolve, reject) => {
+    knex.transaction(async trx => {
+      try {
+
+        let getStepId = await trx.insert({ ...step }).into('step');
+
+        await trx.insert({
+          'id_transaction': transactionId,
+          'id_step': getStepId
+        }).into('transaction_step');
+
+        resolve(true);
+      } catch (error) {
+        console.log(error);
+        reject(false);
+      } finally {
+        console.log('Insert Step Executed');
+      }
+    })
+  })
+}
+
 const paketInsertTrx = paket => {
   // console.log(paket);
   return new Promise((resolve, reject) => {
@@ -380,28 +403,55 @@ const doStep = async (req, res, next) => {
 const createStep = async (req, res, next) => {
   try {
     let { userId } = req.state; // DESAINER
+    let { transactionId } = req.params;
     let { nama, persen } = req.body;
 
     const validateNama = validator.isLength(nama, { max: 100 });
     const validatePersen = validator.isInt(persen, { min: 0, max: 100 });
+    const validateTransactionId = validator.isLength(transactionId, { min: 1 });
 
-    if (!validateNama || !validatePersen) {
-      const error = new Error('Failed to validate nama or persen');
+    if (!validateNama || !validatePersen || !validateTransactionId) {
+      const error = new Error('Validation failed please check your input');
       res.status(406);
       return next(error);
     }
 
-    let checkUserIsDesigner = await knex('user').select('status').where('id', userId).first();
+    let checkUserIsDesigner = await knex('transaction').where({ 'id': transactionId, 'id_desainer': userId }).first();
     if (!checkUserIsDesigner) {
-      const error = new Error('You don\'t have permission to create step');
+      const error = new Error('You don\'t have permission to create step on those transaction');
       res.status(403);
       return next(error);
     }
 
+    let { total_persen, harga } = await knex({ s: 'step' })
+      .select(knex.raw('coalesce(sum(s.persen), 0) as total_persen, t.harga as harga'))
+      .join({ ts: 'transaction_step' }, 'ts.id_step', 's.id')
+      .join({ t: 'transaction' }, 't.id', 'ts.id_transaction')
+      .where('ts.id_transaction', transactionId)
+      .first();
 
+    let max_persen = 100 - total_persen;
+    if (persen > max_persen) {
+      const error = new Error('Failed to make a percent change, please check your percent limit again');
+      res.status(409);
+      return next(error);
+    }
 
-    // PENDING
+    harga *= (persen / 100);
+    let step = {
+      nama,
+      harga,
+      persen
+    }
 
+    let insertStep = await stepInsertTrx(step, transactionId);
+    if (!insertStep) {
+      const error = new Error('Failed to insert step, please check your input');
+      res.status(409);
+      return next(error);
+    }
+
+    return res.status(201).json({ step });
   } catch (error) {
     next(error);
   }

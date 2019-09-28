@@ -240,23 +240,20 @@
 
 * [ ] /transaction/createStep/:transactionId
 
-    * [ ] create router
-    * [ ] check user authenticate
+    * [X] create router
+    * [X] check user authenticate
     * [X] check user authorized
     * [X] check body (nama, persen)
     * [X] validate nama (max 100), persen (number)
         * [X] invalid 
             * [X] return 406 message
-    * [ ] load all step params (invoiceId)
-    * [ ] count all persen, 100 - total_persen (max_persen)
-    * [ ] validate persen (persen <= max_persen) 
-        * [ ] invalid 
-            * [ ] return 409 
-    * [ ] insert into db step
-    * [ ] update total step in invoice table
-    * [ ] return 200
-
-    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
+    * [X] load all step params (transactionId)
+    * [X] count all persen, 100 - total_persen (max_persen)
+    * [X] validate persen (persen > max_persen) 
+        * [X] invalid 
+            * [X] return 409 
+    * [X] insert into db step
+    * [X] return 201
 
 * [ ] /transaction/updateStep/:stepId
 
