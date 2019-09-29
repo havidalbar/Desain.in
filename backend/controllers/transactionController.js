@@ -441,7 +441,7 @@ const createStep = async (req, res, next) => {
     let { nama, persen } = req.body;
 
     const validateNama = validator.isLength(nama, { max: 100 });
-    const validatePersen = validator.isInt(persen, { min: 0, max: 100 });
+    const validatePersen = validator.isFloat(persen, { min: 0., max: 100. });
     const validateTransactionId = validator.isLength(transactionId, { min: 1 });
 
     if (!validateNama || !validatePersen || !validateTransactionId) {
@@ -472,6 +472,8 @@ const createStep = async (req, res, next) => {
     }
 
     harga *= (persen / 100);
+    harga = Math.ceil(harga);
+
     let step = {
       nama,
       harga,
@@ -498,7 +500,7 @@ const updateStep = async (req, res, next) => {
     let { transactionId, stepId } = req.params;
 
     const validateNama = validator.isLength(nama, { max: 100 });
-    const validatePersen = validator.isInt(persen, { min: 0, max: 100 });
+    const validatePersen = validator.isFloat(persen, { min: 0., max: 100. });
 
     if (!validateNama || !validatePersen){
       const error = new Error('Validation failed please check your input');
@@ -527,18 +529,44 @@ const updateStep = async (req, res, next) => {
       return next(error);
     }
     
+    let { status } = checkUserHasTransaction;
+    if (status) {
+      const error = new Error('Can\'t change step that has already finished');
+      res.status(409);
+      return next(error);
+    }
+
     let { "persen": step_persen } = await knex({ s: 'step' })
       .join({ ts : 'transaction_step' }, 'ts.id_step', 's.id')
       .where({ 'ts.id_transaction' : transactionId, 's.id': stepId })
       .first(); 
-    if (persen > step_persen) {
+
+    let { total_persen, harga } = await knex({ s: 'step' })
+    .select(knex.raw('coalesce(sum(s.persen), 0) as total_persen, t.harga as harga'))
+    .join({ ts: 'transaction_step' }, 'ts.id_step', 's.id')
+    .join({ t: 'transaction' }, 't.id', 'ts.id_transaction')
+    .where('ts.id_transaction', transactionId)
+    .first();
+
+    let max_persen = 100 - total_persen;
+
+    
+    // if (persen > step_persen) {
+    //   if (persen > max_persen || persen > 100) {
+        // const error = new Error('Failed to make a percent change, please check your percent limit again');
+        // res.status(409);
+        // return next(error);
+    //   }
+    // }
+    if (persen > step_persen + max_persen){  
       const error = new Error('Failed to make a percent change, please check your percent limit again');
       res.status(409);
       return next(error);
     }
     
-    let { harga } = checkUserHasTransaction;
     harga *= (persen / 100);
+    harga = Math.ceil(harga);
+
     let step = {
       nama,
       harga,
@@ -587,7 +615,14 @@ const deleteStep = async (req, res, next) => {
       .first();
     if (!checkUserHasTransaction) {
       const error = new Error('Failed to find your step, please check your authorization or input');
-      res.status(406);
+      res.status(404);
+      return next(error);
+    }
+
+    let { status } = checkUserHasTransaction;
+    if(status){
+      const error = new Error('Can\'t delete your step that has already finished');
+      res.status(409);
       return next(error);
     }
 
