@@ -5,7 +5,7 @@ const portfolioController = require('../controllers/portfolioController');
 const { auth, uploadFileToGCS } = require('../middlewares');
 
 router.get('/:userId', portfolioController.getByUserId);
-router.get('/:postId', portfolioController.getDetailById);
+router.get('/detail/:postId', portfolioController.getDetailById);
 
 router.post('/upload_image', auth, portfolioController.uploadImage);
 router.post('/upload_data', auth, portfolioController.uploadData);

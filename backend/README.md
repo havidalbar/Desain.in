@@ -61,7 +61,7 @@
      * [X] Create table for table
      * [X] Column same as UI 
 
-* [X] /user/createInvitation
+* [X] /user/invitation/:userInvitedId/create
 
      * [X] create router
      * [X] check user authenticate
@@ -74,7 +74,7 @@
      * [X] insert to database (uuid:PK,userId,UserIdInvited)
      * [X] return (uuid, user)
 
-* [X] /user/acceptInvitation
+* [X] /user/invitation/accept
      
      * [X] create router
      * [X] check user authenticate
@@ -88,7 +88,7 @@
      * [X] reject confirmation
         * [X] delete invitation by uuid 
     
-* [X] /user/cancelInvitation
+* [X] /user/invitation/cancel
 
     * [X] create router
     * [X] check user authenticate
@@ -101,7 +101,7 @@
     * [X] check uuid valid
         * [X] delete invitation by uuid
 
-* [ ] /user/updateUser:idUser
+* [ ] /user/update:idUser
     
     * [ ] create router
     * [ ] check user authenticate
@@ -117,7 +117,7 @@
                     * [ ] return error
             * [ ] update to db
 
-* [X] /user/updatepassword:idUser 
+* [X] /user/update_password 
 
     * [X] create router
     * [X] check user authenticate
@@ -149,7 +149,7 @@
 
 ## Transaction 
 
-* [X] /transaction/jualJasa
+* [X] /transaction/jual
     
     * [X] create router
     * [X] check user authenticate 
@@ -164,7 +164,7 @@
     * [X] if failed
         * [X] return error
 
-* [X] /transaction/beliJasa
+* [X] /transaction/beli
 
     * [X] create router
     * [X] check user authenticate
@@ -176,7 +176,7 @@
     * [X] save into db (transaction)
     * [X] return notif to client
 
-* [X] /transaction/depositJasa
+* [X] /transaction/deposit
 
     * [X] create router
     * [X] check user authenticate
@@ -192,9 +192,9 @@
 
 * [ ] /transaction/editJasaPaket
 
-    * [X] create router
-    * [X] check user authenticate
-    * [X] check user authorized
+    * [ ] create router
+    * [ ] check user authenticate
+    * [ ] check user authorized
     * [ ] check body (paket) 
     * [ ] validate paket length (paket min 0 max 3)
     * [ ] validate logo transparan, kualitas, file_desain, desain_atk, sosmed_kit, revisi, waktu_pengerjaan (accepted value 0 and 1), (deskripsi) (max 200)
@@ -213,21 +213,21 @@
     * [ ] if failed
         * [ ] return error
 
-* [X] /transaction/getKategori
+* [X] /transaction/kategori
     
     * [X] create router
     * [X] load kategori from db with id 1 - 3
     * [X] validate kategori 
     * [X] return kategori 
 
-* [X] /transaction/getTag
+* [X] /transaction/tag
 
     * [X] create router
     * [X] check user authenticate
     * [X] load tag from db with limit 30
     * [X] return tag
 
-* [X] /transaction/getTag/:tag
+* [X] /transaction/tag/:tag
 
     * [X] create router
     * [X] check user authenticate
@@ -238,7 +238,7 @@
         * [X] tag not found
             * [X] return 404 tags[]
 
-* [X] /transaction/createStep/:transactionId
+* [X] /transaction/step/:transactionId/create
 
     * [X] create router
     * [X] check user authenticate
@@ -255,22 +255,23 @@
     * [X] insert into db step
     * [X] return 201
 
-* [ ] /transaction/updateStep/:stepId
+* [X] /transaction/step/:transactionId/update/:stepId
 
-    * [ ] create router
-    * [ ] check user authenticate
-    * [ ] check user authorized
-    * [ ] check body (nama, persen)
-    * [ ] validate nama (max 100), persen (number)
-        * [ ] invalid
-            * [ ] return 406 message
-    * [ ] 
-    * [ ] update to db step
-    * [ ] return 200
-        
-    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
+    * [X] create router
+    * [X] check user authenticate
+    * [X] check user authorized
+    * [X] check body (nama, persen)
+    * [X] validate nama (max 100), persen (number)
+        * [X] invalid
+            * [X] return 406 message
+    * [X] count all step persen (total_persen)
+    * [X] persen > (100 - total_persen)
+        * [X] invalid
+        * [X] return 409
+    * [X] update to db step
+    * [X] return 200
 
-* [X] /transaction/deleteStep/:stepId
+* [X] /transaction/step/:transactionId/delete/:stepId
 
     * [X] create router
     * [X] check user authenticate
@@ -283,13 +284,13 @@
         * [X] invalid
             * [X] return 406 message
 
-* [ ] /transaction/:transactionId/submitStep/:stepId
+* [ ] /transaction/:transactionId/submit/:stepId
     
     `figma : chat-designer-desainer`
 
-    * [ ] create router
-    * [ ] check user authenticate
-    * [ ] check body (image)
+    * [X] create router
+    * [X] check user authenticate
+    * [ ] check file (image)
     * [ ] validate image
         * [ ] valid
             * [ ] update to db
@@ -301,14 +302,15 @@
 
     `figma : chat-designer-pengguna`
 
-    * [ ] create router
-    * [ ] check user authenticate
-    * [ ] check body (confirmation, bukti_bayar)
-    * [ ] validate confirmation
-        * [ ] if 0 
-            * [ ] delete step :step on db
-            * [ ] return message
-        * [ ] if 1 
+    * [X] create router
+    * [X] check user authenticate
+    * [X] check body (confirmation)
+    * [ ] check file (bukti-bayar)
+    * [X] validate confirmation
+    * [X] check confirmation
+        * [X] if 0 
+            * [X] return message
+        * [X] if 1 
             * [ ] check bukti_bayar
                 * [ ] if null or undefined
                     * [ ] return 406
@@ -320,7 +322,7 @@
 
 ## Portfolio
 
-* [X] /portfolio/getByUserId:userId
+* [X] /portfolio/:userId
 
     * [X] create router
     * [X] check params (userId)
@@ -329,7 +331,7 @@
         * [X] user found
             * [X] return all portofolio []
 
-* [ ] /portfolio/uploadImage
+* [ ] /portfolio/upload_image
 
     * [X] create router
     * [X] check user authenticate
@@ -340,7 +342,7 @@
         
     ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending` 
 
-* [X] /portfolio/uploadData
+* [X] /portfolio/upload_data
 
     * [X] create router
     * [X] check user authenticate
@@ -352,7 +354,7 @@
             * [X] return error
         * [X] store to database
     
-* [ ] /portfolio/updateData
+* [ ] /portfolio/update_data
 
     * [X] create router
     * [X] check user authenticate 
@@ -374,7 +376,7 @@
                 * [ ] skip upload
             * [ ] update to database
 
-* [ ] /portfolio/getDetailById:portofId
+* [ ] /portfolio/detail/:portofId
 
     * [X] create rotuer
     * [X] check body (portofId)
@@ -384,7 +386,9 @@
         * [X] get portof data
         * [X] return portof detail
 
-* [X] /portfolio/deleteById:portofId
+* [X] /portfolio/:portofId
+
+    `delete by portof id`
 
     * [X] create router
     * [X] check user authenticate 

@@ -17,7 +17,7 @@ const stepInsertTrx = (step, transactionId) => {
           'id_step': getStepId
         }).into('transaction_step');
 
-        resolve(true);
+        resolve(getStepId);
       } catch (error) {
         console.log(error);
         reject(false);
@@ -398,7 +398,7 @@ const getTag = async (req, res, next) => {
     const allowedTag = validator.matches(tag, /^[a-zA-Z ]{0,50}$/);
     if (!allowedTag) {
       const error = new Error('Only alphabet allowed with maximum 50 char length');
-      res.status(406);
+      res.status(422);
       return next(error);
     }
 
@@ -436,7 +436,7 @@ const doStep = async (req, res, next) => {
 
 const createStep = async (req, res, next) => {
   try {
-    let { userId } = req.state; // DESAINER
+    let { userId } = req.state;
     let { transactionId } = req.params;
     let { nama, persen } = req.body;
 
@@ -446,7 +446,7 @@ const createStep = async (req, res, next) => {
 
     if (!validateNama || !validatePersen || !validateTransactionId) {
       const error = new Error('Validation failed please check your input');
-      res.status(406);
+      res.status(422);
       return next(error);
     }
 
@@ -485,7 +485,7 @@ const createStep = async (req, res, next) => {
       return next(error);
     }
 
-    return res.status(201).json({ step });
+    return res.status(201).json({ "id": insertStep[0], ...step });
   } catch (error) {
     next(error);
   }
@@ -493,7 +493,66 @@ const createStep = async (req, res, next) => {
 
 const updateStep = async (req, res, next) => {
   try {
+    let { userId } = req.state;
+    let { nama, persen } = req.body;
+    let { transactionId, stepId } = req.params;
 
+    const validateNama = validator.isLength(nama, { max: 100 });
+    const validatePersen = validator.isInt(persen, { min: 0, max: 100 });
+
+    if (!validateNama || !validatePersen){
+      const error = new Error('Validation failed please check your input');
+      res.status(422);
+      return next(error);
+    }
+
+    let checkUserIsDesigner = await knex('user').select('status').where('id', userId).first();
+    if (!checkUserIsDesigner) {
+      const error = new Error('User isn\'t authorized');
+      res.status(403);
+      return next(error);
+    }
+
+    let checkUserHasTransaction = await knex({ s: 'step' })
+      .join({ ts: 'transaction_step' }, 'ts.id_step', 's.id')
+      .join({ t: 'transaction' }, 't.id', 'ts.id_transaction')
+      .where({
+        't.id_desainer': userId,
+        'ts.id_step': stepId
+      })
+      .first();
+    if (!checkUserHasTransaction) {
+      const error = new Error('Failed to find your step, please check your authorization or input');
+      res.status(406);
+      return next(error);
+    }
+    
+    let { "persen": step_persen } = await knex({ s: 'step' })
+      .join({ ts : 'transaction_step' }, 'ts.id_step', 's.id')
+      .where({ 'ts.id_transaction' : transactionId, 's.id': stepId })
+      .first(); 
+    if (persen > step_persen) {
+      const error = new Error('Failed to make a percent change, please check your percent limit again');
+      res.status(409);
+      return next(error);
+    }
+    
+    let { harga } = checkUserHasTransaction;
+    harga *= (persen / 100);
+    let step = {
+      nama,
+      harga,
+      persen
+    }
+
+    let insertStep = await knex('step').update(step).where('id', stepId);
+    if (!insertStep) {
+      const error = new Error('Failed to update step, please check your input');
+      res.status(409);
+      return next(error);
+    }
+
+    return res.status(200).json({ step });
   } catch (error) {
     next(error);
   }
@@ -507,7 +566,7 @@ const deleteStep = async (req, res, next) => {
     const validateStepId = validator.isInt(stepId, { allow_leading_zeroes: false });
     if (!validateStepId) {
       const error = new Error('Validation failed please check your input');
-      res.status(406);
+      res.status(422);
       return next(error);
     }
 
@@ -551,6 +610,9 @@ const deleteStep = async (req, res, next) => {
 
 const submitStep = async (req, res, next) => {
   try {
+    // let { file } = req.file;
+    // soon!
+
 
   } catch (error) {
     next(error);
@@ -559,6 +621,42 @@ const submitStep = async (req, res, next) => {
 
 const acceptStep = async (req, res, next) => {
   try {
+    // let { file } = req.file;
+    
+
+  } catch (error) {
+    next(error);
+  }
+}
+
+const transactionDetail = async (req, res, next)=>{
+  try {
+    let { transactionId } = req.params;
+
+    let loadTransaction = await knex('transaction').where('id', transactionId).first();
+    if(!loadTransaction){
+      const error = new Error('Transaction not found');
+      res.status(404);
+      return next(error);
+    }
+
+    let loadTransactionStep = await knex({ s: 'step' })
+      .join({ ts: 'transaction_step' }, 'ts.id_step', 's.id')
+      .where('ts.id_transaction', transactionId);
+
+    let transactionDetail = {
+      ...loadTransaction,
+      "step": []
+    }
+
+    loadTransactionStep.map(res => {
+      transactionDetail["step"].push(res);
+    })
+
+    res.status(200).json({
+      transactionDetail
+    })
+
 
   } catch (error) {
     next(error);
@@ -579,7 +677,8 @@ const TRANSACTION = {
   updateStep,
   deleteStep,
   submitStep,
-  acceptStep
+  acceptStep,
+  transactionDetail
 }
 
 module.exports = { ...TRANSACTION }
