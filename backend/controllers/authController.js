@@ -6,8 +6,6 @@ const knex = require('../database');
 const { AUTH_TOKEN } = require('../config');
 const { validation } = require('../middlewares');
 
-
-
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body,

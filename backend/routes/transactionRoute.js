@@ -18,6 +18,6 @@ router.post('/step/:transactionId/accept/:stepId', auth, checkConfirmation, tran
 
 router.put('/step/:transactionId/update/:stepId', auth, transactionController.updateStep);
 
-router.delete('/step/:stepId/delete', auth, transactionController.deleteStep);
+router.delete('/step/:transactionId/delete/:stepId', auth, transactionController.deleteStep);
 
 module.exports = router

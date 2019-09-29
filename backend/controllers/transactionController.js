@@ -430,10 +430,6 @@ const getAllTag = async (req, res, next) => {
   }
 }
 
-const doStep = async (req, res, next) => {
-
-}
-
 const createStep = async (req, res, next) => {
   try {
     let { userId } = req.state;
@@ -549,15 +545,6 @@ const updateStep = async (req, res, next) => {
     .first();
 
     let max_persen = 100 - total_persen;
-
-    
-    // if (persen > step_persen) {
-    //   if (persen > max_persen || persen > 100) {
-        // const error = new Error('Failed to make a percent change, please check your percent limit again');
-        // res.status(409);
-        // return next(error);
-    //   }
-    // }
     if (persen > step_persen + max_persen){  
       const error = new Error('Failed to make a percent change, please check your percent limit again');
       res.status(409);
@@ -588,7 +575,7 @@ const updateStep = async (req, res, next) => {
 
 const deleteStep = async (req, res, next) => {
   try {
-    let { stepId } = req.params;
+    let { stepId, transactionId } = req.params;
     let { userId } = req.state;
 
     const validateStepId = validator.isInt(stepId, { allow_leading_zeroes: false });
@@ -610,7 +597,8 @@ const deleteStep = async (req, res, next) => {
       .join({ t: 'transaction' }, 't.id', 'ts.id_transaction')
       .where({
         't.id_desainer': userId,
-        'ts.id_step': stepId
+        'ts.id_step': stepId,
+        'ts.id_transaction': transactionId
       })
       .first();
     if (!checkUserHasTransaction) {
@@ -684,15 +672,8 @@ const transactionDetail = async (req, res, next)=>{
       "step": []
     }
 
-    loadTransactionStep.map(res => {
-      transactionDetail["step"].push(res);
-    })
-
-    res.status(200).json({
-      transactionDetail
-    })
-
-
+    loadTransactionStep.map(res => { transactionDetail["step"].push(res); });
+    res.status(200).json({ transactionDetail });
   } catch (error) {
     next(error);
   }
@@ -704,7 +685,6 @@ const TRANSACTION = {
   depositJasa,
   editJasaDesainer,
   editJasaPaket,
-  doStep,
   getKategori,
   getTag,
   getAllTag,
