@@ -1,8 +1,56 @@
 const validator = require('validator');
 const knex = require('../database');
+const moment = require('moment-timezone');
 const _ = require('lodash');
 
 // const chunkSize = 5;
+
+const stepInsertTrx = (step, transactionId) => {
+  return new Promise((resolve, reject) => {
+    knex.transaction(async trx => {
+      try {
+
+        let getStepId = await trx.insert({ ...step }).into('step');
+
+        await trx.insert({
+          'id_transaction': transactionId,
+          'id_step': getStepId
+        }).into('transaction_step');
+
+        resolve(true);
+      } catch (error) {
+        console.log(error);
+        reject(false);
+      } finally {
+        console.log('Insert Step Executed');
+      }
+    })
+  })
+}
+
+const stepDeleteTrx = (stepId) => {
+  return new Promise((resolve, reject) => {
+    knex.transaction(async trx => {
+      try {
+
+        await trx.from('transaction_step')
+          .where('id_step', stepId)
+          .del();
+
+        await trx.from('step')
+          .where('id', stepId)
+          .del();
+
+        resolve(true);
+      } catch (error) {
+        console.log(error);
+        reject(false);
+      } finally {
+        console.log('Delete Step Executed');
+      }
+    })
+  })
+}
 
 const paketInsertTrx = paket => {
   // console.log(paket);
@@ -68,23 +116,74 @@ const desainerUpdateTrx = (kategoriId, deskripsi, oldTag, newTag, userId) => {
 
 const depositJasa = async (req, res, next) => {
   try {
-    const { invoiceId, deposit } = req.body;
-    if (invoiceId && deposit == null) {
+    let { transactionId, deposit } = req.body;
+    let { "userId": id_user } = req.state;
+
+    const validateTransaction = validator.isInt(transactionId, { min: 1 });
+    const validateDeposit = validator.isInt(deposit, { min: 1 });
+
+    if (!validateDeposit || !validateTransaction) {
       const error = new Error('Validation failed please check your input');
       res.status(422);
       return next(error);
     }
 
+    let checkUserTransaction = await knex('transaction').where({ 'id': transactionId, id_user }).first();
+    if (!checkUserTransaction) {
+      const error = new Error('User isn\'t authorized');
+      res.status(403);
+      return next(error);
+    }
 
+    let { id_desainer, harga, timeout } = checkUserTransaction;
+    let currentTime = moment.tz('Asia/Jakarta');
 
+    if (currentTime > timeout) {
+      let deleteTransaction = await knex('transaction').where('id', transactionId).delete();
+      if (!deleteTransaction) {
+        const error = new Error('Failed to delete transaction please check any input');
+        res.status(409);
+        return next(error);
+      }
 
+      const error = new Error('Failed to pay deposit after 1 hour from your last transaction');
+      res.status(408);
+      return next(error);
+    }
+
+    if (deposit != harga) {
+      const error = new Error('Failed to deposit please pay as your transaction\'s price');
+      res.status(406)
+      return next(error);
+    }
+
+    let updateDeposit = await knex('transaction').update({ deposit }).where({ 'id': transactionId, id_user });
+    if (!updateDeposit) {
+      const error = new Error('Failed to update deposit please check any input');
+      res.status(409);
+      return next(error);
+    }
+
+    return res.status(200).json({
+      transaction: {
+        id: transactionId,
+        id_user,
+        id_desainer,
+        deposit
+      }
+    });
   } catch (error) {
     next(error);
   }
 }
+
 const beliJasa = async (req, res, next) => {
   try {
-    const { userId, desainerId, paketId, subject, deskripsi } = req.body;
+    let { "desainerId": id_desainer, "paketId": id_paket, subject, deskripsi } = req.body;
+    let { "userId": id_user } = req.state;
+    // const { lampiran } = req.file;
+    // validate this lampiran soon !
+
     const validDeskripsi = validator.isLength(deskripsi, { max: 4000 });
     if (!validDeskripsi) {
       const error = new Error('Validation failed please check your input');
@@ -92,7 +191,47 @@ const beliJasa = async (req, res, next) => {
       return next(error);
     }
 
+    let checkTransaction = await knex('transaction')
+      .where({
+        id_user,
+        id_desainer,
+        id_paket
+      }).first();
+    if (checkTransaction) {
+      const error = new Error('User already has transaction with same packet and designer');
+      res.status(403);
+      return next(error);
+    }
 
+    let { harga } = await knex('paket').select('harga').where('id', id_paket).first();
+    console.log(harga);
+
+    let currentTime = moment.tz('Asia/Jakarta');
+    let timeout = moment(currentTime).add(1, 'hours');
+    timeout = timeout.format('YYYY-MM-DD HH:mm:ss');
+
+    let transaction = {
+      id_user,
+      id_desainer,
+      id_paket,
+      subject,
+      deskripsi,
+      timeout,
+      harga
+    };
+
+    let insertTransaction = await knex('transaction').insert(transaction);
+    console.log(insertTransaction);
+    if (!insertTransaction) {
+      const error = new Error('Failed to create transaction please check your input');
+      res.status(409);
+      return next(error);
+    }
+
+    return res.status(201).json({
+      transaction,
+      message: "Please pay your deposit first to continue the transaction"
+    })
 
   } catch (error) {
     next(error);
@@ -101,18 +240,18 @@ const beliJasa = async (req, res, next) => {
 
 const jualJasa = async (req, res, next) => {
   try {
-    const { kategoriId, deskripsi, tag } = req.body;
-    const paket = req.body.paket;
-    const { userId } = req.state;
+    let { kategoriId, deskripsi, tag } = req.body;
+    let paket = req.body.paket;
+    let { userId } = req.state;
 
-    const checkUserIsDesigner = await knex('user').select('status').where('id', userId).first();
+    let checkUserIsDesigner = await knex('user').select('status').where('id', userId).first();
     if (!checkUserIsDesigner) {
       const error = new Error('You don\'t have permission to jual jasa');
       res.status(403);
       return next(error);
     }
 
-    const validDeskripsi = validator.isLength(deskripsi, { max: 400 });
+    let validDeskripsi = validator.isLength(deskripsi, { max: 400 });
     if (!validDeskripsi) {
       const error = new Error('Validation failed please check your input');
       res.status(422);
@@ -297,28 +436,130 @@ const doStep = async (req, res, next) => {
 
 const createStep = async (req, res, next) => {
   try {
-    let { userId } = req.state;
+    let { userId } = req.state; // DESAINER
+    let { transactionId } = req.params;
     let { nama, persen } = req.body;
 
     const validateNama = validator.isLength(nama, { max: 100 });
     const validatePersen = validator.isInt(persen, { min: 0, max: 100 });
+    const validateTransactionId = validator.isLength(transactionId, { min: 1 });
 
-    if(!validateNama || !validatePersen){
-      const error = new Error('Failed to validate nama or persen');
+    if (!validateNama || !validatePersen || !validateTransactionId) {
+      const error = new Error('Validation failed please check your input');
+      res.status(406);
+      return next(error);
+    }
+
+    let checkUserIsDesigner = await knex('transaction').where({ 'id': transactionId, 'id_desainer': userId }).first();
+    if (!checkUserIsDesigner) {
+      const error = new Error('You don\'t have permission to create step on those transaction');
+      res.status(403);
+      return next(error);
+    }
+
+    let { total_persen, harga } = await knex({ s: 'step' })
+      .select(knex.raw('coalesce(sum(s.persen), 0) as total_persen, t.harga as harga'))
+      .join({ ts: 'transaction_step' }, 'ts.id_step', 's.id')
+      .join({ t: 'transaction' }, 't.id', 'ts.id_transaction')
+      .where('ts.id_transaction', transactionId)
+      .first();
+
+    let max_persen = 100 - total_persen;
+    if (persen > max_persen) {
+      const error = new Error('Failed to make a percent change, please check your percent limit again');
+      res.status(409);
+      return next(error);
+    }
+
+    harga *= (persen / 100);
+    let step = {
+      nama,
+      harga,
+      persen
+    }
+
+    let insertStep = await stepInsertTrx(step, transactionId);
+    if (!insertStep) {
+      const error = new Error('Failed to insert step, please check your input');
+      res.status(409);
+      return next(error);
+    }
+
+    return res.status(201).json({ step });
+  } catch (error) {
+    next(error);
+  }
+}
+
+const updateStep = async (req, res, next) => {
+  try {
+
+  } catch (error) {
+    next(error);
+  }
+}
+
+const deleteStep = async (req, res, next) => {
+  try {
+    let { stepId } = req.params;
+    let { userId } = req.state;
+
+    const validateStepId = validator.isInt(stepId, { allow_leading_zeroes: false });
+    if (!validateStepId) {
+      const error = new Error('Validation failed please check your input');
       res.status(406);
       return next(error);
     }
 
     let checkUserIsDesigner = await knex('user').select('status').where('id', userId).first();
-    if(!checkUserIsDesigner) {
-      const error = new Error('You don\'t have permission to create step');
+    if (!checkUserIsDesigner) {
+      const error = new Error('User isn\'t authorized');
       res.status(403);
       return next(error);
     }
 
+    let checkUserHasTransaction = await knex({ s: 'step' })
+      .join({ ts: 'transaction_step' }, 'ts.id_step', 's.id')
+      .join({ t: 'transaction' }, 't.id', 'ts.id_transaction')
+      .where({
+        't.id_desainer': userId,
+        'ts.id_step': stepId
+      })
+      .first();
+    if (!checkUserHasTransaction) {
+      const error = new Error('Failed to find your step, please check your authorization or input');
+      res.status(406);
+      return next(error);
+    }
 
-    // PENDING
-    
+    let deleteStep = await stepDeleteTrx(stepId);
+    if (!deleteStep) {
+      const error = new Error('Failed to delete step, please check your input');
+      res.status(409);
+      return next(error);
+    }
+
+    return res.status(200).json({
+      userId,
+      stepId,
+      message: "Step deleted"
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+const submitStep = async (req, res, next) => {
+  try {
+
+  } catch (error) {
+    next(error);
+  }
+}
+
+const acceptStep = async (req, res, next) => {
+  try {
+
   } catch (error) {
     next(error);
   }
@@ -334,7 +575,11 @@ const TRANSACTION = {
   getKategori,
   getTag,
   getAllTag,
-  createStep
+  createStep,
+  updateStep,
+  deleteStep,
+  submitStep,
+  acceptStep
 }
 
 module.exports = { ...TRANSACTION }

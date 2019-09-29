@@ -164,7 +164,7 @@
     * [X] if failed
         * [X] return error
 
-* [ ] /transaction/beliJasa
+* [X] /transaction/beliJasa
 
     * [X] create router
     * [X] check user authenticate
@@ -172,22 +172,23 @@
     * [X] validate deskripsi (max 4000) & lampiran (max 10MB)
         * [X] invalid
             * [X] return error validation
-    * [ ] save into db (transaction & transaction_step)
-    * [ ] return notif to client
+    * [X] validate authorized
+    * [X] save into db (transaction)
+    * [X] return notif to client
 
-* [ ] /transaction/depositJasa
+* [X] /transaction/depositJasa
 
-    * [ ] create router
-    * [ ] check user authenticate
-    * [ ] check body (transactionId, deposit)
-    * [ ] check is user authorized
-    * [ ] validate user if already registered, 
-        * [ ] deposit > 1 hour
-            * [ ] delete invoice in db, and image file
-            * [ ] return 404
-        * [ ] deposit <= 1 hour
-            * [ ] update db
-            * [ ] return 200
+    * [X] create router
+    * [X] check user authenticate
+    * [X] check body (transactionId, deposit)
+    * [X] check is user authorized
+    * [X] validate user if already registered, 
+        * [X] deposit > 1 hour
+            * [X] delete invoice in db, and image file
+            * [X] return 408
+        * [X] deposit <= 1 hour
+            * [X] update db
+            * [X] return 200
 
 * [ ] /transaction/editJasaPaket
 
@@ -237,27 +238,24 @@
         * [X] tag not found
             * [X] return 404 tags[]
 
-* [ ] /transaction/createStep/:invoiceId
+* [X] /transaction/createStep/:transactionId
 
-    * [ ] create router
-    * [ ] check user authenticate
+    * [X] create router
+    * [X] check user authenticate
     * [X] check user authorized
     * [X] check body (nama, persen)
     * [X] validate nama (max 100), persen (number)
         * [X] invalid 
             * [X] return 406 message
-    * [ ] load all step params (invoiceId)
-    * [ ] count all persen, 100 - total_persen (max_persen)
-    * [ ] validate persen (persen <= max_persen) 
-        * [ ] invalid 
-            * [ ] return 409 
-    * [ ] insert into db step
-    * [ ] update total step in invoice table
-    * [ ] return 200
+    * [X] load all step params (transactionId)
+    * [X] count all persen, 100 - total_persen (max_persen)
+    * [X] validate persen (persen > max_persen) 
+        * [X] invalid 
+            * [X] return 409 
+    * [X] insert into db step
+    * [X] return 201
 
-    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
-
-* [ ] /transaction/updateStep/:invoiceId
+* [ ] /transaction/updateStep/:stepId
 
     * [ ] create router
     * [ ] check user authenticate
@@ -272,23 +270,20 @@
         
     ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
 
-* [ ] /transaction/deleteStep/:stepId
+* [X] /transaction/deleteStep/:stepId
 
-    * [ ] create router
-    * [ ] check user authenticate
-    * [ ] check user authorized
-    * [ ] check body (stepId)
-    * [ ] validate step (stepId)
-        * [ ] valid 
-            * [ ] delete step
-            * [ ] update total step in invoice table
-            * [ ] return 200
-        * [ ] invalid
-            * [ ] return 406 message
+    * [X] create router
+    * [X] check user authenticate
+    * [X] check user authorized
+    * [X] check body (stepId)
+    * [X] validate step (stepId)
+        * [X] valid 
+            * [X] delete step
+            * [X] return 200
+        * [X] invalid
+            * [X] return 406 message
 
-    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending`
-
-* [ ] /transaction/:invoiceId/submitStep/:step
+* [ ] /transaction/:transactionId/submitStep/:stepId
     
     `figma : chat-designer-desainer`
 
@@ -302,7 +297,7 @@
         * [ ] invalid 
             * [ ] return error
     
-* [ ] /transaction/:invoiceId/acceptStep/:step
+* [ ] /transaction/:transactionId/acceptStep/:stepId
 
     `figma : chat-designer-pengguna`
 
