@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { Row, Col, Form, Input } from 'antd';
 import Logo from '../../assets/images/logo-2.svg';
 import Deco from '../../assets/images/login-people.svg';
-import Button from '../../components/Button/Button';
+import Button from '../../components/button/Button';
 import './login.scss';
 
 const URL_LOGIN = 'http://localhost:5000/auth/login';
 
 class Login extends Component {
-
 
     constructor(props) {
         super(props);

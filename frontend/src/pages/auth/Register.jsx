@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Form, Input } from 'antd';
-import Button from '../../components/Button/Button';
+import Button from '../../components/button/Button';
 import './register.scss';
 
 const URL_SINGUP = 'http://localhost:5000/auth/signup';
