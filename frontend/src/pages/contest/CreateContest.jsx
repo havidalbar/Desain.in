@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Form, Input, InputNumber, Icon, Upload, Select, DatePicker, message, Col, Row } from 'antd';
 import Navbar from '../../components/layouts/navbar/NavBar';
+import Footer from '../../components/layouts/footer/Footer';
 import Button from '../../components/button/Button';
 import Deco from '../../assets/images/contest-reg.svg';
 import './createContest.scss';
@@ -214,6 +215,7 @@ class CreateContest extends Component {
                         
                     </Form>
                 </div>
+                <Footer/>
             </div>
         );
     };
