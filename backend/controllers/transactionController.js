@@ -211,6 +211,16 @@ const jualJasa = async (req, res, next) => {
 
 const editJasaDesainer = async (req, res, next) => {
   try {
+    let { userId } = req.state;
+    const checkUserIsDesigner = await knex('user').select('status').where('id', userId).first();
+    if(!checkUserIsDesigner) {
+      const error = new Error('You dont have permission to edit jasa');
+      res.status(403);
+      return next(error)
+    }
+
+    
+
 
   } catch (error) {
     next(error);

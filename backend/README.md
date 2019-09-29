@@ -191,9 +191,9 @@
 
 * [ ] /transaction/editJasaPaket
 
-    * [ ] create router
-    * [ ] check user authenticate
-    * [ ] check user authorized
+    * [X] create router
+    * [X] check user authenticate
+    * [X] check user authorized
     * [ ] check body (paket) 
     * [ ] validate paket length (paket min 0 max 3)
     * [ ] validate logo transparan, kualitas, file_desain, desain_atk, sosmed_kit, revisi, waktu_pengerjaan (accepted value 0 and 1), (deskripsi) (max 200)

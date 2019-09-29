@@ -10,6 +10,7 @@ router.get('/getTag/:tag', auth, transactionController.getTag);
 
 router.post('/jualJasa', auth, transactionController.jualJasa);
 router.post('/beliJasa', auth, transactionController.beliJasa);
+router.put('/editJasaPaket', auth, transactionController.editJasaDesainer);
 
 
 module.exports = router
