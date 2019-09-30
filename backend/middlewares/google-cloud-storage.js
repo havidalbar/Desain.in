@@ -18,7 +18,7 @@ const uploadFileToGCS = (req, res, next) => {
   const file = bucket.file(fileName);
 
   mimetype = mimetype.split("/");
-  const allowedMime = ['png', 'jpg', 'jpeg'];
+  const allowedMime = ['png', 'jpg', 'jpeg', 'pdf'];
   if (!allowedMime.includes(mimetype[1])){
     const error = new Error('Unsupported media type');
     res.status(415);

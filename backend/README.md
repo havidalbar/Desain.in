@@ -157,7 +157,7 @@
     * [X] check body (kategori, tag[] , deskripsi, paket[] )
     * [X] validate decs (max 400)
     * [X] if all success update user
-        * [X] check paket body (nama, jenis, deskripsi, harga, logo transparan, kualitas, file_desain, desain_atk, sosmed_kit, revisi, waktu_pengerjaan) 
+        * [X] check paket body (nama, deskripsi, harga, logo transparan, kualitas, file_desain, desain_atk, sosmed_kit, revisi, waktu_pengerjaan) 
         * [X] validate paket length (paket min 0 max 3)
         * [X] validate logo transparan, kualitas, file_desain, desain_atk, sosmed_kit, revisi, waktu_pengerjaan (accepted value 0 and 1), (deskripsi) (max 200)
         * [X] insert all to paket
@@ -284,41 +284,34 @@
         * [X] invalid
             * [X] return 406 message
 
-* [ ] /transaction/:transactionId/submit/:stepId
+* [X] /transaction/:transactionId/submit/:stepId
     
     `figma : chat-designer-desainer`
 
     * [X] create router
     * [X] check user authenticate
-    * [ ] check file (image)
-    * [ ] validate image
-        * [ ] valid
-            * [ ] update to db
-            * [ ] return 200
-        * [ ] invalid 
-            * [ ] return error
+    * [X] check file (image)
+    * [X] validate image
+        * [X] valid
+            * [X] update to db
+            * [X] return 200
+        * [X] invalid 
+            * [X] return error
     
-* [ ] /transaction/:transactionId/acceptStep/:stepId
+* [X] /transaction/:transactionId/acceptStep/:stepId
 
     `figma : chat-designer-pengguna`
 
     * [X] create router
     * [X] check user authenticate
     * [X] check body (confirmation)
-    * [ ] check file (bukti-bayar)
     * [X] validate confirmation
     * [X] check confirmation
         * [X] if 0 
             * [X] return message
         * [X] if 1 
-            * [ ] check bukti_bayar
-                * [ ] if null or undefined
-                    * [ ] return 406
-            * [ ] upload bukti_bayar
-            * [ ] update bukti_bayar in db
-            * [ ] update table step
-            * [ ] update current_step table invoice
-            * [ ] return 200
+            * [X] update table step
+            * [X] return 200
 
 ## Portfolio
 
