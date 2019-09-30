@@ -633,10 +633,33 @@ const deleteStep = async (req, res, next) => {
 
 const submitStep = async (req, res, next) => {
   try {
-    // let { file } = req.file;
-    // soon!
+    let { gcsObject, gcsObjectUrl } = req.file;
+    let { transactionId, stepId } = req.params;
+    
+    if(!gcsObject && !gcsObjectUrl){
+      const error = new Error('Failed to upload files');
+      res.status(406);
+      return next(error);
+    }
 
+    let submitStep = await knex('step').update({ status: 1, image: gcsObjectUrl }).where('id', stepId);
+    if(!submitStep){
+      const error = new Error('Failed to submit files data');
+      res.status(406);
+      return next(error);
+    }
 
+    let getUpdatedStep = await knex('step').where('id', stepId).first();
+    if(!getUpdatedStep){
+      const error = new Error('Failed to get step data');
+      res.status(406);
+      return next(error);
+    }
+
+    return res.status(200).json({ 
+      "transaction": transactionId,
+      "step": getUpdatedStep 
+    });
   } catch (error) {
     next(error);
   }

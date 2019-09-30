@@ -8,6 +8,4 @@ const storage = new Storage({
 
 const bucketName = GOOGLE.BUCKET;
 
-const getPublicUrl = (type, filename) => `https://storage.googleapis.com/${bucketName}/${type}/${filename}`;
-
-module.exports = { storage, bucketName, getPublicUrl }
+module.exports = { storage, bucketName }

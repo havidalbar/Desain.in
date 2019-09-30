@@ -1,17 +1,33 @@
-const { storage, bucketName, getPublicUrl } = require('../helpers/google-cloud-storage');
+const { storage, bucketName } = require('../helpers/google-cloud-storage');
+const Multer = require('multer');
+
+const maxSize = 10 * 1000 * 1000 // 10MB
+
+let upload = Multer({ storage: Multer.MulterStorage, limits: { fileSize: maxSize } });
+
+const bucket = storage.bucket(bucketName);
+const getPublicUrl = filename => `https://storage.googleapis.com/${bucketName}/${filename}`;
 
 const uploadFileToGCS = (req, res, next) => {
   if(!req.file){
     return next();
   }
 
-  const bucket = storage.bucket(bucketName);
-  const fileName = `${Date.now()}-${req.file.originalname}`;
+  let { originalname, mimetype } = req.file;
+  const fileName = `${Date.now()}-${originalname}`;
   const file = bucket.file(fileName);
+
+  mimetype = mimetype.split("/");
+  const allowedMime = ['png', 'jpg', 'jpeg'];
+  if (!allowedMime.includes(mimetype[1])){
+    const error = new Error('Unsupported media type');
+    res.status(415);
+    return next(error);
+  }
 
   const stream = file.createWriteStream({
     contentType: req.file.mimetype,
-    predefinedAcl: "publicRead"    
+    predefinedAcl: "publicRead",    
   });
 
   stream.on('error', err => {
@@ -21,11 +37,10 @@ const uploadFileToGCS = (req, res, next) => {
 
   stream.on('finish', () => {
     req.file.gcsObject = fileName;
-    let { fileType } = req.body;
 
     return file.makePublic()
       .then(() => {
-        req.file.gcsObjectUrl = getPublicUrl(fileType, fileName);
+        req.file.gcsObjectUrl = getPublicUrl(fileName);
         next();
       });
   });  
@@ -33,4 +48,4 @@ const uploadFileToGCS = (req, res, next) => {
   stream.end(req.file.buffer);
 }
 
-module.exports = { uploadFileToGCS }
+module.exports = { uploadFileToGCS, upload }

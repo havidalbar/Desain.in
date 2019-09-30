@@ -1,20 +1,5 @@
 const validator = require('validator');
 const knex = require('../database');
-const multer = require('multer');
-
-let storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads')
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname)
-  }
-});
-
-const maxSize = 10 * 1000 * 1000 // 10MB
-let upload = multer({ storage: storage, limits: { fileSize: maxSize } });
-
-
 
 const uploadImage = async (req, res, next) => {
   try {
