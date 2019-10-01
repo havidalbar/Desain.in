@@ -30,9 +30,10 @@ const login = async (req, res, next) => {
       });
     }
 
-    const token = await jwt.sign({ userId: userExists.id }, AUTH_TOKEN, { expiresIn: '365d' });
+    const token = await jwt.sign({ userId: userExists.id, status: userExists.status }, AUTH_TOKEN, { expiresIn: '365d' });
     return res.status(200).json({
       userId: userExists.id,
+      status: userExists.status,
       token: token,
       tokenExp: 365
     });

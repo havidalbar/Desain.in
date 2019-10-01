@@ -324,16 +324,14 @@
         * [X] user found
             * [X] return all portofolio []
 
-* [ ] /portfolio/upload_image
+* [X] /portfolio/upload_image
 
     * [X] create router
     * [X] check user authenticate
         * [X] return 402 not authenticate
-    * [ ] check user designer
-        * [ ] return 402 not authorized
-    * [ ] ... 
-        
-    ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `pending` 
+    * [X] check user designer
+        * [X] return 402 not authorized
+    * [X] upload 
 
 * [X] /portfolio/upload_data
 
@@ -369,7 +367,7 @@
                 * [ ] skip upload
             * [ ] update to database
 
-* [ ] /portfolio/detail/:portofId
+* [X] /portfolio/:portofId/detail
 
     * [X] create rotuer
     * [X] check body (portofId)

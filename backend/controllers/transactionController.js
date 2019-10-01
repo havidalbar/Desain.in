@@ -368,7 +368,7 @@ const editJasaDesainer = async (req, res, next) => {
       return next(error)
     }
 
-      // pending
+    // menang
 
 
   } catch (error) {
@@ -379,7 +379,7 @@ const editJasaDesainer = async (req, res, next) => {
 const editJasaPaket = async (req, res, next) => {
   try {
 
-    // pending
+    // menang
 
   } catch (error) {
     next(error);

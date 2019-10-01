@@ -17,16 +17,8 @@ const uploadFileToGCS = (req, res, next) => {
   const fileName = `${Date.now()}-${originalname}`;
   const file = bucket.file(fileName);
 
-  mimetype = mimetype.split("/");
-  const allowedMime = ['png', 'jpg', 'jpeg', 'pdf'];
-  if (!allowedMime.includes(mimetype[1])){
-    const error = new Error('Unsupported media type');
-    res.status(415);
-    return next(error);
-  }
-
   const stream = file.createWriteStream({
-    contentType: req.file.mimetype,
+    contentType: mimetype,
     predefinedAcl: "publicRead",    
   });
 
