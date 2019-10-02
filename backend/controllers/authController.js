@@ -21,17 +21,15 @@ const login = async (req, res, next) => {
     let userExists = await knex('user').where({ email }).first();
     if (!userExists) {
       const error = new Error('User isn\'t exist');
-      return res.status(404).json({
-        error: error.message
-      });
+      res.status(404);
+      return next(error);
     }
 
     const isEqual = await bcrypt.compare(password, userExists.password);
     if (!isEqual) {
       const error = new Error('Wrong Password');
-      return res.status(401).json({
-        message: error.message
-      });
+      res.status(401);
+      return next(error);
     }
 
     const token = await jwt.sign({ userId: userExists.id, status: userExists.status }, AUTH_TOKEN, { expiresIn: '365d' });
@@ -63,9 +61,8 @@ const signup = async (req, res, next) => {
     let userExists = await knex('user').where({ email }).first();
     if (userExists) {
       const error = new Error('User already exist');
-      return res.status(409).json({
-        message: error.message
-      });
+      res.status(409);
+      return next(error);
     }
 
     let user = {
