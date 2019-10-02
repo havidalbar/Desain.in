@@ -12,7 +12,11 @@ const login = async (req, res, next) => {
       validEmail = validator.isEmail(email),
       validPassword = validator.isLength(password, { min: 8 });
 
-    validation(res, validEmail, validPassword);
+    if(!validEmail || !validPassword){
+      const error = new Error('Validation failed please check your input');
+      res.status(422);
+      return next(error);
+    }
 
     let userExists = await knex('user').where({ email }).first();
     if (!userExists) {
@@ -50,7 +54,11 @@ const signup = async (req, res, next) => {
       validPassword = validator.isLength(password, { min: 8 }),
       hashedPassword = await bcrypt.hash(password, 12);
 
-    validation(validEmail, validPassword, res);
+    if(!validEmail || !validPassword){
+      const error = new Error('Validation failed please check your input');
+      res.status(422);
+      return next(error);
+    }
 
     let userExists = await knex('user').where({ email }).first();
     if (userExists) {
