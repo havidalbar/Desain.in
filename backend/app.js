@@ -1,6 +1,7 @@
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const logger = require('morgan');
+const cors = require('cors');
 const app = express();
 
 // database init
@@ -18,6 +19,7 @@ const transactionRouter = require('./routes/transactionRoute');
 const portfolioRouter = require('./routes/portfolioRoute');
 
 // Middlewares
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logger(NODE_ENV === 'production' ? 'combined' : 'dev'));
