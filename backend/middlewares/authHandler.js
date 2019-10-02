@@ -9,7 +9,7 @@ const auth = async (req, res, next) => {
       if (!/^Bearer$/i.test(type)) {
         const error = new Error("Wrong token Format");
         res.status(401);
-        next(error);
+        return next(error);
       }
 
       const verified = await jwt.verify(token, AUTH_TOKEN);
@@ -17,14 +17,12 @@ const auth = async (req, res, next) => {
     } else {
       const error = new Error("Token not provided");
       res.status(401);
-      next(error);
+      return next(error);
     }
 
     await next();
   } catch (err) {
-    const error = new Error(err);
-    res.status(500);
-    next(error);
+    next(err);
   }
 }
 
