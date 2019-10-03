@@ -26,6 +26,15 @@
 
 }
 
+.ant-btn {
+    height: 6vh;
+}
+
+.ant-btn:hover, .ant-btn:focus {
+    color: #0020da;
+    border-color: #0020da;
+}
+
 .button:focus {
     outline: none;
 }

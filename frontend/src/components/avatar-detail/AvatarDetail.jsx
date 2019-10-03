@@ -1,7 +1,8 @@
-import React, { Componet } from 'react';
-import './avatarDetail.css';
+import React, { Component } from 'react';
+import './avatarDetail.scss';
+import '../../components/layouts/typography.scss';
 
-class AvatarDetail extends Componet {
+class AvatarDetail extends Component {
     render() {
         return(
             <div className="avatar-wrap">

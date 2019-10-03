@@ -136,6 +136,7 @@ li a {
 
 .title {
     font-family: "Roboto-reg";
+    margin: 0;
     @include font-size(1.7rem !important);
 }
 

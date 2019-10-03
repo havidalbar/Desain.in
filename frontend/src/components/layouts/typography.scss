@@ -25,16 +25,49 @@
     src: local("Nunito-sbld"), url(../../assets/fonts/Nunito/Nunito-Bold.ttf);
 }
 
+@font-face {
+    font-family: "Roboto-reg";
+    font-style: normal;
+    src: local("Roboto"), url(../../assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Pt-sans-reg";
+    font-style: normal;
+    src: local("Pt-sans-reg"), url(../../assets/fonts/PtSans/PTSans-Regular.ttf);
+}
+
 .title-3 {
-    font-family: "Nunito-bld";
+    font-family: "Nunito-rg";
     color: #0020da;
     @include font-size(3rem !important);
+}
+
+.title {
+    font-family: "Roboto-reg";
+    @include font-size(1.7rem !important);
+}
+
+.meta-info {
+    font-size: 0.8em;
 }
 
 .sub-title {
     font-family: "Nunito-sbld";
     color: #191847;
     @include font-size(1.5rem !important);
+}
+
+.bigger-body-text {
+    font-family: "Pt-sans-reg";
+    color: #191847;
+    @include font-size(1.5rem !important);
+}
+
+.regular-body-text {
+    font-family: "Pt-sans-reg";
+    color: #191847;
+    @include font-size(1rem !important);
 }
 
 label {
