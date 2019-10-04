@@ -14,11 +14,24 @@
 
 
 .image-bg{
-    width: 100vw;
+    width: 96vw;
     z-index: 1;
     position: absolute;
 }
-
+.image-bg-rekomendasi{
+    width: 50vw;
+    z-index: 4;
+    margin-left: 700px;
+    margin-top: 100px;
+    position: absolute;
+}
+.image-bg-person{
+    width: 90vw;
+    z-index: 1;
+    margin-left: 60px;
+    margin-top: 140px;
+    position: absolute;
+}
 .ads-content {
     padding: 20vh 5vw;
     width: 50vw;
@@ -27,6 +40,11 @@
 .ads-content-contest {
     padding: 20vh 5vw;
     width: 60vw;
+}
+
+.ads-content-contest-2 {
+    padding: 79vh 5vw;
+    width: 65vw;
 }
 
 .wrapper {
