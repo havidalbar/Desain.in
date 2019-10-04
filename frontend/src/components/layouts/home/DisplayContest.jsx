@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PortofolioCard from '../../card/PortfolioCard';
+import ContestCard from '../../card/ContestCard';
 import Button from '../../button/ButtonAntd';
 import '../../layouts/typography.scss';
 import './display.scss';
@@ -9,13 +9,12 @@ class DisplayPortofolio extends Component {
         return(
             <div className="display">
                 <p className="title-3 title-display">
-                    Portfolio Kreatif Minggu Ini
+                    Kontes Kreatif
                 </p>
                 <div class="card-wrapper">
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200"/>
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200"/>
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200"/>
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200"/>
+                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019"/>
+                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019"/>
+                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019"/>
                 </div>
                 <div className="btn-wrap">
                     <Button style="button primary" text="LIHAT LEBIH BANYAK"/>
