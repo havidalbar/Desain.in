@@ -17,6 +17,13 @@
     align-items: center;
     text-align: center;
 }
+.promote-banner-profile {
+    height: 50vh;
+    background-color: #EDF5F8;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
 
 
 .image-bg{
@@ -41,14 +48,20 @@
 .image-bg-profile{
     width: 50vw;
     z-index: 1;
-    margin-left: 720px;
-    margin-top: 275px;
+    margin-left: 650px;
+    margin-top: 45px;
     position: absolute;
 }
 .image-bg-kontes-not-signed{
     width: 50vw;
     z-index: 1;
     margin-left: 720px;
+    position: absolute;
+}
+.image-bg-kontes-penyelenggara{
+    width: 30vw;
+    z-index: 1;
+    margin-left: 900px;
     position: absolute;
 }
 
@@ -59,6 +72,10 @@
 }
 .ads-content-not-signed {
     padding: 32vh 5vw;
+    width: 50vw;
+}
+.ads-content-penyelenggara {
+    padding: 40vh 7vw;
     width: 50vw;
 }
 
@@ -90,7 +107,7 @@
 }
 
 .avatar-wrap-profile {
-    padding-top: 320px;
+    padding-top: 0px;
     display: flex;
     flex-direction: row;
     padding-left: 100px;

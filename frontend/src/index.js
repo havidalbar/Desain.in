@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './pages/Home';
 import Profile from './pages/profile/Profile';
-import Kontes from './pages/contest/KontesNotSigned';
+import Kontes from './pages/contest/KontesPenyelenggara';
+import Rekom from './pages/rekomendasi/rekomendasiPerson';
 import 'antd/dist/antd.css';
 import * as serviceWorker from './serviceWorker';
 

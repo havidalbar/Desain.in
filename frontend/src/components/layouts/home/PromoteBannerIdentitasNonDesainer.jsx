@@ -7,7 +7,7 @@ import Deco from '../../../assets/images/profile-banner.svg';
 class PromoteBannerIdentitasNonDesainer extends Component {
     render() {
         return (
-            <div className="promote-banner">
+            <div className="promote-banner-profile">
                 <img className="image-bg-profile" src={Deco} />
 
                 <div className="avatar-wrap-profile">
