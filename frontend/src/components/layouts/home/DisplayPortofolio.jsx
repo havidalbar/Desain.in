@@ -18,7 +18,7 @@ class DisplayPortofolio extends Component {
                     <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200"/>
                 </div>
                 <div className="btn-wrap">
-                    <Button style="button primary" text="LIHAT LEBIH BANYAK"/>>
+                    <Button style="button primary" text="LIHAT LEBIH BANYAK"/>
                 </div>
             </div>
         )
