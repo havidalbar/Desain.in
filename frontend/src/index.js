@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './pages/Home';
-import Profile from './pages/rekomendasi/rekomendasiPerson';
+import Profile from './pages/profile/Profile';
+import Rekom from './pages/rekomendasi/rekomendasiStylePerson';
 import 'antd/dist/antd.css';
 import * as serviceWorker from './serviceWorker';
 

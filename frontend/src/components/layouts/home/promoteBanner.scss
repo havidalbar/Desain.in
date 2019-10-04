@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "Roboto-reg";
+    font-style: normal;
+    src: local("Roboto"), url(../../../assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+
 .promote-banner {
     height: 93vh;
     background-color: #EDF5F8;
@@ -32,6 +38,15 @@
     margin-top: 140px;
     position: absolute;
 }
+.image-bg-profile{
+    width: 50vw;
+    z-index: 1;
+    margin-left: 720px;
+    margin-top: 275px;
+    position: absolute;
+}
+
+
 .ads-content {
     padding: 20vh 5vw;
     width: 50vw;
@@ -62,4 +77,36 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.avatar-wrap {
+    padding-top: 320px;
+    display: flex;
+    flex-direction: row;
+    padding-left: 100px;
+    width: 20vw;
+}
+
+.avatar {
+    border-radius: 590px;
+    background-color: white;
+    width: 900px;
+    height: 120px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.avatar-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    font-family: "Roboto-reg";
+    margin: 0;
+}
+
+.meta-info {
+    font-size: 0.8em;
 }
