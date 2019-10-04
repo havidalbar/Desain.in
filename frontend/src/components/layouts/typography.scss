@@ -61,13 +61,24 @@
 .bigger-body-text {
     font-family: "Pt-sans-reg";
     color: #191847;
-    @include font-size(1.5rem !important);
+    @include font-size(2rem !important);
 }
 
 .regular-body-text {
     font-family: "Pt-sans-reg";
     color: #191847;
     @include font-size(1rem !important);
+}
+
+.card-title {
+    font-family: "Nunito-sbld";
+    color: #191847;
+    @include font-size(1.2rem !important);
+}
+
+.link {
+    font-family: "Nunito-sbld";
+    color:#0020da;
 }
 
 label {

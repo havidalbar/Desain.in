@@ -1,3 +1,20 @@
 .display-portfolio {
-    padding: 5vh 5vw;
+    padding: 5vh ;
+}
+
+.title-portfolio {
+    padding: 0 2vw;
+}
+
+.card-wrapper {
+    margin: 5vh 2vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
