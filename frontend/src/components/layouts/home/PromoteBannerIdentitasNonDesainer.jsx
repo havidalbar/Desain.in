@@ -10,12 +10,12 @@ class PromoteBannerIdentitasNonDesainer extends Component {
             <div className="promote-banner">
                 <img className="image-bg-profile" src={Deco} />
                 
-                    <div className="avatar-wrap">
-                        <div className="avatar">
+                    <div className="avatar-wrap-profile">
+                        <div className="avatar-profile">
                         </div>
-                        <div className="avatar-content">
-                            <p className="title">Havid Albar</p>
-                            <p className="meta-info">
+                        <div className="avatar-content-profile">
+                            <p className="title-profile">Havid Albar</p>
+                            <p className="meta-info-profile">
                             <span className="link">Mendapat Invitasi</span>
                             </p>
                         </div>

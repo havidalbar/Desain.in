@@ -79,7 +79,7 @@
     justify-content: space-between;
 }
 
-.avatar-wrap {
+.avatar-wrap-profile {
     padding-top: 320px;
     display: flex;
     flex-direction: row;
@@ -87,7 +87,7 @@
     width: 20vw;
 }
 
-.avatar {
+.avatar-profile {
     border-radius: 590px;
     background-color: white;
     width: 900px;
@@ -96,17 +96,17 @@
     margin-bottom: 10px;
 }
 
-.avatar-content {
+.avatar-content-profile {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.title {
+.title-profile {
     font-family: "Roboto-reg";
     margin: 0;
 }
 
-.meta-info {
+.meta-info-profile {
     font-size: 0.8em;
 }
