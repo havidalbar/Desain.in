@@ -9,18 +9,18 @@ class PromoteBannerIdentitasNonDesainer extends Component {
         return (
             <div className="promote-banner">
                 <img className="image-bg-profile" src={Deco} />
-
-                <div className="avatar-wrap-profile">
-                    <div className="avatar-profile">
-                    </div>
-                    <div className="avatar-content-profile">
-                        <p className="title-profile">Havid Albar</p>
-                        <p className="meta-info-profile">
+                
+                    <div className="avatar-wrap-profile">
+                        <div className="avatar-profile">
+                        </div>
+                        <div className="avatar-content-profile">
+                            <p className="title-profile">Havid Albar</p>
+                            <p className="meta-info-profile">
                             <span className="link">Mendapat Invitasi</span>
-                        </p>
+                            </p>
+                        </div>
                     </div>
-                </div>
-
+                
             </div>
         )
     }

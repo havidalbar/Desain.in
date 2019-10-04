@@ -5,22 +5,22 @@ import './display.scss';
 
 class DisplayRekomendasiPerson extends Component {
     render() {
-        return(
+        return (
             <div className="display">
                 <div class="card-wrapper-rekomendasi-person">
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
                 </div>
                 <div class="card-wrapper-rekomendasi-person">
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
                 </div>
                 <div class="card-wrapper-rekomendasi-person">
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
                 </div>
             </div>
         )

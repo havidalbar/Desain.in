@@ -4,11 +4,11 @@ import './homeHero.scss';
 
 class HomeHero extends Component {
     render() {
-        return(
+        return (
             <div className="hero">
                 <Row gutter={40}>
                     <Col span={18}>
-                        <Carousel autoplay  effect="fade">
+                        <Carousel autoplay effect="fade">
                             <div>
                                 <h3>1</h3>
                             </div>
@@ -23,25 +23,25 @@ class HomeHero extends Component {
                             </div>
                         </Carousel>
                     </Col>
-                    <Col  span={6}>
+                    <Col span={6}>
                         <Row className="side-hero" justify="space-arround">
                             <div className="side-menu-item">
                                 <span className="side-menu-title">
                                     PORTFOLIO
                                 </span>
-                            </div>    
-                       
+                            </div>
+
                             <div className="side-menu-item">
                                 <span className="side-menu-title">
                                     PORTFOLIO
                                 </span>
-                            </div>    
-                       
+                            </div>
+
                             <div className="side-menu-item">
                                 <span className="side-menu-title">
                                     PORTFOLIO
                                 </span>
-                            </div>    
+                            </div>
                         </Row>
                     </Col>
                 </Row>

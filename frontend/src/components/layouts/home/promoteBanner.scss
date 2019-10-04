@@ -45,10 +45,20 @@
     margin-top: 275px;
     position: absolute;
 }
+.image-bg-kontes-not-signed{
+    width: 50vw;
+    z-index: 1;
+    margin-left: 720px;
+    position: absolute;
+}
 
 
 .ads-content {
     padding: 20vh 5vw;
+    width: 50vw;
+}
+.ads-content-not-signed {
+    padding: 32vh 5vw;
     width: 50vw;
 }
 
@@ -88,10 +98,10 @@
 }
 
 .avatar-profile {
-    border-radius: 590px;
+    border-radius: 390px;
     background-color: white;
-    width: 900px;
-    height: 120px;
+    width: 300px;
+    height: 140px;
     margin-right: 20px;
     margin-bottom: 10px;
 }

@@ -5,13 +5,13 @@ import './display.scss';
 
 class DisplayStyleRekomendasiPerson extends Component {
     render() {
-        return(
+        return (
             <div className="display">
                 <div class="card-wrapper-person">
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
                 </div>
             </div>
         )

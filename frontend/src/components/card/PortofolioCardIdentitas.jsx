@@ -5,10 +5,10 @@ import '../layouts/typography.scss';
 
 class PortofolioCardIdentitas extends Component {
     render() {
-        return(
+        return (
             <div className="card-portfolio">
                 <div className="image-cover">
-                    <img className="img" src={this.props.imageSrc}/>
+                    <img className="img" src={this.props.imageSrc} />
                 </div>
                 <div className="card-content">
                     <p className="bigger-body-text">
@@ -19,16 +19,16 @@ class PortofolioCardIdentitas extends Component {
                     </p>
                     <div className="card-action">
                         <div className="indicator view">
-                            <Icon type="eye" className="icn-wrap"/>
+                            <Icon type="eye" className="icn-wrap" />
                             <p className="ind-content">{this.props.viewCount} views</p>
                         </div>
                         <div className="indicator like">
-                            <Icon type="heart" className="icn-wrap"/> 
+                            <Icon type="heart" className="icn-wrap" />
                             <p className="ind-content">{this.props.likeCount} likes</p>
                         </div>
                     </div>
                 </div>
-               
+
             </div>
         )
     }

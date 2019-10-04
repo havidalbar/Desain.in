@@ -5,16 +5,16 @@ import './display.scss';
 
 class DisplayStyle extends Component {
     render() {
-        return(
+        return (
             <div className="display">
                 <p className="title-3 title-display">
-                Pilih lingkup pekerjaan kreatif anda
+                    Pilih lingkup pekerjaan kreatif anda
                 </p>
                 <div class="card-wrapper">
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
                 </div>
             </div>
         )

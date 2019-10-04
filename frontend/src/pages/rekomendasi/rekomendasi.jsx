@@ -8,12 +8,12 @@ import BannerStyle from '../../components/layouts/home/PromoteBannerRekomendasi'
 
 class rekomendasi extends Component {
     render() {
-        return(
+        return (
             <div>
-            <Navbar/>
-            <BannerStyle/>
-            <DisplayStyle/>
-            <Footer/>
+                <Navbar />
+                <BannerStyle />
+                <DisplayStyle />
+                <Footer />
             </div>
         );
     }

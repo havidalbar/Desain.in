@@ -5,13 +5,13 @@ import './display.scss';
 
 class DisplayStyleChose extends Component {
     render() {
-        return(
+        return (
             <div className="display">
                 <div class="card-wrapper">
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
-                    <PortofolioCard judul="Judul Portfolio"/>
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
+                    <PortofolioCard judul="Judul Portfolio" />
                 </div>
             </div>
         )

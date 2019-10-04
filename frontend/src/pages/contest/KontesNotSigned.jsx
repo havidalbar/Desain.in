@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/layouts/navbar/NavBar';
 import Footer from '../../components/layouts/footer/Footer';
-import DisplayIdentitas from '../../components/layouts/home/DisplayIdentitas';
-import BannerStyle from '../../components/layouts/home/PromoteBannerIdentitas';
+import DisplayStyle from '../../components/layouts/home/DisplayContestNotSigned';
+import BannerStyle from '../../components/layouts/home/PromoteBannerContestNotSigned';
 
 
-class Profile extends Component {
+
+class KontesNotSigned extends Component {
     render() {
         return(
             <div>
             <Navbar/>
             <BannerStyle/>
-            <DisplayIdentitas/>
+            <DisplayStyle/>
             <Footer/>
             </div>
         );
     }
 }
 
-export default Profile;
+export default KontesNotSigned;

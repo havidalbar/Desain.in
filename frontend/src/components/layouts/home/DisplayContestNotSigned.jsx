@@ -4,7 +4,7 @@ import Button from '../../button/ButtonAntd';
 import '../../layouts/typography.scss';
 import './display.scss';
 
-class DisplayPortofolio extends Component {
+class DisplayPortofolioNotSigned extends Component {
     render() {
         return (
             <div className="display">
@@ -24,4 +24,4 @@ class DisplayPortofolio extends Component {
     }
 }
 
-export default DisplayPortofolio;
+export default DisplayPortofolioNotSigned;
