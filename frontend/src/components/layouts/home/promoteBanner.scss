@@ -1,0 +1,41 @@
+.promote-banner {
+    height: 93vh;
+    background-color: #EDF5F8;
+}
+
+.promote-banner-contest {
+    height: 93vh;
+    background-color: #EDF5F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.image-bg{
+    width: 100vw;
+    z-index: 1;
+    position: absolute;
+}
+
+.ads-content {
+    padding: 20vh 5vw;
+    width: 50vw;
+}
+
+.ads-content-contest {
+    padding: 20vh 5vw;
+    width: 60vw;
+}
+
+.wrapper {
+    width: 30vw;
+    margin-bottom: 5vh;
+}
+
+.wrapper-contest {
+
+    margin-bottom: 5vh;
+}
+

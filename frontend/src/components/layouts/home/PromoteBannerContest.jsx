@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import Button from '../../button/ButtonAntd';
+import Deco from '../../../assets/images/ads-banner-2.svg';
+import './promoteBanner.scss';
 import '../../layouts/typography.scss';
-import './promoteBannerContest.scss';
-import Deco from '../../../assets/images/ads-banner.svg';
 
-class PromoteBanner extends Component {
+class PromoteBannerContest extends Component {
     render() {
         return(
-            <div className="promote-banner">
-                <img className="image-bg" src={Deco}/>
-                <div className="ads-content">
-                    <p className="title-3">
-                        Bingung dengan proyek
-                        kreatifmu
+            <div className="promote-banner-contest">
+            <img className="image-bg" src={Deco}/>
+            <div className="ads-content-contest">
+                <p className="title-3">
+                Susah kan nyari jarum, 
+di tumpukan jerami? Kontesin aja
+                </p>
+                <div className="wrapper-contest">
+                    <p className="bigger-body-text">
+                    Buat kontes, dan pilih dari ratusan desain dari komunitas kami
+untuk project kreatifmu yang lebih mudah.
                     </p>
-                    <div className="wrapper">
-                        <p className="bigger-body-text">
-                            Temukan lebih dari 100.000+ desainer
-                            terbaik untuk proyek kreatifmu
-                        </p>
-                    </div>
-                    <Button style="button primary" text="CARI REKOMENDASI"/>
                 </div>
+                <Button style="button primary" text="CARI REKOMENDASI"/>
             </div>
+        </div>
         )
     }
 }
 
-export default PromoteBanner;
+export default PromoteBannerContest;
