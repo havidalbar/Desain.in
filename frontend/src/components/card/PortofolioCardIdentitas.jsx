@@ -3,7 +3,7 @@ import { Icon } from 'antd';
 import './cstmCard.scss';
 import '../layouts/typography.scss';
 
-class CardPortfolio extends Component {
+class PortofolioCardIdentitas extends Component {
     render() {
         return (
             <div className="card-portfolio">
@@ -34,4 +34,4 @@ class CardPortfolio extends Component {
     }
 }
 
-export default CardPortfolio;
+export default PortofolioCardIdentitas;

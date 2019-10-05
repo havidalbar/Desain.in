@@ -32,15 +32,15 @@ class UpdateProfle extends Component {
         const { getFieldDecorator } = this.props.form;
         return (
             <div>
-                <Navbar/>
-                <div className= "halfHero" >
+                <Navbar />
+                <div className="halfHero" >
                     <img className="halfHeroImage" src={Deco} ></img>
                     <Col span={16} push={2}>
                         <div className="heroContent" title-3>
                             <p className="title-3">
-                            Berikesan yang menarik untuk siapa saja
+                                Berikesan yang menarik untuk siapa saja
                             <br></br>
-                            yang melihat profilemu
+                                yang melihat profilemu
                             </p>
                         </div>
                     </Col>
@@ -49,7 +49,7 @@ class UpdateProfle extends Component {
                     <Form layout="vertical" className="update-profile">
                         <Row gutter={16}>
                             <p className="title-3">
-                            Jangan ada yang terlewat ya!
+                                Jangan ada yang terlewat ya!
                             </p>
                             <Col span={6}>
                                 <p className="sub-title">
@@ -90,19 +90,19 @@ class UpdateProfle extends Component {
                                 </p>
                             </Col>
                             <Col span={18}>
-                            <Select
-                                mode="multiple"
-                                placeholder=""
-                                value={selectedItems}
-                                onChange={this.handleChange}
-                                style={{ width: '100%' }}
-                            >
-                                {filteredOptions.map(item => (
-                                <Select.Option key={item} value={item}>
-                                    {item}
-                                </Select.Option>
-                                ))}
-                            </Select>
+                                <Select
+                                    mode="multiple"
+                                    placeholder=""
+                                    value={selectedItems}
+                                    onChange={this.handleChange}
+                                    style={{ width: '100%' }}
+                                >
+                                    {filteredOptions.map(item => (
+                                        <Select.Option key={item} value={item}>
+                                            {item}
+                                        </Select.Option>
+                                    ))}
+                                </Select>
                             </Col>
                         </Row>
                         <Row gutter={9}>
@@ -124,21 +124,21 @@ class UpdateProfle extends Component {
                         </Row>
                         <Col span={6}>
                             <Form.Item>
-                                <Button style="button primary" text="BUAT CONTEST" htmlType="submit" onClick={this.handleSubmit}/>
+                                <Button style="button primary" text="BUAT CONTEST" htmlType="submit" onClick={this.handleSubmit} />
                             </Form.Item>
                         </Col>
                         <Col span={6}>
-                        <Form.Item>
-                            <Button style="button tertirary" text="CANCEL" htmlType="reset" onClick={this.handleReset}/>
-                        </Form.Item>
+                            <Form.Item>
+                                <Button style="button tertirary" text="CANCEL" htmlType="reset" onClick={this.handleReset} />
+                            </Form.Item>
                         </Col>
-                        
+
                     </Form>
-                  
+
                 </div>
-                <Footer/>
+                <Footer />
             </div>
-            
+
         )
     }
 }
