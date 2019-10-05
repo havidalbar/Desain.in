@@ -15,16 +15,16 @@ class Faq extends Component {
         return (
             <div className="display">
                 <p className="title-3 title-display">
-                    Kontes Kreatif
+                    FAQ
                 </p>
                 <Collapse bordered={false} defaultActiveKey={['1']} className="title-faq">
-                    <Panel header="Apa yang saya butuhkan untuk menggunakan layanan anda?" key="1">
+                    <Panel style={{width: '70vw'}} header="Apa yang saya butuhkan untuk menggunakan layanan anda?" key="1">
                         {text}
                     </Panel>
-                    <Panel header="Paket mana yang sebaiknya saya ambil?" key="2">
+                    <Panel style={{width: '70vw'}} header="Paket mana yang sebaiknya saya ambil?" key="2">
                         {text}
                     </Panel>
-                    <Panel header="Apakah anda menggunakan template atau sejenisnya?" key="3">
+                    <Panel style={{width: '70vw'}} header="Apakah anda menggunakan template atau sejenisnya?" key="3">
                         {text}
                     </Panel>
                 </Collapse>

@@ -37,7 +37,7 @@ const login = async (req, res, next) => {
       userId: userExists.id,
       status: userExists.status,
       token: token,
-      tokenExp: 365
+      tokenExp: 365 
     });
   } catch (error) {
     next(error);

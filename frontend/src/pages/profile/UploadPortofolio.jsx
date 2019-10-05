@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import '../../layouts/typography.scss';
-import './display.scss';
+import '../../components/layouts/typography.scss';
+import './uploadPortofolio.scss';
 import { Form, Input, Icon, Upload, message, Col, Row } from 'antd';
-import Button from '../../button/Button';
+import Button from '../../components/button/Button';
+import Navbar from '../../components/layouts/navbar/NavBar';
+
 
 const { TextArea } = Input;
 const { Dragger } = Upload;
+
 const props = {
     name: 'file',
     multiple: true,
@@ -27,17 +30,15 @@ class UploadPortofolio extends Component {
     render() {
         const formItemLayout = "vertical";
         const { getFieldDecorator } = this.props.form;
-        const text = (
-            <p className="jawaban-faq">
-                Saya akan mengajukan beberapa pertanyaan yang harus anda jawab. Sehingga saya dapat memahami bagaimana desain yang anda inginkan, dan yang sesuai untuk anda.</p>
-        );
+
         return (
             <div>
+                <Navbar/>
                 <div className="formReg">
                     <Form layout="vertical" className="create-contest">
                         <Row gutter={16}>
-                            <Col span={18}>
-                            <Form.Item label="Detail Konten"  {...formItemLayout}>
+                            <Col span={17}>
+                            <Form.Item  {...formItemLayout}>
                                     {getFieldDecorator('konten', {
                                         rules: [{ required: true, message: 'Please upload any detail file' }],
                                     }
@@ -56,6 +57,8 @@ class UploadPortofolio extends Component {
                                         </Dragger>)
                                     }
                                 </Form.Item>
+                            </Col>
+                            <Col span={7}>    
                                 <Form.Item label="Judul"  {...formItemLayout}>
                                     {getFieldDecorator('judul', {
                                         rules: [{ required: true, message: 'Please input your judul!' }],
@@ -77,12 +80,15 @@ class UploadPortofolio extends Component {
                                         rules: [{ required: true, message: 'Please input your description' }],
                                     }
                                     )(
-                                        <TextArea />)
+                                        <TextArea />
+                                        )
                                     }
                                 </Form.Item>
                                 <Form.Item>
-                                    <Button style="button primary" text="BUAT CONTEST" htmlType="submit" onClick={this.handleSubmit} />
-                                    <Button style="button primary" text="BUAT CONTEST" htmlType="submit" onClick={this.handleSubmit} />                                
+                                    <div className="selection-wrap">
+                                        <Button style="button primary fluid" text="SIMPAN DAN UNGGAH" htmlType="submit" onClick={this.handleSubmit} />
+                                        <Button style="button secondary fluid" text="BATAL" htmlType="submit" onClick={this.handleSubmit} />                                    
+                                    </div>
                                 </Form.Item>
                             </Col>
                         </Row>
