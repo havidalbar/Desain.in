@@ -9,10 +9,11 @@ for (let i = 0; i < 3; i++) {
         <li>
             <div className="avatar-wrap">
                 <div className="avatar">
+                <img src="https://storage.cloud.google.com/aldiwildan_bucket/foto-005.jpg" style={{width: 'inherit',height: 'inherit', borderRadius: '50px'}}/>
                 </div>
                 <div className="avatar-content">
                 <p className="title">
-                    Judul Kontes
+                Freeze Fuzz
                 </p>
                 <p className="meta-info">
                     oleh <span className="link">PT. Bahu Membahu</span>
