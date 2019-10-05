@@ -94,7 +94,7 @@ class Login extends Component {
                             <Button style="button primary fluid" text="masuk" htmlType="submit" onClick={this.handleSubmit}/>
                         </Form.Item>
                         <Form.Item>
-                            <p className="regular-body"> <a className="link" href="/#">Belum Punya Akun?</a> Buat baru yuk</p>
+                            <p className="regular-body"> <a className="link" href="/register">Belum Punya Akun?</a> Buat baru yuk</p>
                         </Form.Item>
                     </Form>
                 </Col>

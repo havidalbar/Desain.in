@@ -10,16 +10,16 @@ class HomeHero extends Component {
                     <Col span={18}>
                         <Carousel autoplay effect="fade">
                             <div>
-                                <h3>1</h3>
+                                <img src="https://storage.cloud.google.com/aldiwildan_bucket/foto-003.jpg" style={{width: 'inherit',width: 'inherit'}}/>
                             </div>
                             <div>
-                                <h3>2</h3>
+                                <img src="https://storage.cloud.google.com/aldiwildan_bucket/foto-007.jpg" />
                             </div>
                             <div>
-                                <h3>3</h3>
+                                <img src="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg" />
                             </div>
                             <div>
-                                <h3>4</h3>
+                                <img src="https://storage.cloud.google.com/aldiwildan_bucket/foto-005.jpg" />
                             </div>
                         </Carousel>
                     </Col>

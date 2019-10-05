@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import Button from '../../button/Button';
 import Deco from '../../../assets/images/ads-banner-2.svg';
 import './promoteBanner.scss';
@@ -20,7 +22,9 @@ class PromoteBannerContest extends Component {
                             untuk project kreatifmu yang lebih mudah.
                     </p>
                     </div>
-                    <Button style="button primary" text="CARI REKOMENDASI" />
+                    <Link to="/rekomendasi">
+                        <Button style="button primary" text="CARI REKOMENDASI" />
+                    </Link>
                 </div>
             </div>
         )

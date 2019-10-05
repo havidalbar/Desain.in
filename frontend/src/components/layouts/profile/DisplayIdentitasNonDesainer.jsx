@@ -12,10 +12,10 @@ class DisplayIdentitasNonDesainer extends Component {
                     Portofolio Tony
                 </p>
                 <div class="card-wrapper">
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" />
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" />
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" />
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" />
+                    <PortofolioCard judul="Fireberry" userName="Claudy Adelia" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-003.jpg" />
+                    <PortofolioCard judul="Freeze Fuzz" userName="Claudy Adelia" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-002.jpg" />
+                    <PortofolioCard judul="Bat Berry" userName="Claudy Adelia" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg" />
+                    <PortofolioCard judul="Abstract Illustrations" userName="Claudy Adelia" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-007.jpg" />
                 </div>
                 <div className="btn-wrap">
                     <Button style="button primary" text="LIHAT LEBIH BANYAK" />

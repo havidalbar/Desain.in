@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import ContestCard from '../../card/ContestCard';
 import Button from '../../button/Button';
 import '../../layouts/typography.scss';
@@ -12,9 +13,9 @@ class DisplayPortofolioNotSigned extends Component {
                     Kontes Kreatif
                 </p>
                 <div class="card-wrapper">
-                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" />
-                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" />
-                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" />
+                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-005.jpg" />
+                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-007.jpg" />
+                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg" />
                 </div>
                 <div className="btn-wrap">
                     <Button style="button primary" text="LIHAT LEBIH BANYAK" />

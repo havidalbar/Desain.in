@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Icon, Tag, Divider } from 'antd';
+import { Link } from 'react-router-dom';
+
 import Navbar from '../../components/layouts/navbar/NavBar';
 import Footer from '../../components/layouts/footer/Footer';
 import Display from '../../components/layouts/profile/DisplayPortofolio';
@@ -11,10 +13,10 @@ import '../../components/layouts/typography.scss';
 
 class Profile extends Component {
     render() {
-        return(
+        return (
             <div class="profile">
-                <Navbar/>
-                <Banner image="" title="Tony Hurella" meta="Mendapat Invitasi" work="24" kontes="2" portfolio="10"/>
+                <Navbar />
+                <Banner image="https://storage.cloud.google.com/aldiwildan_bucket/foto-009.jpg" title="Claudy Adelia" meta="Mendapat Invitasi" work="24" kontes="2" portfolio="10" />
                 <div className="profile-description">
                     <div className="up-content">
                         <div className="left-item">
@@ -22,12 +24,12 @@ class Profile extends Component {
                                 Desainer Identitas Brand
                             </p>
                             <div className="rating">
-                                <Icon type="star" className="icn-wrap" theme="filled" style={{color: '#FF9B21'}}/>
+                                <Icon type="star" className="icn-wrap" theme="filled" style={{ color: '#FF9B21' }} />
                                 <p className=" ind-content meta-rating">4.5 dari 5.0</p>
                             </div>
                         </div>
                         <div className="left-item">
-                            <Button style="button primary" text="PESAN DESAIN"/>
+                            <Button style="button primary" text="PESAN DESAIN" />
                         </div>
                     </div>
                     <div className="tag">
@@ -43,11 +45,11 @@ class Profile extends Component {
                         Deskripsi
                     </p>
                     <p className="bigger-body-text">
-                    Saya adalah seorang desainer yang penuh dengan passion. Setiap pekerjaan akan sangat berarti bagi saya, sama seperti anda mencurahkan banyak pengalaman dan waktu untuk merawat seorang anak. Tentunya bila tidak merancang dan mempersiapkan yang terbaik hal tersebut takkan berjalan dengan baik. Saya Tony Hurella, akan membarikan pengalaman terbaik untuk setiap proyek kreatif anda.
+                        Saya adalah seorang desainer yang penuh dengan passion. Setiap pekerjaan akan sangat berarti bagi saya, sama seperti anda mencurahkan banyak pengalaman dan waktu untuk merawat seorang anak. Tentunya bila tidak merancang dan mempersiapkan yang terbaik hal tersebut takkan berjalan dengan baik. Saya Tony Hurella, akan membarikan pengalaman terbaik untuk setiap proyek kreatif anda.
                     </p>
                 </div>
-                
-                <Display judulDisplay="Portfolio, " namaPengguna="Tony"/>
+
+                <Display judulDisplay="Portfolio, " namaPengguna="Tony" />
 
 
                 <div className="tabel-layanan">
@@ -80,7 +82,7 @@ class Profile extends Component {
                                     Standart
                                 </p>
                                 <p className="regular-body-text">
-                                    2 konsep logo termasuk file JPEG, PNG, dan file asli. Keseluruhannya dapat diedit. 
+                                    2 konsep logo termasuk file JPEG, PNG, dan file asli. Keseluruhannya dapat diedit.
                                 </p>
                             </td>
                             <td>
@@ -100,18 +102,18 @@ class Profile extends Component {
                                 Logo Transparan
                             </th>
                             <td >
-                                <p className="check-feature"style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                             <td >
-                                <p className="check-feature"style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                             <td >
-                                <p className="check-feature"style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                         </tr>
@@ -120,18 +122,18 @@ class Profile extends Component {
                                 High Definition
                             </th>
                             <td >
-                                <p className="check-feature"style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                             <td >
-                                <p className="check-feature"style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                             <td >
-                                <p className="check-feature"style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                         </tr>
@@ -140,18 +142,18 @@ class Profile extends Component {
                                 File Desain *ex .ai .psd
                             </th>
                             <td >
-                                <p className="check-feature"style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                             <td >
-                                <p className="check-feature"style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                             <td >
-                                <p className="check-feature"style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                         </tr>
@@ -160,18 +162,18 @@ class Profile extends Component {
                                 Desain ATK
                             </th>
                             <td >
-                                <p className="check-feature"style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                             <td >
-                                <p className="check-feature"style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                             <td >
-                                <p className="check-feature"style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                         </tr>
@@ -180,18 +182,18 @@ class Profile extends Component {
                                 Social Media Kit
                             </th>
                             <td >
-                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                             <td >
-                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                             <td >
-                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} >
-                                    <Icon type="check-circle" theme="filled" style={{display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA'}}/>    
+                                <p className="check-feature" style={{ width: '18vw', padding: '4vh 2vw', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} >
+                                    <Icon type="check-circle" theme="filled" style={{ display: 'inline-block', verticalAlign: 'middle', fontSize: '2em', color: '#0020DA' }} />
                                 </p>
                             </td>
                         </tr>
@@ -200,17 +202,17 @@ class Profile extends Component {
                                 Revisi
                             </th>
                             <td>
-                                <p className="package-detail" style={{padding: '4vh 2vw'}}>
+                                <p className="package-detail" style={{ padding: '4vh 2vw' }}>
                                     Revisi
                                 </p>
                             </td>
                             <td>
-                                <p className="package-detail" style={{padding: '4vh 2vw'}}>
+                                <p className="package-detail" style={{ padding: '4vh 2vw' }}>
                                     3 Revisi
                                 </p>
                             </td>
                             <td>
-                                <p className="package-detail" style={{padding: '4vh 2vw'}}>
+                                <p className="package-detail" style={{ padding: '4vh 2vw' }}>
                                     2 Revisi
                                 </p>
                             </td>
@@ -220,46 +222,52 @@ class Profile extends Component {
                                 Waktu Pengerjaan
                             </th>
                             <td>
-                                <p className="package-detail" style={{padding: '4vh 2vw'}}>
+                                <p className="package-detail" style={{ padding: '4vh 2vw' }}>
                                     2 Hari
                                 </p>
                             </td>
                             <td>
-                                <p className="package-detail" style={{padding: '4vh 2vw'}}>
+                                <p className="package-detail" style={{ padding: '4vh 2vw' }}>
                                     2 Hari
                                 </p>
                             </td>
                             <td>
-                                <p className="package-detail" style={{padding: '4vh 2vw'}}>
+                                <p className="package-detail" style={{ padding: '4vh 2vw' }}>
                                     2 Hari
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <th className="service-head">
-                            
+
                             </th>
                             <td>
-                                <p className="package-detail" style={{padding: '4vh 2vw'}}>
-                                    <Button  style="button primary" text="PREMIUM"/>
+                                <p className="package-detail" style={{ padding: '4vh 2vw' }}>
+                                    <Link to="/chat">
+                                        <Button style="button primary" text="PREMIUM" />
+                                    </Link>
                                 </p>
                             </td>
                             <td>
-                                <p className="package-detail" style={{padding: '4vh 2vw'}}>
-                                    <Button  style="button secondary" text="STANDART"/>
+                                <p className="package-detail" style={{ padding: '4vh 2vw' }}>
+                                    <Link to="/chat">
+                                        <Button style="button secondary" text="STANDART" />
+                                    </Link>
                                 </p>
                             </td>
                             <td>
-                                <p className="package-detail" style={{padding: '4vh 2vw'}}>
-                                    <Button  style="button secondary" text="DASAR"/>
+                                <p className="package-detail" style={{ padding: '4vh 2vw' }}>
+                                    <Link to="/chat">
+                                        <Button style="button secondary" text="DASAR" />
+                                    </Link>
                                 </p>
                             </td>
                         </tr>
                     </table>
                 </div>
-                <Faq/>
+                <Faq />
 
-                <Footer/>
+                <Footer />
             </div>
         );
     }

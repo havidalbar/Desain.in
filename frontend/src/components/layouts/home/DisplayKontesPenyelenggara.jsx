@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import PortofolioCard from '../../card/PortofolioCardIdentitas';
 import Button from '../../button/Button';
 import '../../layouts/typography.scss';
@@ -34,8 +36,10 @@ class DisplayKontesPenyelenggara extends Component {
                 </p>
                 <br />
                 <div className="button-between">
-                    <Button style="button primary" text="IKUT KONTES" />
-                    <Button style="button secondary" text="UNDUH PANDUAN" /> 
+                    <Link to="/join-contest">
+                        <Button style="button primary" text="IKUT KONTES" />
+                    </Link>
+                    <Button style="button secondary" text="UNDUH PANDUAN" />
                 </div>
                 <br />
                 <br />
@@ -46,10 +50,10 @@ class DisplayKontesPenyelenggara extends Component {
                     Cek karya yang sudah masuk ya
                 </p>
                 <div class="card-wrapper">
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" />
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" />
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" />
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" />
+                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-002.jpg"/>
+                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-005.jpg"/>
+                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-003.jpg"/>
+                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg"/>
                 </div>
                 <div className="btn-wrap">
                     <Button style="button primary" text="LIHAT LEBIH BANYAK" />

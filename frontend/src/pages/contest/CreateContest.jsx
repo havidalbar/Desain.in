@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Form, Input, InputNumber, Icon, Upload, Select, DatePicker, message, Col, Row } from 'antd';
+import { Link } from 'react-router-dom';
+
 import Navbar from '../../components/layouts/navbar/NavBar';
 import Footer from '../../components/layouts/footer/Footer';
 import Button from '../../components/button/Button';
@@ -207,7 +209,9 @@ class CreateContest extends Component {
                                     }
                                 </Form.Item>
                                 <Form.Item>
-                                    <Button style="button primary" text="BUAT CONTEST" htmlType="submit" onClick={this.handleSubmit} />
+                                    <Link to="/contest">
+                                        <Button style="button primary" text="BUAT CONTEST" htmlType="submit" onClick={this.handleSubmit} />
+                                    </Link>
                                 </Form.Item>
                             </Col>
                         </Row>
