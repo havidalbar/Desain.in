@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PortofolioCard from '../../card/PortofolioCardIdentitas';
-import Button from '../../button/ButtonAntd';
+import Button from '../../button/Button';
 import '../../layouts/typography.scss';
 import './display.scss';
 

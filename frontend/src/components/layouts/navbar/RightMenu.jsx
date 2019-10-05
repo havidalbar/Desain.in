@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Menu} from 'antd';
-import Button from '../../button/ButtonAntd';
+import Button from '../../button/Button';
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
 
