@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button, Icon }from 'antd';
-import './components/layouts/home/modal.scss';
+import '../components/layouts/home/modal.scss';
 
 class App extends Component {
   state = { visible: false };
@@ -36,7 +36,6 @@ class App extends Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
           footer={[
-
           ]}
         >
           <p className="title-3">
