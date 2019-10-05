@@ -9,7 +9,7 @@ class DisplayIdentitasNonDesainer extends Component {
         return (
             <div className="display">
                 <p className="title-3 title-display">
-                    Portofolio Tony
+                    Portofolio Claudy Adelia
                 </p>
                 <div class="card-wrapper">
                     <PortofolioCard judul="Fireberry" userName="Claudy Adelia" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-003.jpg" />
