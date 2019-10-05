@@ -41,9 +41,15 @@ switch (NODE_ENV) {
 
 const DATABASE = database;
 const AUTH_TOKEN = process.env.AUTH_TOKEN;
+const GOOGLE = {
+  PROJECT_ID: process.env.GCS_PROJECT_ID,
+  BUCKET: process.env.GCS_BUCKET,
+  KEY_FILE_NAME: "./config/" + process.env.GCS_KEY 
+}
 
 module.exports = {
   NODE_ENV,
   DATABASE,
-  AUTH_TOKEN
+  AUTH_TOKEN,
+  GOOGLE
 }

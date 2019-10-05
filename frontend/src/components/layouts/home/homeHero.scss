@@ -1,0 +1,65 @@
+@import "../../../../node_modules/rfs/scss.scss";
+
+
+@font-face {
+    font-family: "Nunito-bold";
+    font-style: normal;
+    src: local("Nunito"), url(../../../assets/fonts/Nunito/Nunito-Bold.ttf);
+}
+
+
+.hero {
+    height: calc(100vh - 100px);
+    padding: 5vh 5vw;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ant-carousel .slick-slide {
+    height: 75vh;
+    width: 50vw;
+    border-radius: 50px;
+    
+    text-align: center;
+    line-height: 160px;
+    background: #364d79;
+    overflow: hidden;
+    
+}
+
+.ant-carousel .slick-slide h3 {
+    color: #fff;
+}
+
+.side-hero {
+    height: 75vh;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between !important;
+    width: 100%;
+    content: none !important;
+}
+
+.side-menu-item {
+    height: 23vh;
+    width: 100%;
+
+    background: #364d79;
+    border-radius: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-family: "Nunito-bold";
+    @include font-size(2rem !important);
+}
+
+.ant-col-6 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}

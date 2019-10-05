@@ -1,0 +1,67 @@
+@import "../../../node_modules/rfs/scss.scss";
+
+@font-face {
+    font-family: "Nunito-lt";
+    font-style: normal;
+    src: local("Nunito"), url(../../assets/fonts/Nunito/Nunito-Light.ttf);
+}
+
+@font-face {
+    font-family: "Nunito-bld";
+    font-style: normal;
+    src: local("Nunito-Bold"), url(../../assets/fonts/Nunito/Nunito-Bold.ttf);
+}
+
+
+
+.title-3 {
+    font-family: "Nunito-lt";
+    @include font-size(3rem !important);
+    color: #0020da;
+}
+
+label {
+    font-family: "Nunito-bld";
+    @include font-size(1.3rem !important);
+    color: #0020da !important;
+}
+
+.login {
+    height: 100vh;
+    padding: 5vw;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.login-logo {
+    margin-bottom: 2vh;
+}
+
+.ant-form-item-required::before {
+    content: none !important;
+}
+
+.ant-input {
+    padding: 3vh 1vw;
+    border-radius: 0.5vw;
+    @include font-size(1rem !important);
+}
+
+.fancy-image {
+    background-color: #edf5f8;
+}
+
+.fancy-image-content {
+    height: 100vh;
+}
+
+.regular-body {
+    font-family: "Nunito-rg";
+    @include font-size(1rem !important);
+}
+
+.link {
+    font-family: "Nunito-bld";
+}

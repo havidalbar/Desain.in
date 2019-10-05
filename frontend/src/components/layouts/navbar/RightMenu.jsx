@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Menu} from 'antd';
-import PrimaryButton from '../../button/Primary';
-import SecondaryButton from '../../button/Secondary';
+import Button from '../../button/ButtonAntd';
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
 
@@ -27,10 +26,10 @@ render(){
                 </MenuItem>
             </SubMenu>
             <MenuItem  className="button-nav">
-                <PrimaryButton text="Masuk"></PrimaryButton>
+                <Button style="button primary" text="Masuk"></Button>
             </MenuItem>
             <MenuItem  className="button-nav">
-                <SecondaryButton text="Daftar"></SecondaryButton>
+                <Button style="button secondary" text="Daftar"></Button>
             </MenuItem>
         </Menu>
     );

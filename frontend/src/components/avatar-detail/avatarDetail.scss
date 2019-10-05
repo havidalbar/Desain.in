@@ -1,0 +1,26 @@
+.avatar-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 20vw;
+}
+
+.avatar {
+    border-radius: 50px;
+    background-color: white;
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.avatar-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+p  {
+    margin: 0;
+}
+
+

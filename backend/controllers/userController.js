@@ -1,122 +1,273 @@
 const validator = require('validator');
-const multer = require('multer');
 const knex = require('../database');
+const bcrypt = require('bcrypt');
+const uuidv4 = require('uuid/v4');
 
-let storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads')
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname)
-  }
-});
+const { validation } = require('../middlewares');
 
-const maxSize = 10 * 1000 * 1000 // 10MB
-let upload = multer({ storage : storage, limits: { fileSize: maxSize} });
+const recommendation = async (req, res, next) => { }
 
-/*
- * User's behaviour as main function,
- * give another function for supporting each main function
- */
+const unhexUUID = uuid => {
+  return new Buffer.from(uuid, 'hex');
+}
 
+const invitationDeleteTrx = (userInvitedId, UUIDHex) => {
+  return new Promise((resolve, reject) => {
+    knex.transaction(async trx => {
+      try {
 
-const rekomendasi = async (req, res, next) => {}
-const uploadPortofolio = async (req, res, next) => {
+        await trx.from('user_invitation')
+          .where('id_invited_user', userInvitedId)
+          .del();
 
+        await trx.from('invitation')
+          .where('id', UUIDHex)
+          .del();
+
+      } catch (error) {
+        console.log(error);
+        reject(false);
+      } finally {
+        console.log(`Invitation Transaction Executed`);
+      }
+    });
+    resolve(true);
+  });
+}
+
+const acceptInvitation = async (req, res, next) => {
   try {
-    const { judul, deskripsi, tag } = req.body;
-    const validJudul = validator.isLength(judul, { max: 255});
-    const validDeskripsi = validator.isLength( deskripsi, { max: 1500 });
+    const { uuid, confirmation } = req.body;
+    const { 'userId': userInvitedId } = req.state;
 
-    if(!validJudul || !validDeskripsi) {
-      throw new Error('Unable to process, please check your input is valid');
+    const isUUID = await validator.isLength(uuid, { min: 32, max: 32 });
+    const isValidConfirmation = await confirmation == 1 || confirmation == 0;
+
+    if (!isUUID || !isValidConfirmation) {
+      const error = new Error('Validation failed please check your input');
+      res.status(422);
+      return next(error);
     }
 
-    /*
-     * 1.
-     * 2.
-     * 3.
-     * 4.
-     * 5.
-     */ 
+    let { 'status': checkUserIsDesigner } = await knex('user').select('status').where('id', userInvitedId).first();
+    if (checkUserIsDesigner) {
+      const error = new Error('User invited already a designer');
+      res.status(406);
+      return next(error);
+    }
+
+    let UUIDHex = unhexUUID(uuid);
+    let checkUserIsInvited = await knex('invitation').where({ id: UUIDHex, id_invited_user: userInvitedId }).first();
+    if (!checkUserIsInvited) {
+      const error = new Error('Invitation not found');
+      res.status(404);
+      return next(error);
+    }
+
+    if (confirmation) await knex('user').update({ status: 1 }).where({ id: userInvitedId });
+
+    let isTransactionSuccess = await invitationDeleteTrx(userInvitedId, UUIDHex);
+    if (!isTransactionSuccess) {
+      const error = new Error('Failed to delete invitation');
+      res.status(409);
+      return next(error);
+    }
+
+    return res.status(200).json({
+      confirmation: confirmation,
+      message: confirmation ? "Accepted" : "Rejected"
+    })
+  } catch (error) {
+    next(error);
+  }
+}
+
+const createInvitation = async (req, res, next) => {
+  try {
+    const { userInvitedId } = req.params;
+    const { userId } = req.state;
+    let UUID = new Buffer.from(uuidv4().replace(/-/g, ''), 'hex');
+
+    let checkIsAlreadyInvited = await knex('user_invitation').where({ id_user: userId, id_invited_user: userInvitedId }).first();
+    if (checkIsAlreadyInvited) {
+      const error = new Error('This user has already invited');
+      res.status(406);
+      return next(error);
+    }
+
+    let { 'status': checkUserIsDesigner } = await knex('user').select('status').where('id', userId).first();
+    if (!checkUserIsDesigner) {
+      const error = new Error('You don\'t have permission to create Invitation');
+      res.status(403);
+      return next(error);
+    }
+
+    let { 'status': checkUserInvitedIsDesigner } = await knex('user').select('status').where('id', userInvitedId).first();
+    if (checkUserInvitedIsDesigner) {
+      const error = new Error('User invited already a designer');
+      res.status(406);
+      return next(error);
+    }
+
+    let userInvited = { id: UUID, id_invited_user: userInvitedId }
+    let userAndDesigner = { id_user: userId, id_invited_user: userInvitedId }
+
+    await knex('invitation').insert(userInvited);
+    await knex('user_invitation').insert(userAndDesigner);
+
+    return res.status(201).json({
+      UUID: UUID.toString('hex'),
+      userId: userInvitedId
+    });
 
   } catch (error) {
     next(error);
   }
 }
 
-const menerimaInvitasi = async (req, res, next) => {
+const cancelInvitation = async (req, res, next) => {
   try {
-    const { invitationId, status } = req.body;
+    const { uuid, userInvitedId } = req.body,
+      { userId } = req.state,
+      isUUID = await validator.isLength(uuid, { min: 32, max: 32 }),
+      isUserInvitedIdValid = await userInvitedId > 0;
 
-    /* 
-     * 1. cek invitationId di tabel invitation 
-     * 2. cek status
-     * 3. mengembalikan pesan / notifikasi ke frontend 
-     * 
-     * 1.a. invitationId tidak ada
-     * 1.a.1 throw error message 'invitation failed, please ask to sender for re-invite you as designer'
-     * 
-     * 2.a jika status 0 (menolak invitasi)
-     * 2.a.1 hapus data invitation pada db sesuai invitationId
-     * 2.a.2 set pesan { status : 0, message : ... }
-     * 
-     * 2.b jika status 1 (menerima invitasi)
-     * 2.b.1 ubah status pada tabel user menjadi 1 (desainer)
-     * 2.b.2 set pesan { status : 1, message : ... }
-     */
+    if (!isUUID || !isUserInvitedIdValid) {
+      const error = new Error('Validation failed please check your input');
+      res.status(422);
+      return next(error);
+    }
 
+    let checkUserIsInviter = await knex('user_invitation').where({ id_user: userId, id_invited_user: userInvitedId }).first();
+    if (!checkUserIsInviter) {
+      const error = new Error('You don\'t have permission to cancel Invitation');
+      res.status(403);
+      return next(error);
+    }
+
+    let UUIDHex = unhexUUID(uuid);
+    let checkInvitationValid = await knex('invitation').where('id', UUIDHex).first();
+    if (!checkInvitationValid) {
+      const error = new Error('Invitation not found');
+      res.status(404);
+      return next(error);
+    }
+
+    let isTransactionSuccess = await invitationDeleteTrx(userInvitedId, UUIDHex);
+    if (!isTransactionSuccess) {
+      const error = new Error('Failed to delete invitation');
+      res.status(409);
+      return next(error);
+    }
+
+    return res.status(200).json({
+      message: "Successfully canceled the invitation"
+    })
   } catch (error) {
-    next(error)
+    next(error);
   }
 }
 
-/*
- * Desainer's behaviour as main function,
- * give another function for supporting each main function
- */
-
-
-const memberiInvitasi = async (req, res, next) => {
+const getUserProfile = async (req, res, next) => {
   try {
-    const { userId } = req.body;
+    const { userId } = req.params;
+    let checkUser = await knex('user')
+      .select('nama', 'email', 'phone_number', 'status', 'rating')
+      .where('id', userId).first();
+    if (!checkUser) {
+      const error = new Error('User not found');
+      res.status(404);
+      return next(error);
+    }
 
-    /*
-     * invitationId (dalam bentuk random / encoded)
-     * desainer telah menekan tombol untuk memberi invitasi
-     *  
-     * 1. cek user pada tabel user dengan id = userId
-     * 2. cek status user 
-     * 3. invitationId didapat dengan hash / encode dari userId + nama user   
-     * 4. set pesan { userId, invitationId } 
-     * 5. mengembalikan pesan ke frontend
-     * 
-     * 1.a jika tidak ada 
-     * 1.a.1 throw error message 'user isn't exist'
-     * 
-     * 2.a jika user adalah desainer
-     * 2.a.1 throw error message 'this user already a designer'  
-     */
+    return res.status(200).json({ user: checkUser })
+  } catch (error) {
+    next(error);
+  }
+}
+
+const updateUser = async (req, res, next) => {
+  try {
 
   } catch (error) {
     next(error);
   }
 }
 
-/*
- * Store USER main function
- */
+const updatePassword = async (req, res, next) => {
+  try {
+    let { userId } = req.state;
+    if (userId) {
+      let userExists = await knex('user').where({ id: userId }).first();
+      if (userExists) {
+        let { oldPassword, newPassword } = req.body;
+        if (oldPassword || newPassword !== undefined) {
+          const isEqual = await bcrypt.compare(oldPassword, userExists.password);
+          if (isEqual) {
+            validPassword = validator.isLength(newPassword, { min: 8 });
+            if (validPassword) {
+              try {
+                hashedPassword = await bcrypt.hash(newPassword, 12);
+              }
+              catch (err) {
+                const error = new Error(err);
+                res.status(500);
+                next(error);
+              }
+              try {
+                let update = await knex('user')
+                  .where({ id: userExists.id })
+                  .update({
+                    password: hashedPassword
+                  });
+                res.json({
+                  message: "update"
+                });
+              }
+              catch (err) {
+                const error = new Error(err);
+                res.status(500);
+                next(error);
+              }
+            } else {
+              validation(res, validPassword);
+            }
+          } else {
+            const error = new Error("Password not match");
+            res.status(406);
+            next(error);
+          }
+        }
+        else {
+          const error = new Error("Password not provided");
+          res.status(412);
+          next(error);
+        }
+      }
+      else {
+        res.status(404).json({
+          message: 'not found'
+        });
+      }
+    }
+    else {
+      const error = new Error("User id not provided");
+      res.status(412);
+      next(error);
+    }
+  } catch (error) {
+    next(error);
+  }
+}
 
 const USER = {
-  rekomendasi,
-  uploadPortofolio,
-  menerimaInvitasi
+  recommendation,
+  createInvitation,
+  acceptInvitation,
+  cancelInvitation,
+  getUserProfile,
+  updateUser,
+  updatePassword
 }
 
-/*
- * Store DESAINER main function
- */
-
-const DESAINER = { memberiInvitasi }
-
-module.exports = { ...USER, ...DESAINER }
+module.exports = { ...USER }

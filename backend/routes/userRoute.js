@@ -2,20 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 const userController = require('../controllers/userController');
-const { auth } = require('../middlewares/authHandler');
+const { auth, uploadFileToGCS } = require('../middlewares');
 
-/*
- * USER routes 
- */
+router.get('/profile/:userId', userController.getUserProfile)
 
-router.post('/rekomendasi', userController.rekomendasi);
-router.post('/portofolio/upload', auth, userController.uploadPortofolio);
-router.post('/invitasi/terima', auth, userController.menerimaInvitasi);
+router.post('/invitation/:userInvitedId/create', auth, userController.createInvitation);
+router.post('/invitation/accept', auth, userController.acceptInvitation);
 
-/*
- * DESAINER routes 
- */
+router.put('/update_password', auth, userController.updatePassword);
 
-router.post('/invitasi/berikan', auth, userController.memberiInvitasi);
+router.delete('/invitation/cancel', auth, userController.cancelInvitation);
 
 module.exports = router
