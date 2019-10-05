@@ -14,9 +14,14 @@ class DisplayKontesPenyelenggara extends Component {
                 <p className="meta-info-penyelenggara">
                     oleh <span className="link">PT. Bahu Membahu</span>
                 </p>
+                <br/>
                 <p className="bigger-body-text">
                     Sebuah kontes merancang logo pertamini, dimana kami semua berharap logo yang dirancang dapat mewakili seluruh visi dan misi perusahaan kami. Karena menurut kamu logo adalah cerminan pertama sebuah perusahaan                    </p>
                 <br />
+                <br />
+                <p className="meta-info-harga">
+                    Hadiah <span className="harga">Rp. 10.000.000</span>
+                </p>
                 <p className="title-3 title-display">
                     Cek karya yang sudah masuk ya
                 </p>
