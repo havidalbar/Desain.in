@@ -5,6 +5,7 @@ import Footer from '../../components/layouts/footer/Footer';
 import Display from '../../components/layouts/profile/DisplayPortofolio';
 import Banner from '../../components/layouts/profile/BannerIdentitas';
 import Button from '../../components/button/Button';
+import Faq from '../../components/layouts/profile/Faq';
 import './profile.scss'
 import '../../components/layouts/typography.scss';
 
@@ -48,6 +49,7 @@ class Profile extends Component {
                 
                 <Display judulDisplay="Portfolio, " namaPengguna="Tony"/>
 
+
                 <div className="tabel-layanan">
                     <div className="up-content">
                         <div className="left-item">
@@ -56,7 +58,7 @@ class Profile extends Component {
                             </p>
                         </div>
                     </div>
-                    <table className="tabel-layanan">
+                    <table className="tabel-layanan-check">
                         <tr>
                             <th className="tabel-head">Detail Paket</th>
                             <td>
@@ -255,7 +257,7 @@ class Profile extends Component {
                         </tr>
                     </table>
                 </div>
-
+                <Faq/>
                 <Footer/>
             </div>
         );
