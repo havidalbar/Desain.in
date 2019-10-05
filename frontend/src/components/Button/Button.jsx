@@ -4,7 +4,7 @@ import './button.scss';
 class Button extends Component {
 render(){
     return(
-        <button className={this.props.style}>{this.props.text}</button>
+        <button className={this.props.style} >{this.props.text}</button>
     );
 }
 }
