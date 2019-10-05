@@ -2,17 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 const portfolioController = require('../controllers/portfolioController');
-const { auth } = require('../middlewares');
+const { auth, upload, uploadFileToGCS, imageValidation } = require('../middlewares');
 
-router.get('/', portfolioController.portfolio);
-router.get('/getByUserId', portfolioController.getByUserId);
-router.get('/getPortfolioDetailById', portfolioController.getDetailById);
+router.get('/:userId', portfolioController.getByUserId);
+router.get('/:postId/detail', portfolioController.getDetailById);
 
-router.post('/uploadImage', auth, portfolioController.uploadImage);
-router.post('/uploadData', auth, portfolioController.uploadData);
+router.post('/upload_image', auth, upload.single('image'), imageValidation, uploadFileToGCS, portfolioController.uploadImage);
+router.post('/upload_data', auth, portfolioController.uploadData);
 
-router.put('/updateData', auth, portfolioController.updateData);
+router.put('/update_data', auth, portfolioController.updateData);
 
-router.delete('/deletePortfolioById', auth, portfolioController.deleteById);
+router.delete('/:postId', auth, portfolioController.deleteById);
 
 module.exports = router

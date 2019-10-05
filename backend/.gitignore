@@ -1,2 +1,5 @@
 node_modules
 .env
+
+# gcs credential
+*/google.json
