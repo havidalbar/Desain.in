@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Form, Input } from 'antd';
+import { Link } from 'react-router-dom';
+
 import Logo from '../../assets/images/logo-2.svg';
 import Deco from '../../assets/images/login-people.svg';
 import Button from '../../components/button/ButtonAntd';
@@ -91,7 +93,9 @@ class Login extends Component {
                             }
                         </Form.Item>
                         <Form.Item>
-                            <Button style="button primary fluid" text="masuk" htmlType="submit" onClick={this.handleSubmit}/>
+                            <Link to="/">
+                                <Button style="button primary fluid" text="masuk" htmlType="submit" onClick={this.handleSubmit} />
+                            </Link>
                         </Form.Item>
                         <Form.Item>
                             <p className="regular-body"> <a className="link" href="/register">Belum Punya Akun?</a> Buat baru yuk</p>

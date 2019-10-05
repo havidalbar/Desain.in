@@ -48,16 +48,16 @@ class Footer extends Component {
                                 <li><a href="/#">Tentang Kami</a></li>
                                 <li><a href="/#">Bantuan</a></li>
                                 <li><a href="/#">Kontak Kami</a></li>
-                                <li><a href="/#">Kontes</a></li>
-                                <li><a href="/#">Portfolio</a></li>
+                                <li><a href="/contest">Kontes</a></li>
+                                <li><a href="/profile">Portfolio</a></li>
                             </ul>
                         </div>
                         <div className="item">
                             <span className="item-title">Butuh Desain</span>
                             <ul>
-                                <li><a href="/#">Buat Kontes</a></li>
-                                <li><a href="/#">Pesan Desain</a></li>
-                                <li><a href="/#">Lihat Portfolio</a></li>
+                                <li><a href="/create-contest">Buat Kontes</a></li>
+                                <li><a href="/profile">Pesan Desain</a></li>
+                                <li><a href="/profile">Lihat Portfolio</a></li>
                             </ul>
                         </div>
                         <div className="item grow">

@@ -48,9 +48,9 @@ class DisplayKontesPenyelenggara extends Component {
                     Cek karya yang sudah masuk ya
                 </p>
                 <div class="card-wrapper">
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-002.jpg"/>
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-005.jpg"/>
-                    <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-003.jpg"/>
+                    <PortofolioCard judul="Judul Portfolio" userName="Claudy Adelia" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-002.jpg"/>
+                    <PortofolioCard judul="Judul Portfolio" userName="Wildan A" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-005.jpg"/>
+                    <PortofolioCard judul="Judul Portfolio" userName="Havid Albar" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-003.jpg"/>
                     <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg"/>
                 </div>
                 <div className="btn-wrap">

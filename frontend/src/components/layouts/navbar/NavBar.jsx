@@ -42,8 +42,7 @@ class NavBar extends Component {
                         closable={!false}
                         onClose={this.onClose}
                         visible={this.state.visible}
-                        className="drawer"
-                    >
+                        className="drawer">
                         <Menu mode="vertical">
                             <MenuItem key="beranda">
                                 <a href="/#">BERANDA</a>

@@ -29,7 +29,9 @@ class Profile extends Component {
                             </div>
                         </div>
                         <div className="left-item">
-                            <Button style="button primary" text="PESAN DESAIN" />
+                            <Link to="/chat">
+                                <Button style="button primary" text="PESAN DESAIN" />
+                            </Link>
                         </div>
                     </div>
                     <div className="tag">

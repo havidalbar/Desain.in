@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Form, Input } from 'antd';
+import { Link } from 'react-router-dom';
+
 import Button from '../../components/button/ButtonAntd';
 import './register.scss';
 
@@ -49,29 +51,29 @@ class Register extends Component {
                     password: values.password
                 }
                 this.setState({ signup: true })
-                    fetch(URL_SINGUP, {
-                        method: 'POST',
-                        body: JSON.stringify(body),
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    }).then(response => {
-                        if (response.ok) {
-                            return response.json();
+                fetch(URL_SINGUP, {
+                    method: 'POST',
+                    body: JSON.stringify(body),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        return response.json();
 
-                        }
-                        return response.json().then(error => {
-                            throw new Error(error.message);
-                        });
-                    }).then(user => {
-                        this.setState({ done: true })
-                        this.setState({ signup: false })
-                    }).catch(error => {
-                        this.setState({ errorMessage: error.message });
-                        this.setState({ signup: false })
-
+                    }
+                    return response.json().then(error => {
+                        throw new Error(error.message);
                     });
-                
+                }).then(user => {
+                    this.setState({ done: true })
+                    this.setState({ signup: false })
+                }).catch(error => {
+                    this.setState({ errorMessage: error.message });
+                    this.setState({ signup: false })
+
+                });
+
             }
         });
     };
@@ -91,8 +93,8 @@ class Register extends Component {
                     </p>
                     </div>
                     <Form layout="vertical" onSubmit={this.handleSubmit} className="register-wrap">
-                        <Form.Item label="Username" {...formItemLayout} >
-                            {getFieldDecorator('username', {
+                        <Form.Item label="Nama" {...formItemLayout} >
+                            {getFieldDecorator('nama', {
                                 rules: [{ required: true, message: 'Namamu terlewat, tolong diisi ya' }],
                             }
                             )(
@@ -104,32 +106,44 @@ class Register extends Component {
                                 rules: [{ required: true, message: 'Alamat emailmu terlewat, tolong diisi ya' }],
                             }
                             )(
-                                <Input placeholder="improudtodesign@mail.com" />)
+                                <Input placeholder="improudtodesign@mail.com" type="email"/>)
+                            }
+                        </Form.Item>
+                        <Form.Item label="Telepon" {...formItemLayout} >
+                            {getFieldDecorator('telepon', {
+                                rules: [{ required: true, message: 'Alamat emailmu terlewat, tolong diisi ya' }],
+                            }
+                            )(
+                                <Input placeholder="0821012389" type="number"/>)
                             }
                         </Form.Item>
                         <Form.Item label="Password" {...formItemLayout} >
                             {getFieldDecorator('password', {
                                 rules: [{ required: true, message: 'Kata sandi untuk keamananmu, jangan terlewat' }, {
-                                    validator: this.validateToNextPassword}],
+                                    validator: this.validateToNextPassword
+                                }],
                             }
                             )(
-                                <Input placeholder="Masukkan kata sandi" />)
+                                <Input placeholder="Masukkan kata sandi" type="password"/>)
                             }
                         </Form.Item>
                         <Form.Item label="Masukkan kembali password" {...formItemLayout} >
                             {getFieldDecorator('confirmPassword', {
                                 rules: [{ required: true, message: 'password yang diberikan berbeda nih' }, {
-                                    validator: this.compareToFirstPassword}],
+                                    validator: this.compareToFirstPassword
+                                }],
                             }
                             )(
-                                <Input placeholder="Pastikan sama ya" />)
+                                <Input placeholder="Pastikan sama ya" type="password"/>)
                             }
                         </Form.Item>
                         <Form.Item>
                             <p>Dengan bergabung dengan kami anda akan dinyatakan setuju  dengan segala <a className="link" href="/#">kebijakan kami</a></p>
                         </Form.Item>
                         <Form.Item>
-                            <Button style="button primary" text="daftar" htmlType="submit" />
+                            <Link to="/login">
+                                <Button style="button primary" text="daftar" htmlType="submit" />
+                            </Link>
                         </Form.Item>
                     </Form>
                 </Col>
