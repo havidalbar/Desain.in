@@ -49,3 +49,10 @@
     font-size: 1.7em;
     padding-top: 10px;
 }
+
+.button-between{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 35vw;
+}

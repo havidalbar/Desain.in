@@ -3,18 +3,28 @@ import PortofolioCard from '../../card/PortofolioCardIdentitas';
 import Button from '../../button/Button';
 import '../../layouts/typography.scss';
 import './display.scss';
+import { Icon } from 'antd';
+
+
 
 class DisplayKontesPenyelenggara extends Component {
     render() {
         return (
             <div className="display">
+                <div className="image-cover-kontes">
+                    <img className="img-kontes" src={this.props.imageSrc} />
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
                 <p className="title-3">
                     Kontes desain logo pertamini
                     </p>
                 <p className="bigger-body-text">
                     oleh <span className="link">PT. Bahu Membahu</span>
                 </p>
-                <br/>
+                <br />
                 <p className="bigger-body-text">
                     Sebuah kontes merancang logo pertamini, dimana kami semua berharap logo yang dirancang dapat mewakili seluruh visi dan misi perusahaan kami. Karena menurut kamu logo adalah cerminan pertama sebuah perusahaan                    </p>
                 <br />
@@ -23,10 +33,10 @@ class DisplayKontesPenyelenggara extends Component {
                     Hadiah <span className="harga">Rp. 10.000.000</span>
                 </p>
                 <br />
-                <span className="button-beetwen">
-                <Button style="button primary" text="LIHAT LEBIH BANYAK" />
-                <Button style="button secondary" text="LIHAT LEBIH BANYAK" />                
-                </span>
+                <div className="button-between">
+                    <Button style="button primary" text="IKUT KONTES" />
+                    <Button style="button secondary" text="UNDUH PANDUAN" /> 
+                </div>
                 <br />
                 <br />
                 <br />
