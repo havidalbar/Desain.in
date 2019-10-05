@@ -8,8 +8,17 @@ class DisplayKontesPenyelenggara extends Component {
     render() {
         return (
             <div className="display">
+                <p className="title-3">
+                    Kontes desain logo pertamini
+                    </p>
+                <p className="meta-info-penyelenggara">
+                    oleh <span className="link">PT. Bahu Membahu</span>
+                </p>
+                <p className="bigger-body-text">
+                    Sebuah kontes merancang logo pertamini, dimana kami semua berharap logo yang dirancang dapat mewakili seluruh visi dan misi perusahaan kami. Karena menurut kamu logo adalah cerminan pertama sebuah perusahaan                    </p>
+                <br />
                 <p className="title-3 title-display">
-                Cek karya yang sudah masuk ya
+                    Cek karya yang sudah masuk ya
                 </p>
                 <div class="card-wrapper">
                     <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200" />
