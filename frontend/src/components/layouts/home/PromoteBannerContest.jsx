@@ -11,13 +11,13 @@ class PromoteBannerContest extends Component {
             <img className="image-bg" src={Deco}/>
             <div className="ads-content-contest">
                 <p className="title-3">
-                Susah kan nyari jarum, 
-di tumpukan jerami? Kontesin aja
+                    Susah kan nyari jarum, 
+                    di tumpukan jerami? Kontesin aja
                 </p>
                 <div className="wrapper-contest">
                     <p className="bigger-body-text">
-                    Buat kontes, dan pilih dari ratusan desain dari komunitas kami
-untuk project kreatifmu yang lebih mudah.
+                        Buat kontes, dan pilih dari ratusan desain dari komunitas kami
+                        untuk project kreatifmu yang lebih mudah.
                     </p>
                 </div>
                 <Button style="button primary" text="CARI REKOMENDASI"/>

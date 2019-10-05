@@ -14,7 +14,7 @@ class Home extends Component {
 
             <NavBar/>
             <HomeHero/>
-            <DisplayPortofoloio/>
+            <DisplayPortofoloio judulDisplay="Portofolio Kreatif Minggu Ini"/>
             <PromoteBannerService/>
             <DisplayContest/>
             <PromoteBannerContest/>

@@ -9,7 +9,7 @@ class DisplayPortofolio extends Component {
         return(
             <div className="display">
                 <p className="title-3 title-display">
-                    Portfolio Kreatif Minggu Ini
+                    {this.props.judulDisplay} {this.props.namaPengguna}
                 </p>
                 <div class="card-wrapper">
                     <PortofolioCard judul="Judul Portfolio" userName="Gilang Nur A'idi" likeCount="200" viewCount="200"/>
