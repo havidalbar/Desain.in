@@ -12,9 +12,9 @@ class DisplayPortofolio extends Component {
                     Kontes Kreatif
                 </p>
                 <div class="card-wrapper">
-                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-008.jpg"/>
-                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-004.jpg"/>
-                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-002.jpg"/>
+                    <ContestCard judul="Fireberry" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-008.jpg"/>
+                    <ContestCard judul="Bat Berry" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-004.jpg"/>
+                    <ContestCard judul="Freeze Fuzz" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-002.jpg"/>
                 </div>
                 <div className="btn-wrap">
                     <Button style="button primary" text="LIHAT LEBIH BANYAK" />

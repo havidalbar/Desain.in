@@ -13,9 +13,9 @@ class DisplayPortofolioNotSigned extends Component {
                     Kontes Kreatif
                 </p>
                 <div class="card-wrapper">
-                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-005.jpg" />
-                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-007.jpg" />
-                    <ContestCard judul="Judul Contest" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg" />
+                    <ContestCard judul="Fireberry" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-005.jpg" />
+                    <ContestCard judul="Bat Berry" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-007.jpg" />
+                    <ContestCard judul="Abstract Illustrations" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg" />
                 </div>
                 <div className="btn-wrap">
                     <Button style="button primary" text="LIHAT LEBIH BANYAK" />
