@@ -1,3 +1,17 @@
+@import "../../../node_modules/rfs/scss.scss";
+
+@font-face {
+    font-family: "Nunito-lt";
+    font-style: normal;
+    src: local("Nunito-lt"), url(../../assets/fonts/Nunito/Nunito-Light.ttf);
+}
+
+@font-face {
+    font-family: "Nunito-bld";
+    font-style: normal;
+    src: local("Nunito-bld"), url(../../assets/fonts/Nunito/Nunito-Bold.ttf);
+}
+
 .profile-description {
     padding: 10vh 5vw;
 }
@@ -30,4 +44,57 @@
     display: flex;
     flex-direction: row;
 }
+
+.tabel-layanan {
+    padding: 10vh 5vw;
+    background-color: #EDF5F8;
+}
+
+table {
+    margin-top: 10vh;
+}
+
+.tabel-head {
+    width: 20vw;
+    vertical-align: top;
+}
+
+.tabel-layanan td {
+    width: 18vw;
+    padding: 0 2vw;
+    vertical-align: top;
+}
+
+.tabel-head {
+    font-family: "Nunito-lt";
+    color: #0020DA;
+    @include font-size(2rem !important);
+}
+
+.price-package {
+    font-family: "Nunito-bld";
+    color: #191847;
+    @include font-size(2.5rem !important);
+}
+
+.package {
+    font-family: "Nunito-lt";
+    color: #0020DA;
+    @include font-size(2rem !important);
+}
+
+.service-head {
+    font-family: "Nunito-lt";
+    color: #0020DA;
+    @include font-size(1.5rem !important);
+}
+
+.package-detail {
+    font-family: "Nunito-lt";
+    text-align: center;
+    color: #191847;
+    @include font-size(1.5em !important);
+    
+}
+
 

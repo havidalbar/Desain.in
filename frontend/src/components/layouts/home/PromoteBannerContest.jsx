@@ -17,7 +17,7 @@ class PromoteBannerContest extends Component {
                     <div className="wrapper-contest">
                         <p className="bigger-body-text">
                             Buat kontes, dan pilih dari ratusan desain dari komunitas kami
-        untuk project kreatifmu yang lebih mudah.
+                            untuk project kreatifmu yang lebih mudah.
                     </p>
                     </div>
                     <Button style="button primary" text="CARI REKOMENDASI" />
