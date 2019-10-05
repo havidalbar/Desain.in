@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Modal from '../../../pages/Modal';
+
 import PortofolioCard from '../../card/PortfolioCard';
 import Button from '../../button/Button';
 import '../../layouts/typography.scss';

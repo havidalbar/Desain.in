@@ -7,14 +7,12 @@ import '../../layouts/typography.scss';
 import './display.scss';
 import { Icon } from 'antd';
 
-
-
 class DisplayKontesPenyelenggara extends Component {
     render() {
         return (
             <div className="display">
                 <div className="image-cover-kontes">
-                    <img className="img-kontes" src={this.props.imageSrc} />
+                    <img className="img-kontes" src="https://storage.cloud.google.com/aldiwildan_bucket/foto-010.jpg" />
                 </div>
                 <br />
                 <br />
