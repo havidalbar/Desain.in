@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PortofolioCard from '../../card/PortofolioCardIdentitas';
+import PortofolioCard from '../../card/PortfolioCard';
 import Button from '../../button/ButtonAntd';
 import '../../layouts/typography.scss';
 import './display.scss';

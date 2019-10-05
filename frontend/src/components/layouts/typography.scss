@@ -64,6 +64,12 @@
     @include font-size(1.5rem !important);
 }
 
+.meta-rating {
+    font-family: "Nunito-lt";
+    color: #191847;
+    @include font-size(1rem !important);
+}
+
 .regular-body-text {
     font-family: "Pt-sans-reg";
     color: #191847;

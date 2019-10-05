@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from '../../components/layouts/navbar/NavBar';
 import Footer from '../../components/layouts/footer/Footer';
-import DisplayStyle from '../../components/layouts/home/DisplayStyleChose';
-import BannerStyle from '../../components/layouts/home/PromoteBannerChose';
+import DisplayStyle from '../../components/layouts/rekomendasi/DisplayStyleChose';
+import BannerStyle from '../../components/layouts/rekomendasi/PromoteBannerChose';
 
 
 

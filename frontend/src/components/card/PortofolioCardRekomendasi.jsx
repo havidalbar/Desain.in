@@ -6,8 +6,8 @@ class CardPortfolioRekomendasi extends Component {
     render() {
         return (
             <div className="card-portfolio">
-                <div className="image-cover">
-                    <img className="img" src={this.props.imageSrc} />
+                <div className="image-cover-rekomendasi">
+                    <img className="img-rekomendasi" src={this.props.imageSrc} />
                 </div>
                 <div className="card-content">
                     <p className="bigger-body-text">

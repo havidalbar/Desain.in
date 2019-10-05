@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import './promoteBanner.scss';
 import '../../layouts/typography.scss';
 import Deco from '../../../assets/images/contest-reg.svg';
-
+import './promoteBanner.scss';
 
 class PromoteBannerRekomendasiPerson extends Component {
     render() {
