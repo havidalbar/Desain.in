@@ -56,7 +56,7 @@ const createContest = async (req, res, next) => {
 
 const joinContest = async (req, res, next) => {
   try {
-    const { contestId } = req.body;
+    const { contestId } = req.params;
     
 
   } catch (error) {

@@ -2,40 +2,42 @@ const validator = require('validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const knex = require('../database');
+
 const { AUTH_TOKEN } = require('../config');
-const {validation } = require('../middlewares/index');
-
-
+const { validation } = require('../middlewares');
 
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body,
       validEmail = validator.isEmail(email),
       validPassword = validator.isLength(password, { min: 8 });
-    
-    validation (res,validEmail, validPassword);
-    
+
+    if(!validEmail || !validPassword){
+      const error = new Error('Validation failed please check your input');
+      res.status(422);
+      return next(error);
+    }
+
     let userExists = await knex('user').where({ email }).first();
     if (!userExists) {
       const error = new Error('User isn\'t exist');
-      return res.status(404).json({
-        error: error.message
-      });
+      res.status(404);
+      return next(error);
     }
 
     const isEqual = await bcrypt.compare(password, userExists.password);
     if (!isEqual) {
       const error = new Error('Wrong Password');
-      return res.status(401).json({
-        message: error.message
-      });
+      res.status(401);
+      return next(error);
     }
 
-    const token = await jwt.sign({ userId: userExists.id }, AUTH_TOKEN, { expiresIn: '365d' });
+    const token = await jwt.sign({ userId: userExists.id, status: userExists.status }, AUTH_TOKEN, { expiresIn: '365d' });
     return res.status(200).json({
       userId: userExists.id,
+      status: userExists.status,
       token: token,
-      tokenExp: 365
+      tokenExp: 365 
     });
   } catch (error) {
     next(error);
@@ -48,15 +50,18 @@ const signup = async (req, res, next) => {
       validEmail = validator.isEmail(email),
       validPassword = validator.isLength(password, { min: 8 }),
       hashedPassword = await bcrypt.hash(password, 12);
-      
-    validation (validEmail, validPassword, res);
+
+    if(!validEmail || !validPassword){
+      const error = new Error('Validation failed please check your input');
+      res.status(422);
+      return next(error);
+    }
 
     let userExists = await knex('user').where({ email }).first();
     if (userExists) {
       const error = new Error('User already exist');
-      return res.status(409).json({
-        message: error.message
-      });
+      res.status(409);
+      return next(error);
     }
 
     let user = {
