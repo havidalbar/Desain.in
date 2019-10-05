@@ -87,7 +87,7 @@ class Login extends Component {
                                 rules: [{ required: true, message: 'Please input your password!' }],
                             }
                             )(
-                                <Input placeholder="password" />)
+                                <Input.Password  placeholder="password" />)
                             }
                         </Form.Item>
                         <Form.Item>

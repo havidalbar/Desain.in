@@ -113,7 +113,7 @@ class Register extends Component {
                                     validator: this.validateToNextPassword}],
                             }
                             )(
-                                <Input placeholder="Masukkan kata sandi" />)
+                                <Input.Password placeholder="Masukkan kata sandi" />)
                             }
                         </Form.Item>
                         <Form.Item label="Masukkan kembali password" {...formItemLayout} >
@@ -122,7 +122,7 @@ class Register extends Component {
                                     validator: this.compareToFirstPassword}],
                             }
                             )(
-                                <Input placeholder="Pastikan sama ya" />)
+                                <Input.Password placeholder="Pastikan sama ya" />)
                             }
                         </Form.Item>
                         <Form.Item>
