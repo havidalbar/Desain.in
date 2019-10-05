@@ -7,7 +7,7 @@ import Deco from '../../../assets/images/ads-banner-2.svg';
 class PromoteBannerChose extends Component {
     render() {
         return (
-            <div className="promote-banner-contest">
+            <div className="promote-banner-contest-chose">
                 <img className="image-bg" src={Deco} />
                 <div className="ads-content-contest-2">
                     <p className="title-3">
