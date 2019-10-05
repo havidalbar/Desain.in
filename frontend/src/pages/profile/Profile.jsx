@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Tag } from 'antd';
+import { Icon, Tag, Divider } from 'antd';
 import Navbar from '../../components/layouts/navbar/NavBar';
 import Footer from '../../components/layouts/footer/Footer';
 import Display from '../../components/layouts/profile/DisplayPortofolio';
@@ -258,6 +258,7 @@ class Profile extends Component {
                     </table>
                 </div>
                 <Faq/>
+
                 <Footer/>
             </div>
         );
