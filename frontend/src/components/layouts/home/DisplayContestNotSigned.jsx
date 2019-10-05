@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ContestCard from '../../card/ContestCard';
-import Button from '../../button/ButtonAntd';
+import Button from '../../button/Button';
 import '../../layouts/typography.scss';
 import './display.scss';
 

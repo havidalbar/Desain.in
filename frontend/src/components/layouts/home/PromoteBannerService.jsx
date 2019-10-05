@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from '../../button/ButtonAntd';
+import Button from '../../button/Button';
 import '../../layouts/typography.scss';
 import './promoteBanner.scss';
 import Deco from '../../../assets/images/ads-banner.svg';

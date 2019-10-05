@@ -92,3 +92,8 @@ label {
     @include font-size(1.3rem !important);
     color: #0020da !important;
 }
+.harga{
+    font-family: "Nunito-sbld";
+    color: #191847;
+    @include font-size(1.8rem !important);
+}

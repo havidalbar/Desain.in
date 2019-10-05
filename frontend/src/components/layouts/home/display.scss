@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Pt-sans-reg";
+    font-style: normal;
+    src: local("Pt-sans-reg"), url(../../../assets/fonts/PtSans/PTSans-Regular.ttf);
+}
 .display {
     padding: 5vh ;
     margin: 10vh 0;
@@ -40,10 +45,7 @@
 }
 
 .meta-info-harga{
+    font-family: "Pt-sans-reg";
     font-size: 1.7em;
     padding-top: 10px;
-}
-
-.harga{
-    
 }
