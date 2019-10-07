@@ -33,42 +33,6 @@ class NavBar extends Component {
                     <div className="rightMenu">
                         <RightMenu mode="horizontal"/>
                     </div>
-                    <Button className="barsMenu" type="primary" onClick={this.showDrawer}>
-                        <span className="barsBtn"></span>
-                    </Button>
-                    <Drawer
-                        title="MENU"
-                        placement="right"
-                        closable={!false}
-                        onClose={this.onClose}
-                        visible={this.state.visible}
-                        className="drawer">
-                        <Menu mode="vertical">
-                            <MenuItem key="beranda">
-                                <a href="/#">BERANDA</a>
-                            </MenuItem>
-                            <MenuItem key="kontes">
-                                <a href="kontes">KONTES</a>
-                            </MenuItem>
-                            <SubMenu title={<span>LAYANAN</span>}>
-                                <MenuItem>
-                                    <a href="/#">PESAN DESAIN</a>
-                                </MenuItem>
-                                <MenuItem>
-                                    <a href="/#">BUAT KONTES</a>
-                                </MenuItem>
-                                <MenuItem>
-                                    <a href="/#">CARI REKOMENDASI</a>
-                                </MenuItem>
-                            </SubMenu>
-                            <MenuItem  className="button-nav">
-                                <a href="/#">MASUK</a>
-                            </MenuItem>
-                            <MenuItem  className="button-nav">
-                                <a href="/#">DAFTAR</a>
-                            </MenuItem>
-                        </Menu>
-                    </Drawer>
                 </div>
             </nav>
         );
