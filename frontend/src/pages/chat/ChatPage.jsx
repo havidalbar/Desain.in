@@ -8,21 +8,27 @@ import './chatPage.scss';
 import '../../components/layouts/typography.scss';
 import Socket from 'socket.io-client';
 import jwt from 'jsonwebtoken';
+import ChatBubble from '../../components/ChatBubble';
 
 
 
-
-class renderChat extends Component {
+class RenderChat extends Component {
 
 
 
     render() {
+        let who = 'me'
+        if (this.props.data.from != 'Adam Asa') {
+            who = 'you'
+        }
+
         return (
-        
-                <Message authorName={this.props.chat.form}>
-                    <MessageText>{this.props.chat.chat}</MessageText>
-                </Message>
-          
+
+            <div className={`bubble-container ${who}`} >
+                <p>{this.props.nama}</p>
+                <div className={`bubble ${who}`}>{this.props.data.chat}</div>
+            </div>
+
         )
     }
 }
@@ -31,7 +37,7 @@ class ChatPage extends Component {
 
 
 
-    
+
     constructor(props) {
         super(props);
         this.state = {
@@ -42,7 +48,7 @@ class ChatPage extends Component {
     }
 
 
-      sendChat(chat) {
+    sendChat(chat) {
         let decoded = jwt.decode(localStorage.token);
         const endPoint = 'http://localhost:250';
         const socket = Socket(endPoint);
@@ -51,25 +57,24 @@ class ChatPage extends Component {
             chat: chat
         }
         socket.emit('sendMessage', data);
-        socket.on('chat',  (data) =>{
-            this.setState({data:data});
+        socket.on('chat', (data) => {
+            this.setState({ data: data });
         });
     }
-    
-
-
 
     componentDidMount() {
         const endPoint = 'http://localhost:250';
         const socket = Socket(endPoint);
-        socket.on('chat',  (data)=> {
-           this.setState({data:data});
+        socket.on('chat', (data) => {
+            this.setState({ data: data });
+            console.log(data);
         });
+        socket.open();  
 
     }
 
-    render() {
 
+    render() {
         return (
             <div>
                 <Navbar />
@@ -77,15 +82,11 @@ class ChatPage extends Component {
                     <Row gutter={2}>
                         <Col span={16}>
                             <div className="chat-section">
-                                <MessageGroup>
-                                {/* {console.log(this.state.data)} */}
-                                  {this.state.data.forEach(chat=>{
-                                      return <renderChat data={chat}/>
-                                  })}
-                                  <Message authorName='asd'>
-                    <MessageText>Hello</MessageText>
-                </Message>
-                                </MessageGroup>
+                                {this.state.data.map(data => {
+                                    return (
+                                        <RenderChat data={data} />
+                                    )
+                                })}
                                 <ThemeProvider>
                                     <TextComposer onChange={(data) => {
                                         this.setState({ chat: data.target.value });
