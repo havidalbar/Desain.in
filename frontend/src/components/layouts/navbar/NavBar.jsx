@@ -26,7 +26,7 @@ class NavBar extends Component {
     render() {
         return (
             <nav className="menuBar">
-                <div className="logo">
+                <div className="logo" onClick={()=>{window.location.replace('/')}}>
                     <img  className="navLogo" src={Logo} alt="Design.in"></img>
                 </div>
                 <div className="menuCon">
