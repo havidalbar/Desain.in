@@ -67,9 +67,12 @@ class ChatPage extends Component {
         const socket = Socket(endPoint);
         socket.on('chat', (data) => {
             this.setState({ data: data });
-            console.log(data);
-        });
-        socket.open();  
+        })
+        setInterval(() => {
+            socket.on('chat', (data) => {
+                this.setState({ data: data });
+            })
+        }, 1000)
 
     }
 

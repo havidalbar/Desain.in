@@ -8,17 +8,21 @@ const io = require('socket.io')(server);
 
 //socket initialization
 
-let chat =[{
-from:'adam',
-chat:"hehehe"
+let chat = [{
+  from: 'adam',
+  chat: "hehehe"
 }];
 
 server.listen(250);
-io.on('connection',(socket)=>{
-  socket.emit('chat', chat);
+io.on('connection', (socket) => {
+  setInterval(() => {
+
+    socket.emit('chat', chat);
+
+  }, 1000)
   socket.on('sendMessage', function (data) {
     chat.push(data);
-    socket.emit('chat',chat);
+    socket.emit('chat', chat);
   });
 });
 
