@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
-import { Timeline, Modal, Form, Input, Icon } from 'antd';
+import { Timeline, Modal, Form, Input, Icon, Popconfirm, message } from 'antd';
 import Button from '../../button/ButtonAntd';
 import '../../layouts/typography.scss';
 import './stepperChat.scss';
 import Axios from 'axios';
+
+const removeStep = (val) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            await Axios.delete(`http://localhost:5000/transaction/2/delete/${val}`, {
+                headers: {
+                    'content-type': 'application/json',
+                    Authorization: 'Bearer ' + localStorage.token
+                }
+            })
+
+            resolve(true);
+        } catch (error) {
+            console.log(error);
+            reject(false);
+        }
+    })
+}
 
 function StepperRender(props) {
     return (
@@ -11,7 +29,27 @@ function StepperRender(props) {
             <Timeline.Item>
                 <p className="regular-body-text">{props.data.nama}
                     <Icon type="edit" style={{ fontSize: '10pt' }} />
-                    <Icon type="close" style={{ fontSize: '10pt', marginTop: '1vw', float: 'right' }} /> </p>
+                    <Popconfirm
+                        title="Apakah anda yakin ingin menghapus step ini ?"
+                        onConfirm={e => {
+                            e.preventDefault();
+                            const isRemoveSuccess = removeStep(props.data.id);
+                            if (isRemoveSuccess) {
+                                message.success("Step berhasil dihapus");
+                                window.location.reload();
+                            } else {
+                                message.error("Gagal menghapus step");
+                            }
+                        }}
+                        onCancel={e => {
+                            e.preventDefault();
+                        }}
+                        okText="Ya"
+                        cancelText="Tidak"
+                        stepId={props.data.id}>
+                        <Icon type="close" style={{ fontSize: '10pt', marginTop: '1vw', float: 'right' }} />
+                    </Popconfirm>
+                </p>
                 <p className="regular-body-text">Besaran biaya {props.data.persen} %</p>
                 <p className="regular-body-text">{props.data.harga}</p>
             </Timeline.Item>
@@ -39,7 +77,7 @@ class StepperChatDesigner extends Component {
             console.log(values);
 
             try {
-                const insertStep = await Axios.post("http://localhost:5000/transaction/2/create", {
+                await Axios.post("http://localhost:5000/transaction/2/create", {
                     "nama": values.Nama,
                     "persen": values.Persen
                 }, {
@@ -72,8 +110,7 @@ class StepperChatDesigner extends Component {
                     onCancel={() => {
                         this.setState({ visible: false })
                     }}
-                    onOk={this.createStep}
-                >
+                    onOk={this.createStep}>
                     <Form layout="vertical">
                         <Form.Item label="Nama Step">
                             {getFieldDecorator('Nama', {

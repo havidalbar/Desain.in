@@ -13,10 +13,7 @@ import jwt from 'jsonwebtoken';
 import ChatBubble from '../../components/ChatBubble';
 import Axios from 'axios';
 
-
 class RenderChat extends Component {
-
-
 
     render() {
         let decoded = jwt.decode(localStorage.token);
