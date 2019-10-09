@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Timeline, Modal, Form, Input, Icon, Popconfirm, message } from 'antd';
-import Button from '../../button/ButtonAntd';
 import '../../layouts/typography.scss';
 import './stepperChat.scss';
 import Axios from 'axios';
@@ -23,12 +22,64 @@ const removeStep = (val) => {
     })
 }
 
+Form.create()(StepperRender);
+
 function StepperRender(props) {
+    let [visible, setVisible] = useState(false);
+    let [nama, setNamaStep] = useState(props.data.nama);
+    let [persen, setPersen] = useState(props.data.persen);
+
     return (
         <Timeline>
             <Timeline.Item>
                 <p className="regular-body-text">{props.data.nama}
-                    <Icon type="edit" style={{ fontSize: '10pt' }} />
+                    <Modal
+                        visible={visible}
+                        okText={"Update Step"}
+                        onCancel={() => {
+                            setVisible(false);
+                        }}
+                        onOk={() => {
+                            try {
+                                Axios.put(`http://localhost:5000/transaction/2/update/${props.data.id}`, {
+                                    nama: nama,
+                                    persen: persen.toString()
+                                }, {
+                                    headers: {
+                                        'content-type': 'application/json',
+                                        Authorization: 'Bearer ' + localStorage.token
+                                    }
+                                })
+
+                                setVisible(false);
+                                window.location.reload();
+                            } catch (error) {
+                                console.log(error);
+                            }
+
+                        }}
+                    >
+                        <Form layout="vertical">
+                            <Form.Item label="Nama Step">
+                                <Input type="text" maxLength="100" defaultValue={nama} onChange={(data) => {
+                                    setNamaStep(data.target.value);
+                                    console.log(nama);
+                                    console.log(persen);
+                                }} />
+                            </Form.Item>
+                            <Form.Item label="Persen (%)">
+                                <Input type="number" min="0" max="100" defaultValue={persen} onChange={(data) => {
+                                    setPersen(data.target.value);
+                                    console.log(nama);
+                                    console.log(persen);
+                                }} />
+                            </Form.Item>
+                        </Form>
+                    </Modal>
+                    <Icon type="edit" style={{ fontSize: '10pt' }} onClick={() => {
+                        setVisible(true);
+                    }} />
+
                     <Popconfirm
                         title="Apakah anda yakin ingin menghapus step ini ?"
                         onConfirm={e => {
@@ -124,7 +175,7 @@ class StepperChatDesigner extends Component {
                         </Form.Item>
                     </Form>
                 </Modal>
-                {this.state.data ? this.state.data.map(data => <StepperRender data={data} />) : <h3>loading...</h3>}
+                {this.state.data ? this.state.data.map(data => <StepperRender data={data} fieldDecorator={this.props.form} />) : <h3>loading...</h3>}
                 {this.props.sisa <= 100 && this.props.sisa >= 0 ? <button className="button primary" btnText="Tambah Step"
                     onClick={() => {
                         this.setState({ visible: true })

@@ -506,7 +506,7 @@ const updateStep = async (req, res, next) => {
     let { userId } = req.state;
     let { nama, persen } = req.body;
     let { transactionId, stepId } = req.params;
-
+    
     const validateNama = validator.isLength(nama, { max: 100 });
     const validatePersen = validator.isFloat(persen, { min: 0., max: 100. });
 
@@ -548,7 +548,7 @@ const updateStep = async (req, res, next) => {
       .join({ ts : 'transaction_step' }, 'ts.id_step', 's.id')
       .where({ 'ts.id_transaction' : transactionId, 's.id': stepId })
       .first(); 
-
+      
     let { total_persen, harga } = await knex({ s: 'step' })
     .select(knex.raw('coalesce(sum(s.persen), 0) as total_persen, t.harga as harga'))
     .join({ ts: 'transaction_step' }, 'ts.id_step', 's.id')
@@ -567,9 +567,9 @@ const updateStep = async (req, res, next) => {
     harga = Math.ceil(harga);
 
     let step = {
-      nama,
-      harga,
-      persen
+      'nama':nama,
+      'harga':harga,
+      'persen':persen
     }
 
     let insertStep = await knex('step').update(step).where('id', stepId);
