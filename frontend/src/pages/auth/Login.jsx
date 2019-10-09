@@ -29,7 +29,7 @@ class Login extends Component {
         e.preventDefault();
 
         this.props.form.validateFields((err, values) => {
-            if (err) { }
+            if (err) { return;}
 
             const body = {
                 email: values.email,
