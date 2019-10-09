@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { Col } from 'antd';
 import { Row, ThemeProvider, TextComposer, MessageGroup, Message, TextInput, SendButton, MessageText } from '@livechat/ui-kit'
+
 import Navbar from '../../components/layouts/navbar/NavBar';
 import AvatarDetail from '../../components/avatar-detail/AvatarDetail';
 import StepDesigner from '../../components/layouts/chat-layout/StepperChatDesigner';
 import './chatPage.scss';
 import '../../components/layouts/typography.scss';
+
 import Socket from 'socket.io-client';
 import jwt from 'jsonwebtoken';
 import ChatBubble from '../../components/ChatBubble';
-
+import Axios from 'axios';
 
 
 class RenderChat extends Component {
@@ -17,8 +19,9 @@ class RenderChat extends Component {
 
 
     render() {
+        let decoded = jwt.decode(localStorage.token);
         let who = 'me'
-        if (this.props.data.from != 'Adam Asa') {
+        if (this.props.data.from != decoded.userName) {
             who = 'you'
         }
 
@@ -34,17 +37,36 @@ class RenderChat extends Component {
 }
 
 class ChatPage extends Component {
-
-
-
-
     constructor(props) {
         super(props);
         this.state = {
             data: [],
-            chat: ''
+            chat: '',
+            transaction: {},
+            sisa: 0
         }
         this.sendChat = this.sendChat.bind(this);
+    }
+
+    loadTransactionStep = async () => {
+        try {
+            const { data } = await Axios.get('http://localhost:5000/transaction/detail/2', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + localStorage.token
+                },
+            })
+            this.setState({ transaction: data.transactionDetail });
+
+            let { step } = this.state.transaction;
+            let stepPersen = 0;
+            step.map(s => stepPersen += s.persen);
+
+            this.setState({ sisa: (100 - stepPersen) });
+
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 
@@ -63,6 +85,7 @@ class ChatPage extends Component {
     }
 
     componentDidMount() {
+        this.loadTransactionStep();
         const endPoint = 'http://localhost:250';
         const socket = Socket(endPoint);
         socket.on('chat', (data) => {
@@ -73,7 +96,6 @@ class ChatPage extends Component {
                 this.setState({ data: data });
             })
         }, 1000)
-
     }
 
 
@@ -117,12 +139,12 @@ class ChatPage extends Component {
                                     Progress Pekerjaan
                                 </p>
                                 <div className="display-step">
-                                    <StepDesigner titleName="design brief" persen="30%" biaya="90.000" />
+                                    <StepDesigner titleName="design brief" persen="30%" biaya="90.000" step={this.state.transaction.step} sisa={this.state.sisa} />
                                 </div>
                                 <p className="bigger-body-text">
                                     Total nilai proyek
                                     <br />
-                                    Rp. 300.0000
+                                    {this.state.transaction.harga}
                                 </p>
                             </div>
                         </Col>

@@ -38,23 +38,26 @@
 }
 
 .me {
-    margin-left: 18px;
-    margin-right: 60px;
+    margin-right: 18px;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .me::before {
-    box-shadow: -2px 2px 2px 0 rgba(178, 178, 178, 0.4);
-    left: -9px;
+    box-shadow: 2px -2px 2px 0 rgba(178, 178, 178, 0.4);
+    right: -9px;
 }
 
 .you {
-    margin-left: 60px;
-    margin-right: 18px;
+    margin-left: 18px;
+    margin-right: 60px;
+    display: flex;
+    flex-direction: row;
 }
 
 .you::before {
-    box-shadow: 2px -2px 2px 0 rgba(178, 178, 178, 0.4);
-    right: -9px;
+    box-shadow: -2px 2px 2px 0 rgba(178, 178, 178, 0.4);
+    left: -9px;
 }
 
 .img-circle {
