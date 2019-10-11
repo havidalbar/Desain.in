@@ -8,10 +8,7 @@ const io = require('socket.io')(server);
 
 //socket initialization
 
-let chat = [{
-  from: 'adam',
-  chat: "hehehe"
-}];
+let chat = [];
 
 server.listen(250);
 io.on('connection', (socket) => {

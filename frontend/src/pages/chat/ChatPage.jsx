@@ -40,7 +40,8 @@ class ChatPage extends Component {
             data: [],
             chat: '',
             transaction: {},
-            sisa: 0
+            sisa: 0,
+            user:{}
         }
         this.sendChat = this.sendChat.bind(this);
     }
@@ -58,9 +59,11 @@ class ChatPage extends Component {
             let { step } = this.state.transaction;
             let stepPersen = 0;
             step.map(s => stepPersen += s.persen);
-
             this.setState({ sisa: (100 - stepPersen) });
-
+            console.log(data.transactionDetail.id_desainer);
+            const url = `http://localhost:5000/user/profile/${data.transactionDetail.id_desainer}`;
+            const dataUser = await Axios.get(url);
+            this.setState({user:dataUser.data.user});
         } catch (error) {
             console.log(error);
         }
@@ -81,6 +84,7 @@ class ChatPage extends Component {
         });
     }
 
+   
     componentDidMount() {
         this.loadTransactionStep();
         const endPoint = 'http://localhost:250';
@@ -92,7 +96,7 @@ class ChatPage extends Component {
             socket.on('chat', (data) => {
                 this.setState({ data: data });
             })
-        }, 1000)
+        }, 1000);
     }
 
 
@@ -120,8 +124,6 @@ class ChatPage extends Component {
                                             <SendButton onClick={() => {
                                             }} />
                                         </Row>
-
-
                                     </TextComposer>
                                 </ThemeProvider>
                             </div>
@@ -131,12 +133,13 @@ class ChatPage extends Component {
                                 <p className="sub-title">
                                     Designer info
                                 </p>
-                                <AvatarDetail title="Tony Hurella" meta="mendapat invitasi" />
+                                <AvatarDetail title={this.state.user.nama} meta="mendapat invitasi" />
                                 <p className="bigger-body-text">
                                     Progress Pekerjaan
                                 </p>
                                 <div className="display-step">
-                                    <StepDesigner titleName="design brief" persen="30%" biaya="90.000" step={this.state.transaction.step} sisa={this.state.sisa} />
+                                    <StepDesigner step={this.state.transaction.step} sisa={this.state.sisa} />
+                                    {/* titleName="design brief" persen="30%" biaya="90.000" */}
                                 </div>
                                 <p className="bigger-body-text">
                                     Total nilai proyek
