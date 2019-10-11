@@ -41,7 +41,7 @@ class ChatPage extends Component {
             chat: '',
             transaction: {},
             sisa: 0,
-            user:{}
+            user: {}
         }
         this.sendChat = this.sendChat.bind(this);
     }
@@ -63,7 +63,7 @@ class ChatPage extends Component {
             console.log(data.transactionDetail.id_desainer);
             const url = `http://localhost:5000/user/profile/${data.transactionDetail.id_desainer}`;
             const dataUser = await Axios.get(url);
-            this.setState({user:dataUser.data.user});
+            this.setState({ user: dataUser.data.user });
         } catch (error) {
             console.log(error);
         }
@@ -84,7 +84,7 @@ class ChatPage extends Component {
         });
     }
 
-   
+
     componentDidMount() {
         this.loadTransactionStep();
         const endPoint = 'http://localhost:250';

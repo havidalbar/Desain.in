@@ -6,7 +6,7 @@ class AvatarDetail extends Component {
     render() {
         return(
             <div className="avatar-wrap">
-                <img src={this.props.image} className="avatar"/>
+                <img src="https://storage.cloud.google.com/aldiwildan_bucket/Aldi.jpg" className="avatar"/>
                 <div className="avatar-content">
                     <p className="title">
                         {this.props.title}

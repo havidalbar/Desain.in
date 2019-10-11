@@ -1,12 +1,10 @@
 import React, { Component, useState, useEffect, Fragment } from 'react';
-import { Timeline, Modal, Form, Input, Icon, Popconfirm, message } from 'antd';
+import { Timeline, Modal, Form, Input, Icon, Popconfirm, message, Upload } from 'antd';
+import Button from '../../button/Button';
 import '../../layouts/typography.scss';
 import './stepperChat.scss';
 import Axios from 'axios';
 import jwt from 'jsonwebtoken';
-
-
-
 
 const removeStep = (val) => {
     return new Promise(async (resolve, reject) => {
@@ -36,12 +34,31 @@ function StepperRender(props) {
     useEffect(() => {
         let decoded = jwt.decode(localStorage.token);
         setState(decoded.status);
-
     }, [state]);
+
+    // let [image, setImage] = useState(null);
+    // let [submitId, setSubmitId] = useState(null);
+    // useEffect(() => {
+    //     console.log(image);
+    //     try {
+    //         const formData = new FormData();
+    //         formData.append("image", image);
+    //         Axios.post(`http://localhost:5000/transaction/2/submit/${submitId}`, formData, {
+    //             headers: {
+    //                 'content-type': 'multipart/form-data',
+    //                 Authorization: 'Bearer ' + localStorage.token
+    //             }
+    //         })
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }, [image]);
+
+
 
     return (
         <Timeline>
-            <Timeline.Item>
+            <Timeline.Item color={props.data.status == 2 ? "green" : "blue"}>
                 <p className="regular-body-text">{props.data.nama}
                     <Modal
                         visible={visible}
@@ -55,11 +72,11 @@ function StepperRender(props) {
                                     nama: nama,
                                     persen: persen.toString()
                                 }, {
-                                        headers: {
-                                            'content-type': 'application/json',
-                                            Authorization: 'Bearer ' + localStorage.token
-                                        }
-                                    })
+                                    headers: {
+                                        'content-type': 'application/json',
+                                        Authorization: 'Bearer ' + localStorage.token
+                                    }
+                                })
 
                                 setVisible(false);
                                 window.location.reload();
@@ -106,13 +123,26 @@ function StepperRender(props) {
                         cancelText="Tidak"
                         stepId={props.data.id}>
                         {state ? <Icon type="close" style={{ fontSize: '10pt', marginTop: '1vw', float: 'right' }} />
-                            : <Fragment/>}
+                            : <Fragment />}
                     </Popconfirm>
                 </p>
                 <p className="regular-body-text">Besaran biaya {props.data.persen} %</p>
                 <p className="regular-body-text">{props.data.harga}</p>
+                {/* <Upload >
+                    <Button style="primary" text="Upload Gambar">
+                        <Icon type="upload" onChange={useEffect(() => {
+                            function uploadHandleChange(e) {
+                                e.preventDefault();
+                                console.log(e.target);
+                                setImage(e.target.files[0]);
+                            }
+
+                            setSubmitId(props.data.id);
+                        })}/>
+                    </Button>
+                </Upload> */}
             </Timeline.Item>
-        </Timeline>
+        </Timeline >
     )
 }
 
@@ -124,15 +154,15 @@ class StepperChatDesigner extends Component {
             loading: false,
             visible: false,
             data: [],
-            state:''
+            state: ''
         };
     }
 
-    componentDidMount(){
+    componentDidMount() {
         let decoded = jwt.decode(localStorage.token);
-        this.setState({state:decoded.status});
+        this.setState({ state: decoded.status });
     }
-    
+
 
     createStep = e => {
         e.preventDefault();
@@ -147,11 +177,11 @@ class StepperChatDesigner extends Component {
                     "nama": values.Nama,
                     "persen": values.Persen
                 }, {
-                        headers: {
-                            'content-type': 'application/json',
-                            Authorization: 'Bearer ' + localStorage.token
-                        }
-                    })
+                    headers: {
+                        'content-type': 'application/json',
+                        Authorization: 'Bearer ' + localStorage.token
+                    }
+                })
 
                 this.setState({ visible: false });
                 window.location.reload();
@@ -190,7 +220,7 @@ class StepperChatDesigner extends Component {
                     </Form>
                 </Modal>
                 {this.state.data ? this.state.data.map(data => <StepperRender data={data} fieldDecorator={this.props.form} />) : <h3>loading...</h3>}
-                {this.props.sisa <= 100 && this.props.sisa >= 0 && this.state.state  ? <button className="button primary" btnText="Tambah Step"
+                {this.props.sisa <= 100 && this.props.sisa >= 0 && this.state.state ? <button className="button primary" btnText="Tambah Step"
                     onClick={() => {
                         this.setState({ visible: true })
                     }}>Tambah Step</button> : <p></p>}

@@ -16,7 +16,7 @@ class Profile extends Component {
         return (
             <div class="profile">
                 <Navbar />
-                <Banner image="https://storage.cloud.google.com/aldiwildan_bucket/foto-009.jpg" title="Claudy Adelia" meta="Mendapat Invitasi" work="24" kontes="2" portfolio="10" />
+                <Banner image="https://storage.cloud.google.com/aldiwildan_bucket/Aldi.jpg" title="Muhammad Wildan Aldiansyah" meta="Mendapat Invitasi" work="24" kontes="2" portfolio="10" />
                 <div className="profile-description">
                     <div className="up-content">
                         <div className="left-item">
@@ -51,8 +51,7 @@ class Profile extends Component {
                     </p>
                 </div>
 
-                <Display judulDisplay="Portfolio, " namaPengguna="Tony" />
-
+                <Display judulDisplay="Portfolio, " namaPengguna="Aldi" />
 
                 <div className="tabel-layanan">
                     <div className="up-content">
