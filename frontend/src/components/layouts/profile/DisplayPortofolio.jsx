@@ -14,10 +14,10 @@ class DisplayPortofolio extends Component {
                     {this.props.judulDisplay} {this.props.namaPengguna}
                 </p>
                 <div class="card-wrapper">
-                    <PortofolioCard judul="Fishception - Warmup" userName="Claudy Adelia" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg"/>
-                    <PortofolioCard judul="Vectober 04 - Freeze" userName="Havid Albar" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-002.jpg"/>
+                    <PortofolioCard judul="Fishception - Warmup" userName="Wildan Aldiansyah" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg"/>
+                    <PortofolioCard judul="Vectober 04 - Freeze" userName="Wildan Aldiansyah" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-002.jpg"/>
                     <PortofolioCard judul="Mr Florist" userName="Wildan Aldiansyah" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-003.jpg"/>
-                    <PortofolioCard judul="GridFriday Fork" userName="Gilang Nur Aidi" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-004.jpg"/>
+                    <PortofolioCard judul="GridFriday Fork" userName="Wildan Aldiansyah" likeCount="200" viewCount="200" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-004.jpg"/>
                 </div>
                 <div className="btn-wrap">
                     <Button style="button primary" text="LIHAT LEBIH BANYAK" />
