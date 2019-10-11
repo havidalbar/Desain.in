@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Navbar from '../../components/layouts/navbar/NavBar';
 import Footer from '../../components/layouts/footer/Footer';
-import Display from '../../components/layouts/profile/DisplayPortofolio';
+import Display from '../../components/layouts/profile/DisplayPortofolioIdentitas';
 import Banner from '../../components/layouts/profile/BannerIdentitas';
 import Button from '../../components/button/Button';
 import Faq from '../../components/layouts/profile/Faq';
@@ -51,7 +51,8 @@ class Profile extends Component {
                     </p>
                 </div>
 
-                <Display judulDisplay="Portfolio, " namaPengguna="Aldi" />
+                <Display judulDisplay="Portfolio, " namaPengguna="Muhamad Wildan Aldiansyah" />
+
 
                 <div className="tabel-layanan">
                     <div className="up-content">

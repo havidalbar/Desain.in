@@ -14,16 +14,16 @@ class DisplayStyle extends Component {
                 </p>
                 <div class="card-wrapper">
                     <Link to="/rekomendasiStyle">
-                        <PortofolioCard judul="Flat Design" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-003.jpg" />
+                        <PortofolioCard judul="Illustrasi" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-011.jpg" />
                     </Link>
                     <Link to="/rekomendasiStyle">
-                        <PortofolioCard judul="Vintage" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-006.jpg" />
+                        <PortofolioCard judul="Branding" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-012.jpg" />
                     </Link>
                     <Link to="/rekomendasiStyle">
-                        <PortofolioCard judul="Water Color" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-007.jpg" />
+                        <PortofolioCard judul="Stationary Design" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-013.png" />
                     </Link>
                     <Link to="/rekomendasiStyle">
-                        <PortofolioCard judul="Minimalis" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-002.jpg" />
+                        <PortofolioCard judul="Advertaising" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-014.png" />
                     </Link>
                 </div>
             </div>

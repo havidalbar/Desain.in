@@ -10,7 +10,7 @@ class PromoteBannerRekomendasiPerson extends Component {
                 <img className="image-bg-person" src={Deco} />
                 <div className="ads-content-contest-2">
                     <p className="title-3">
-                        Pilih gaya desain yang anda inginkan
+                    Apakah anda akan merubah ukuran logo anda
                 </p>
                 </div>
             </div>

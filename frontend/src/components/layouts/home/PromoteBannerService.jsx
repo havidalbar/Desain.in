@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../button/Button';
 import '../../layouts/typography.scss';
 import './promoteBanner.scss';
@@ -8,7 +9,7 @@ class PromoteBanner extends Component {
     render() {
         return (
             <div className="promote-banner">
-                <img className="image-bg" src={Deco} />
+                <img className="image-bg-servis" src={Deco} />
                 <div className="ads-content">
                     <p className="title-3">
                         Bingung dengan proyek
@@ -20,7 +21,9 @@ class PromoteBanner extends Component {
                             terbaik untuk proyek kreatifmu
                         </p>
                     </div>
-                    <Button style="button primary" text="CARI REKOMENDASI" />
+                    <Link to="/rekomendasi">
+                        <Button style="button primary" text="CARI REKOMENDASI" />
+                    </Link>
                 </div>
             </div>
         )
