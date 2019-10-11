@@ -16,10 +16,10 @@ class HomeHero extends Component {
                                 <img src="https://storage.cloud.google.com/aldiwildan_bucket/foto-007.jpg" style={{width: 'inherit',height: 'inherit'}}/>
                             </div>
                             <div>
-                                <img src="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg" style={{width: 'inherit',height: 'inherit'}}/>
+                                <img src="https://storage.cloud.google.com/aldiwildan_bucket/foto-021.png" style={{width: 'inherit',height: 'inherit'}}/>
                             </div>
                             <div>
-                                <img src="https://storage.cloud.google.com/aldiwildan_bucket/foto-005.jpg" style={{width: 'inherit',height: 'inherit'}}/>
+                                <img src="https://storage.cloud.google.com/aldiwildan_bucket/foto-024.jpg" style={{width: 'inherit',height: 'inherit'}}/>
                             </div>
                         </Carousel>
                     </Col>
@@ -30,7 +30,7 @@ class HomeHero extends Component {
                             </div>
 
                             <div className="side-menu-item">
-                            <img src="https://storage.cloud.google.com/aldiwildan_bucket/foto-004.jpg" style={{width: 'inherit',height: 'inherit', borderRadius: '30px'}}/>
+                            <img src="https://storage.cloud.google.com/aldiwildan_bucket/foto-025.png" style={{width: 'inherit',height: 'inherit', borderRadius: '30px'}}/>
                             </div>
 
                             <div className="side-menu-item">

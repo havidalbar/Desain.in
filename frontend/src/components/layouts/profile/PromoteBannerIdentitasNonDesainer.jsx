@@ -14,7 +14,7 @@ class PromoteBannerIdentitasNonDesainer extends Component {
                     <div className="avatar-profile">
                     </div>
                     <div className="avatar-content-profile">
-                        <p className="title-profile">Havid Albar</p>
+                        <p className="title-profile">Muhamad Wildan Aldiansyah</p>
                         <p className="meta-info-profile">
                             <span className="link">Mendapat Invitasi</span>
                         </p>

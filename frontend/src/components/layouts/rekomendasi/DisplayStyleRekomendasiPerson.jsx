@@ -11,10 +11,10 @@ class DisplayStyleRekomendasiPerson extends Component {
             <div className="display">
                 <div class="card-wrapper-person">
                     <Link to="/rekomendasiPerson">
-                        <PortofolioCard judul="Ya" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg" />
+                        <PortofolioCard judul="Ya" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-019.png" />
                     </Link>
                     <Link to="/rekomendasiPerson">
-                        <PortofolioCard judul="Tidak" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-003.jpg" />
+                        <PortofolioCard judul="Tidak" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-020.png" />
                     </Link>
                 </div>
             </div>

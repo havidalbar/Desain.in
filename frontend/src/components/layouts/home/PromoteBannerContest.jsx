@@ -22,9 +22,11 @@ class PromoteBannerContest extends Component {
                             untuk project kreatifmu yang lebih mudah.
                     </p>
                     </div>
+                    <div>
                     <Link to="/rekomendasi">
                         <Button style="button primary" text="CARI REKOMENDASI" />
                     </Link>
+                    </div>
                 </div>
             </div>
         )
