@@ -11,35 +11,35 @@ class DisplayRekomendasiPerson extends Component {
             <div className="display">
                 <div class="card-wrapper-rekomendasi-person">
                     <Link to="/profile/7">
-                        <PortofolioCard judul="Fishception - Warmup" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg" />
+                        <PortofolioCard nama="Muhamad Wildan Aldiansyah" judul="Fishception - Warmup" harga="IDR. 250.000"  imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg" />
                     </Link>
                     <Link to="/profile/3">
-                        <PortofolioCard judul="Freeze Fuzz" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-003.jpg" />
+                        <PortofolioCard nama="Gilang Nur A'idi" judul="Freeze Fuzz" harga="IDR. 260.000" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-003.jpg" />
                     </Link>
                     <Link to="/profile/8">
-                        <PortofolioCard judul="Bat Berry" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-007.jpg" />
+                        <PortofolioCard nama="M Havid Albar P" judul="Bat Berry" harga="IDR. 255.000" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-007.jpg" />
                     </Link>
                 </div>
                 <div class="card-wrapper-rekomendasi-person">
                     <Link to="/profile/2">
-                        <PortofolioCard judul="Abstract Illustrations" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-002.jpg" />
+                        <PortofolioCard nama="Adam Sulthoni" judul="Abstract Illustrations" harga="IDR. 266.000" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-002.jpg" />
                     </Link>
                     <Link to="/profile/6">
-                        <PortofolioCard judul="Vectober 04 - Freeze" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-004.jpg" />
+                        <PortofolioCard nama="Muhamad Wildan Aldiansyah" judul="Vectober 04 - Freeze" harga="IDR. 268.000" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-004.jpg" />
                     </Link>
                     <Link to="/profile/1">
-                        <PortofolioCard judul="Mr Florist" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-006.jpg" />
+                        <PortofolioCard nama="M Havid Albar P" judul="Mr Florist" harga="IDR. 270.000" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-006.jpg" />
                     </Link>
                 </div>
                 <div class="card-wrapper-rekomendasi-person">
                     <Link to="/profile/1">
-                        <PortofolioCard judul="GridFriday Fork" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-008.jpg" />
+                        <PortofolioCard nama="Gilang Nur A'idi" judul="GridFriday Fork" harga="IDR. 272.000" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-008.jpg" />
                     </Link>
                     <Link to="/profile/3">
-                        <PortofolioCard judul="Nothing Wuzzy" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg" />
+                        <PortofolioCard nama="Adam Sulthoni" judul="Nothing Wuzzy" harga="IDR. 278.000" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg" />
                     </Link>
                     <Link to="/profile/5">
-                        <PortofolioCard judul="Illustrations This" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-004.jpg" />
+                        <PortofolioCard nama="Muhamad Wildan Aldiansyah" judul="Illustrations This" harga="IDR. 290.000" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-004.jpg" />
                     </Link>
                 </div>
             </div>

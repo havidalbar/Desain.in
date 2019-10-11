@@ -13,6 +13,12 @@ class CardPortfolioRekomendasiChose extends Component {
                     <p className="bigger-body-text">
                         {this.props.judul}
                     </p>
+                    <p className="bigger-body-nama">
+                        {this.props.nama}
+                    </p>
+                    <p className="bigger-body-harga">
+                        {this.props.harga}
+                    </p>
                 </div>
 
             </div>

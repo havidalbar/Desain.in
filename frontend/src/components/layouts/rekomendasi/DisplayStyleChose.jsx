@@ -11,16 +11,16 @@ class DisplayStyleChose extends Component {
             <div className="display">
                 <div class="card-wrapper">
                     <Link to="/rekomendasiStylePerson">
-                        <PortofolioCard judul="GridFriday Fork" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg" />
+                        <PortofolioCard judul="Flat Design" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-001.jpg" />
                     </Link>
                     <Link to="/rekomendasiStylePerson">
-                        <PortofolioCard judul="Mr Florist" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-004.jpg" />
+                        <PortofolioCard judul="Vintage" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-004.jpg" />
                     </Link>
                     <Link to="/rekomendasiStylePerson">
-                        <PortofolioCard judul="Fireberry" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-007.jpg" />
+                        <PortofolioCard judul="Water Color" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-007.jpg" />
                     </Link>
                     <Link to="/rekomendasiStylePerson">
-                        <PortofolioCard judul="Abstract Illustrations" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-003.jpg" />
+                        <PortofolioCard judul="Minimalis" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-003.jpg" />
                     </Link>
                 </div>
             </div>

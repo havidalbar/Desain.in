@@ -64,6 +64,18 @@
     @include font-size(1.5rem !important);
 }
 
+.bigger-body-nama {
+    font-family: "Pt-sans-reg";
+    color: #191847;
+    @include font-size(1.1rem !important);
+}
+
+.bigger-body-harga {
+    font-family: "Pt-sans-reg";
+    color: #191847;
+    @include font-size(1.4rem !important);
+}
+
 .meta-rating {
     font-family: "Nunito-lt";
     color: #191847;
