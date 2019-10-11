@@ -63,15 +63,11 @@ function StepperRender(props) {
                             <Form.Item label="Nama Step">
                                 <Input type="text" maxLength="100" defaultValue={nama} onChange={(data) => {
                                     setNamaStep(data.target.value);
-                                    console.log(nama);
-                                    console.log(persen);
                                 }} />
                             </Form.Item>
                             <Form.Item label="Persen (%)">
                                 <Input type="number" min="0" max="100" defaultValue={persen} onChange={(data) => {
                                     setPersen(data.target.value);
-                                    console.log(nama);
-                                    console.log(persen);
                                 }} />
                             </Form.Item>
                         </Form>
