@@ -36,39 +36,187 @@ function StepperRender(props) {
         setState(decoded.status);
     }, [state]);
 
-    // let [image, setImage] = useState(null);
-    // let [submitId, setSubmitId] = useState(null);
-    // useEffect(() => {
-    //     console.log(image);
-    //     try {
-    //         const formData = new FormData();
-    //         formData.append("image", image);
-    //         Axios.post(`http://localhost:5000/transaction/2/submit/${submitId}`, formData, {
-    //             headers: {
-    //                 'content-type': 'multipart/form-data',
-    //                 Authorization: 'Bearer ' + localStorage.token
-    //             }
-    //         })
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }, [image]);
+    let [image, setImage] = useState('');
+    let [submitId, setSubmitId] = useState('');
+    let [visible2, setVisible2] = useState(false);
+    let [visible3, setVisible3] = useState(false);
+    let [confirmation, setConfirmation] = useState('');
+    useEffect(() => {
+        // console.log(image);
+        // try {
+        //     const formData = new FormData();
+        //     formData.append("image", image);
+        //     Axios.post(`http://localhost:5000/transaction/2/submit/${submitId}`, formData, {
+        //         headers: {
+        //             'content-type': 'multipart/form-data',
+        //             Authorization: 'Bearer ' + localStorage.token
+        //         }
+        //     })
+        // } catch (error) {
+        //     console.log(error);
+        // }
+        setSubmitId(props.data.id);
+    }, [visible2]);
 
+    useEffect(() => {
+        try {
+            Axios.post(`localhost:5000/transaction/2/accept/${submitId}`,
+                { "confirmation": confirmation }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + localStorage.token
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
 
+        setVisible3(false);
+    }, [confirmation])
+
+    function uploadImage(e, file) {
+        e.preventDefault();
+        const form = new FormData();
+        form.append('image', file);
+
+        try {
+            Axios({
+                method: 'put',
+                url: `http://localhost:5000/transaction/2/submit/${submitId}`,
+                data: form,
+                config: {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: 'Bearer ' + localStorage.token
+                    }
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+    const beforeUpload = (file) => {
+        setImage(file);
+
+    }
 
     return (
         <Timeline>
+
             <Timeline.Item color={props.data.status == 2 ? "green" : "blue"}>
                 <p className="regular-body-text">{props.data.nama}
+                    <Modal
+                        visible={visible2}
+                        okText={"Upload Hasil"}
+                        onCancel={() => {
+                            setVisible2(false);
+                        }}
+                        onOk={async () => {
+                            try {
+                                console.log(submitId);
+                                await Axios.post(`http://localhost:5000/transaction/2/submit/${submitId}`,
+                                    { url: image }, {
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        Authorization: 'Bearer ' + localStorage.token
+                                    }
+                                })
+                                setVisible2(false);
+                            }
+                            catch (err) {
+                                console.log(err);
+                            }
+                            // try {
+                            //     Axios.put(`http://localhost:5000/transaction/2/update/${props.data.id}`, {
+                            //         nama: nama,
+                            //         persen: persen.toString()
+                            //     }, {
+                            //         headers: {
+                            //             'content-type': 'application/json',
+                            //             Authorization: 'Bearer ' + localStorage.token
+                            //         }
+                            //     })
+
+                            //     setVisible(false);
+                            //     window.location.reload();
+                            // } catch (error) {
+                            //     console.log(error);
+                            // }
+
+                        }}
+                    >
+                        <Form layout="vertical">
+                            <Form.Item label="URL LINK UPLOAD">
+                                <Input type="text" maxLength="100" defaultValue={''} onChange={(e) => {
+                                    console.log(e.target.value);
+                                    setImage(e.target.value);
+                                }} />
+                            </Form.Item>
+
+                        </Form>
+
+                    </Modal>
+
+                    <Modal
+                        visible={visible3}
+                        okText={"Terima Hasil"}
+                        cancelText={"Tolak Hasil"}
+                        onCancel={() => {
+                            try {
+                                Axios.post(`http://localhost:5000/transaction/2/accept/${props.data.id}`,
+                                    { "confirmation": "0" }, {
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        Authorization: 'Bearer ' + localStorage.token
+                                    }
+                                })
+                            } catch (error) {
+                                console.log(error);
+                            }
+
+                            setVisible3(false);
+                        }}
+                        onOk={() => {
+                            try {
+                                Axios.post(`http://localhost:5000/transaction/2/accept/${props.data.id}`,
+                                    { "confirmation": "1" }, {
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        Authorization: 'Bearer ' + localStorage.token
+                                    }
+                                })
+                            } catch (error) {
+                                console.log(error);
+                            }
+
+                            setVisible3(false);
+                        }}
+                        width="80vh"
+                    >
+                        <Form layout="vertical">
+                            <Form.Item label={"Hasil " + props.data.nama}>
+                                <Input type="text" maxLength="100" readOnly defaultValue={props.data.image} />
+                                <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                    {/* <Button style="button tertirary" text="Tolak Hasil"/>
+                                    <Button style="button primary" text="Terima Hasil" /> */}
+                                </div>
+                            </Form.Item>
+
+                        </Form>
+
+                    </Modal>
+
                     <Modal
                         visible={visible}
                         okText={"Update Step"}
                         onCancel={() => {
                             setVisible(false);
                         }}
-                        onOk={() => {
+                        onOk={async () => {
                             try {
-                                Axios.put(`http://localhost:5000/transaction/2/update/${props.data.id}`, {
+                                await Axios.put(`http://localhost:5000/transaction/2/update/${props.data.id}`, {
                                     nama: nama,
                                     persen: persen.toString()
                                 }, {
@@ -79,7 +227,7 @@ function StepperRender(props) {
                                 })
 
                                 setVisible(false);
-                                window.location.reload();
+                                await window.location.reload();
                             } catch (error) {
                                 console.log(error);
                             }
@@ -106,12 +254,12 @@ function StepperRender(props) {
 
                     <Popconfirm
                         title="Apakah anda yakin ingin menghapus step ini ?"
-                        onConfirm={e => {
+                        onConfirm={async e => {
                             e.preventDefault();
-                            const isRemoveSuccess = removeStep(props.data.id);
+                            const isRemoveSuccess = await removeStep(props.data.id);
                             if (isRemoveSuccess) {
                                 message.success("Step berhasil dihapus");
-                                window.location.reload();
+                                await window.location.reload();
                             } else {
                                 message.error("Gagal menghapus step");
                             }
@@ -128,20 +276,15 @@ function StepperRender(props) {
                 </p>
                 <p className="regular-body-text">Besaran biaya {props.data.persen} %</p>
                 <p className="regular-body-text">{props.data.harga}</p>
-                {/* <Upload >
-                    <Button style="primary" text="Upload Gambar">
-                        <Icon type="upload" onChange={useEffect(() => {
-                            function uploadHandleChange(e) {
-                                e.preventDefault();
-                                console.log(e.target);
-                                setImage(e.target.files[0]);
-                            }
-
-                            setSubmitId(props.data.id);
-                        })}/>
+                {localStorage.userStatus == 1 ? (<div onClick={() => setVisible2(true)}>
+                    <Button style="primary" text="Upload Gambar" >
                     </Button>
-                </Upload> */}
+                </div>) : props.data.image ? (<div onClick={() => setVisible3(true)}>
+                    <Button style="primary" text="Lihat Hasil"></Button>
+                </div>) : ('')}
+
             </Timeline.Item>
+
         </Timeline >
     )
 }

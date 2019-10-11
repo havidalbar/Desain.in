@@ -620,7 +620,7 @@ const deleteStep = async (req, res, next) => {
     }
 
     let { status } = checkUserHasTransaction;
-    if(status){
+    if(status == 2){
       const error = new Error('Can\'t delete your step that has already finished');
       res.status(409);
       return next(error);
@@ -641,6 +641,24 @@ const deleteStep = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+}
+
+const submitStep2 = async (req,res,next)=>{
+  let { transactionId, stepId } = req.params;
+try{
+  console.log(stepId);
+  let submitStep = await knex('step').update({ status: 1, image: req.body.url }).where('id', stepId);
+  if(!submitStep){
+    const error = new Error('An Error occured to update step');
+    res.status(409);
+    return next(error);
+  }
+
+  return res.status(200).json(submitStep)
+}
+catch (err){
+  console.log(err);
+}
 }
 
 const submitStep = async (req, res, next) => {
@@ -789,7 +807,8 @@ const TRANSACTION = {
   deleteStep,
   submitStep,
   acceptStep,
-  transactionDetail
+  transactionDetail,
+  submitStep2
 }
 
 module.exports = { ...TRANSACTION }
