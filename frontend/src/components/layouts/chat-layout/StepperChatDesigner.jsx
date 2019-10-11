@@ -1,8 +1,12 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect, Fragment } from 'react';
 import { Timeline, Modal, Form, Input, Icon, Popconfirm, message } from 'antd';
 import '../../layouts/typography.scss';
 import './stepperChat.scss';
 import Axios from 'axios';
+import jwt from 'jsonwebtoken';
+
+
+
 
 const removeStep = (val) => {
     return new Promise(async (resolve, reject) => {
@@ -28,6 +32,12 @@ function StepperRender(props) {
     let [visible, setVisible] = useState(false);
     let [nama, setNamaStep] = useState(props.data.nama);
     let [persen, setPersen] = useState(props.data.persen);
+    let [state, setState] = useState('');
+    useEffect(() => {
+        let decoded = jwt.decode(localStorage.token);
+        setState(decoded.status);
+
+    }, [state]);
 
     return (
         <Timeline>
@@ -45,11 +55,11 @@ function StepperRender(props) {
                                     nama: nama,
                                     persen: persen.toString()
                                 }, {
-                                    headers: {
-                                        'content-type': 'application/json',
-                                        Authorization: 'Bearer ' + localStorage.token
-                                    }
-                                })
+                                        headers: {
+                                            'content-type': 'application/json',
+                                            Authorization: 'Bearer ' + localStorage.token
+                                        }
+                                    })
 
                                 setVisible(false);
                                 window.location.reload();
@@ -72,9 +82,10 @@ function StepperRender(props) {
                             </Form.Item>
                         </Form>
                     </Modal>
-                    <Icon type="edit" style={{ fontSize: '10pt' }} onClick={() => {
+                    {state ? <Icon type="edit" style={{ fontSize: '10pt' }} onClick={() => {
                         setVisible(true);
-                    }} />
+                    }} /> : <Fragment />}
+
 
                     <Popconfirm
                         title="Apakah anda yakin ingin menghapus step ini ?"
@@ -94,7 +105,8 @@ function StepperRender(props) {
                         okText="Ya"
                         cancelText="Tidak"
                         stepId={props.data.id}>
-                        <Icon type="close" style={{ fontSize: '10pt', marginTop: '1vw', float: 'right' }} />
+                        {state ? <Icon type="close" style={{ fontSize: '10pt', marginTop: '1vw', float: 'right' }} />
+                            : <Fragment/>}
                     </Popconfirm>
                 </p>
                 <p className="regular-body-text">Besaran biaya {props.data.persen} %</p>
@@ -111,9 +123,16 @@ class StepperChatDesigner extends Component {
         this.state = {
             loading: false,
             visible: false,
-            data: []
+            data: [],
+            state:''
         };
     }
+
+    componentDidMount(){
+        let decoded = jwt.decode(localStorage.token);
+        this.setState({state:decoded.status});
+    }
+    
 
     createStep = e => {
         e.preventDefault();
@@ -128,11 +147,11 @@ class StepperChatDesigner extends Component {
                     "nama": values.Nama,
                     "persen": values.Persen
                 }, {
-                    headers: {
-                        'content-type': 'application/json',
-                        Authorization: 'Bearer ' + localStorage.token
-                    }
-                })
+                        headers: {
+                            'content-type': 'application/json',
+                            Authorization: 'Bearer ' + localStorage.token
+                        }
+                    })
 
                 this.setState({ visible: false });
                 window.location.reload();
@@ -148,7 +167,6 @@ class StepperChatDesigner extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-
         return (
             <div className="stepper">
                 <Modal
@@ -172,7 +190,7 @@ class StepperChatDesigner extends Component {
                     </Form>
                 </Modal>
                 {this.state.data ? this.state.data.map(data => <StepperRender data={data} fieldDecorator={this.props.form} />) : <h3>loading...</h3>}
-                {this.props.sisa <= 100 && this.props.sisa >= 0 ? <button className="button primary" btnText="Tambah Step"
+                {this.props.sisa <= 100 && this.props.sisa >= 0 && this.state.state  ? <button className="button primary" btnText="Tambah Step"
                     onClick={() => {
                         this.setState({ visible: true })
                     }}>Tambah Step</button> : <p></p>}
