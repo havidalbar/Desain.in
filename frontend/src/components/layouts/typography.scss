@@ -47,6 +47,10 @@
     font-family: "Roboto-reg";
     @include font-size(1.7rem !important);
 }
+.chat{
+    @include font-size(1.3rem !important);
+
+}
 
 .meta-info {
     font-size: 0.8em;

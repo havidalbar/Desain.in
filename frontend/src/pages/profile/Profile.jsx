@@ -47,7 +47,7 @@ class Profile extends Component {
                         Deskripsi
                     </p>
                     <p className="bigger-body-text">
-                        Saya adalah seorang desainer yang penuh dengan passion. Setiap pekerjaan akan sangat berarti bagi saya, sama seperti anda mencurahkan banyak pengalaman dan waktu untuk merawat seorang anak. Tentunya bila tidak merancang dan mempersiapkan yang terbaik hal tersebut takkan berjalan dengan baik. Saya Tony Hurella, akan membarikan pengalaman terbaik untuk setiap proyek kreatif anda.
+                        Saya adalah seorang desainer yang penuh dengan passion. Setiap pekerjaan akan sangat berarti bagi saya, sama seperti anda mencurahkan banyak pengalaman dan waktu untuk merawat seorang anak. Tentunya bila tidak merancang dan mempersiapkan yang terbaik hal tersebut takkan berjalan dengan baik. Saya Muhamad Wildan Aldiansyah, akan membarikan pengalaman terbaik untuk setiap proyek kreatif anda.
                     </p>
                 </div>
 

@@ -8,7 +8,7 @@ class AvatarDetail extends Component {
             <div className="avatar-wrap">
                 <img src="https://storage.cloud.google.com/aldiwildan_bucket/Aldi.jpg" className="avatar"/>
                 <div className="avatar-content">
-                    <p className="title">
+                    <p className="title chat">
                         {this.props.title}
                     </p>
                     <p className="meta-into">
