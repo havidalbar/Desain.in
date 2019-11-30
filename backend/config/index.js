@@ -1,3 +1,4 @@
-const configConfigurations = require('./config')
+const configConfigurations = require('./config');
+const swaggerConfigurations = require('./swagger.json');
 
-module.exports = { ...configConfigurations }
+module.exports = { ...configConfigurations, swaggerConfigurations }

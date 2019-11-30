@@ -1,0 +1,242 @@
+@import "../../../../node_modules/rfs/scss.scss";
+
+
+@font-face {
+    font-family: "Nunito-bold";
+    font-style: normal;
+    src: local("Nunito-bold"), url(../../../assets/fonts/Nunito/Nunito-Bold.ttf);
+}
+
+
+@font-face {
+    font-family: "Nunito-semi";
+    font-style: normal;
+    src: local("Nunito-semi"), url(../../../assets/fonts/Nunito/Nunito-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: "Nunito-lt";
+    font-style: normal;
+    src: local("Nunito-lt"), url(../../../assets/fonts/Nunito/Nunito-Light.ttf);
+}
+
+@font-face {
+    font-family: "Roboto-reg";
+    font-style: normal;
+    src: local("Roboto"), url(../../../assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+
+
+p {
+    margin-bottom: 0;
+}
+
+
+.footer {
+    padding: 5vw 5vw;
+    background-color: #989898;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+
+    color: white;
+}
+
+.left-item {
+    width: 30vw;
+}
+
+.motto {
+    @include font-size(2rem !important);
+    font-family: "Nunito-semi";
+    
+    margin-top: 1vh;
+    margin-bottom: 5vh;
+}
+
+.des {
+    @include font-size(1rem !important);
+    font-family: "Roboto-reg";
+    width: 30vw;
+}
+
+.right-item {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.footer-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item-title {
+    @include font-size(1.5rem !important);
+    font-family: "Nunito-bold";
+}
+
+ul {
+    margin-top: 2vh;
+    list-style-type: none;
+    list-style-position: outside;
+    padding: 0;
+}
+
+li {
+    margin: 1vh 0;
+}
+
+li a {
+    font-family: "Nunito-lt";
+    text-decoration: none;
+    color: white;
+}
+
+.signature {
+    @include font-size(1rem !important);
+    font-family: "Nunito-semi";
+    
+    width: 100%;
+}
+
+.item .grow {
+    flex-grow: 2;
+}
+
+.footer-logo {
+    width: 25vw;
+}
+
+.avatar-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 20vw;
+}
+
+.avatar {
+    border-radius: 30px;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.avatar-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    font-family: "Roboto-reg";
+    margin: 0;
+    @include font-size(1.7rem !important);
+}
+
+.meta-info {
+    font-size: 0.8em;
+}
+
+.link {
+    font-family: "Nunito-bold";
+    color: #0020da;
+}
+
+@media screen and (max-width: 1024px) {
+    .des {
+        width: 100%;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .title {
+        @include font-size(1.5rem !important);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    
+    .footer {
+        padding: 5vh 10vw;
+    }
+
+    
+    .footer-logo {
+        width: 50vw;
+    }
+    
+    .footer-content {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .right-item {
+        width: 100%;
+    }
+
+    .avatar-wrap {
+        width: 28vw;
+    }
+
+    .left-item {
+        width: 100vw;
+        margin-bottom: 5vh;
+    }
+
+    .motto {
+        margin-top: 1.5vh;
+        margin-bottom: 2vh;
+    }
+
+    .des {
+        width: 80%;
+    }
+
+    .signature {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .des {
+        @include font-size(0.8rem !important);
+        width: 100%;
+    }
+
+    .item-title {
+        @include font-size(1rem !important);
+    }
+
+    li a {
+        @include font-size(0.8rem !important);
+        margin: 0.5vh 0;
+    }
+
+    .signature {
+        @include font-size(0.8rem !important);
+    }
+
+    .right-item {
+        width: 100%;
+    }
+
+    .grow {
+        margin-top: 2vh;
+        flex-grow: 10;
+    }
+
+    .avatar-wrap {
+        width: 80vw;
+    }
+    
+}

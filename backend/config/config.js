@@ -1,16 +1,16 @@
-require('dotenv').config()
-const NODE_ENV = process.env.NODE_ENV
-let database
+require('dotenv').config();
+const NODE_ENV = process.env.NODE_ENV;
+let database;
 
 // default set to production
 switch (NODE_ENV) {
   case 'development':
     database = {
-      DB_HOST: 'localhost',
-      DB_NAME: 'makmurjaya',
-      DB_USER: 'root',
-      DB_PASS: '',
-      DB_PORT: 3306,
+      DB_HOST: process.env.DB_HOST,
+      DB_NAME: process.env.DB_NAME,
+      DB_USER: process.env.DB_USER,
+      DB_PASS: process.env.DB_PASS,
+      DB_PORT: process.env.DB_PORT,
       DB_DIALECT: 'mysql',
       POOL_SIZE: 5
     }
@@ -18,7 +18,7 @@ switch (NODE_ENV) {
   case 'test':
     database = {
       DB_HOST: 'localhost',
-      DB_NAME: 'makmurjaya',
+      DB_NAME: 'desainin',
       DB_USER: 'root',
       DB_PASS: '',
       DB_PORT: 3306,
@@ -39,11 +39,17 @@ switch (NODE_ENV) {
     break;
 }
 
-const DATABASE = database
-const AUTH_TOKEN = process.env.AUTH_TOKEN
+const DATABASE = database;
+const AUTH_TOKEN = process.env.AUTH_TOKEN;
+const GOOGLE = {
+  PROJECT_ID: process.env.GCS_PROJECT_ID,
+  BUCKET: process.env.GCS_BUCKET,
+  KEY_FILE_NAME: "./config/" + process.env.GCS_KEY 
+}
 
 module.exports = {
   NODE_ENV,
   DATABASE,
-  AUTH_TOKEN
+  AUTH_TOKEN,
+  GOOGLE
 }

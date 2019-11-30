@@ -1,0 +1,27 @@
+import React, { Component } from 'react';
+import ContestCard from '../../card/ContestCard';
+import Button from '../../button/Button';
+import '../../layouts/typography.scss';
+import './display.scss';
+
+class DisplayPortofolio extends Component {
+    render() {
+        return (
+            <div className="display">
+                <p className="title-3 title-display">
+                    Kontes Kreatif
+                </p>
+                <div class="card-wrapper">
+                    <ContestCard judul="Fireberry" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-008.jpg"/>
+                    <ContestCard judul="Bat Berry" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-023.png"/>
+                    <ContestCard judul="Freeze Fuzz" penyelenggara="PT.Bahu Membahu" price="200.000" date="20 November 2019" imageSrc="https://storage.cloud.google.com/aldiwildan_bucket/foto-030.jpg"/>
+                </div>
+                <div className="btn-wrap">
+                    <Button style="button primary" text="LIHAT LEBIH BANYAK" />
+                </div>
+            </div>
+        )
+    }
+}
+
+export default DisplayPortofolio;

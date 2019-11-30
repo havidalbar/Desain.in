@@ -1,0 +1,42 @@
+.image-cover {
+    margin: 5vh 0;
+    width: 33.5vw;
+    height: 50vh;
+    border-radius: 30px;
+}
+
+.modal-image {
+    width: 30vw;
+    height: 28vh;
+    object-fit: cover;
+    border: none;
+    border-radius: 30px;
+}
+
+.card-action {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    margin-top: 2vh;
+}
+
+.icn-wrap {
+    margin: 0.5vw;
+}
+
+.indicator {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    height: 2vh;
+}
+
+.ind-content {
+    margin-top: 0.3vw;
+}
+
+.like {
+    margin-left: 1vw;
+}

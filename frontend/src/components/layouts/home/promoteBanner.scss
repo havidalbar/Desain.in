@@ -1,0 +1,140 @@
+@font-face {
+    font-family: "Roboto-reg";
+    font-style: normal;
+    src: local("Roboto"), url(../../../assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+
+.promote-banner {
+    height: 93vh;
+    background-color: #EDF5F8;
+}
+
+.promote-banner-contest {
+    height: 93vh;
+    background-color: #EDF5F8;
+    display: flex;
+    z-index: -1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.promote-banner-profile {
+    height: 50vh;
+    background-color: #EDF5F8;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+
+.image-bg{
+    width: 60vw;
+    z-index: -1;
+    position: absolute;
+}
+.image-bg-rekomendasi{
+    width: 50vw;
+    z-index: 4;
+    margin-left: 700px;
+    margin-top: 100px;
+    position: absolute;
+}
+.image-bg-person{
+    width: 90vw;
+    z-index: 1;
+    margin-left: 60px;
+    margin-top: 140px;
+    position: absolute;
+}
+.image-bg-profile{
+    width: 50vw;
+    z-index: 1;
+    margin-left: 650px;
+    margin-top: 45px;
+    position: absolute;
+}
+.image-bg-kontes-not-signed{
+    width: 50vw;
+    z-index: 1;
+    margin-left: 720px;
+    position: absolute;
+}
+.image-bg-kontes-penyelenggara{
+    width: 30vw;
+    z-index: 1;
+    margin-left: 900px;
+    position: absolute;
+}
+
+
+.ads-content {
+    padding: 20vh 5vw;
+    width: 50vw;
+}
+.ads-content-not-signed {
+    padding: 32vh 5vw;
+    width: 50vw;
+}
+.ads-content-penyelenggara {
+    padding: 40vh 7vw;
+    width: 50vw;
+}
+
+.ads-content-contest {
+    padding: 20vh 5vw;
+    width: 60vw;
+}
+
+.ads-content-contest-2 {
+    padding: 79vh 5vw;
+    width: 65vw;
+}
+
+.wrapper {
+    width: 30vw;
+    margin-bottom: 5vh;
+}
+
+.wrapper-contest {
+
+    margin-bottom: 5vh;
+}
+
+.rekomendasi-wrap {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.avatar-wrap-profile {
+    padding-top: 0px;
+    display: flex;
+    flex-direction: row;
+    padding-left: 100px;
+    width: 20vw;
+}
+
+.avatar-profile {
+    border-radius: 390px;
+    background-color: white;
+    width: 300px;
+    height: 140px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.avatar-content-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title-profile {
+    font-family: "Roboto-reg";
+    margin: 0;
+}
+
+.meta-info-profile {
+    font-size: 0.8em;
+}

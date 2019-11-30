@@ -1,0 +1,76 @@
+@font-face {
+    font-family: "Nunito-lt";
+    font-style: normal;
+    src: local("Nunito"), url(../../../assets/fonts/Nunito/Nunito-Light.ttf);
+}
+
+.logo img{
+    width: 200px;
+}
+
+.menuBar {
+    overflow: hidden;
+    height: 12vh;
+    padding: 16px 5vw;
+}   
+
+.menuCon {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menuCon .ant-menu-item {
+    padding: 0 24px;
+    margin: 0px;
+
+    font-family: "Nunito-lt";
+    letter-spacing: 0.2em;
+}
+
+li .ant-menu-item a::before {
+    font-family: "Nunito-lt" !important;
+    letter-spacing: 0.2em;
+}
+
+.ant-menu-submenu.ant-menu-submenu-horizontal {
+    padding: 0 24px;
+    margin: 0px;
+
+    font-family: "Nunito-lt";
+    letter-spacing: 0.2em;
+}
+
+.ant-menu-submenu.ant-menu-submenu.ant-menu-submenu-horizontal {
+    margin-left: 0;
+    padding: 0;
+}
+
+.ant-drawer-body {
+    padding: 0;
+}
+
+.button-nav {
+    padding: 8px;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .ant-menu-item {
+        padding: 0 24px;
+        margin: 0px;
+    
+        font-family: "Nunito-lt";
+        letter-spacing: 0.2em;
+    }
+
+    .ant-menu-submenu.ant-menu-submenu-horizontal {
+        padding: 0 24px;
+        margin: 0px;
+    
+        font-family: "Nunito-lt";
+        letter-spacing: 0.2em;
+    }
+}
+

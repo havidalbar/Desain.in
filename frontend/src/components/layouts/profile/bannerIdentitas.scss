@@ -1,0 +1,27 @@
+@import "../../../../node_modules/rfs/scss.scss";
+
+@font-face {
+    font-family: "Nunito-rg";
+    font-style: normal;
+    src: local("Nunito-rg"), url(../../../assets/fonts/Nunito/Nunito-Regular.ttf);
+}
+
+.halfHero {
+    background-color: #edf5f8;
+    height: 61vh;
+}
+
+.halfHeroImage {
+    width: 97vw;
+    position: absolute;
+}
+
+.profile-content {
+    padding: 25vh 5vw;
+}
+
+.experience {
+    margin-top: 5vh;
+    font-family: "Nunito-rg";
+    @include font-size(1.7rem !important);
+}

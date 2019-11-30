@@ -1,0 +1,77 @@
+@import "../../../node_modules/rfs/scss.scss";
+
+@font-face {
+    font-family: "Nunito-lt";
+    font-style: normal;
+    src: local("Nunito-lt"), url(../../assets/fonts/Nunito/Nunito-Light.ttf);
+}
+
+@font-face {
+    font-family: "Nunito-rg";
+    font-style: normal;
+    src: local("Nunito-rg"), url(../../assets/fonts/Nunito/Nunito-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Nunito-bld";
+    font-style: normal;
+    src: local("Nunito-Bold"), url(../../assets/fonts/Nunito/Nunito-Bold.ttf);
+}
+
+.title-3 {
+    font-family: "Nunito-lt";
+    @include font-size(3rem !important);
+    color: #0020da;
+    margin-bottom: 1vh;
+}
+
+.ex {
+    margin-bottom: 2vh;
+}
+
+label {
+    font-family: "Nunito-bld";
+    @include font-size(1.3rem !important);
+    color: #0020da !important;
+}
+
+.ant-input {
+    padding: 3vh 1vw;
+    border-radius: 0.5vw;
+    @include font-size(1rem !important);
+}
+
+.des {
+    font-family: "Nunito-rg";
+    @include font-size(1.5rem !important);
+    width: 100%;
+}
+
+.announcement {
+    background-color: #edf5f8;
+    height: 120vh;
+    padding: 15vh 3vw;
+    padding-right: 7vw;
+}
+
+.register {
+    padding: 5vw;
+    padding-right: 8vw;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.register-wrap {
+    margin-right: 10vw;
+}
+
+.regular-body {
+    font-family: "Nunito-rg";
+    @include font-size(1rem !important);
+}
+
+.link {
+    font-family: "Nunito-bld";
+}

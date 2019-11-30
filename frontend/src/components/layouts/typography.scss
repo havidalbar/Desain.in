@@ -1,0 +1,127 @@
+@import "../../../node_modules/rfs/scss.scss";
+
+
+@font-face {
+    font-family: "Nunito-rg";
+    font-style: normal;
+    src: local("Nunito-rg"), url(../../assets/fonts/Nunito/Nunito-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Nunito-lt";
+    font-style: normal;
+    src: local("Nunito-lt"), url(../../assets/fonts/Nunito/Nunito-Light.ttf);
+}
+
+@font-face {
+    font-family: "Nunito-bld";
+    font-style: normal;
+    src: local("Nunito-bld"), url(../../assets/fonts/Nunito/Nunito-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Nunito-sbld";
+    font-style: normal;
+    src: local("Nunito-sbld"), url(../../assets/fonts/Nunito/Nunito-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Roboto-reg";
+    font-style: normal;
+    src: local("Roboto"), url(../../assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Pt-sans-reg";
+    font-style: normal;
+    src: local("Pt-sans-reg"), url(../../assets/fonts/PtSans/PTSans-Regular.ttf);
+}
+
+.title-3 {
+    font-family: "Nunito-rg";
+    color: #0020da;
+    @include font-size(3rem !important);
+}
+
+.title {
+    font-family: "Roboto-reg";
+    @include font-size(1.7rem !important);
+}
+.chat{
+    @include font-size(1.3rem !important);
+
+}
+
+.meta-info {
+    font-size: 0.8em;
+}
+
+.sub-title {
+    font-family: "Nunito-sbld";
+    color: #191847;
+    @include font-size(1.5rem !important);
+}
+
+.bigger-body-text {
+    font-family: "Pt-sans-reg";
+    color: #191847;
+    @include font-size(1.5rem !important);
+}
+
+.bigger-body-nama {
+    font-family: "Pt-sans-reg";
+    color: #191847;
+    @include font-size(1.1rem !important);
+}
+
+.bigger-body-harga {
+    font-family: "Pt-sans-reg";
+    color: #191847;
+    @include font-size(1.4rem !important);
+}
+
+.meta-rating {
+    font-family: "Nunito-lt";
+    color: #191847;
+    @include font-size(1rem !important);
+}
+
+.regular-body-text {
+    font-family: "Pt-sans-reg";
+    color: #191847;
+    @include font-size(1rem !important);
+}
+
+.card-title {
+    font-family: "Nunito-sbld";
+    color: #191847;
+    @include font-size(1.2rem !important);
+}
+
+.link {
+    font-family: "Nunito-sbld";
+    color:#0020da;
+}
+
+label {
+    font-family: "Nunito-bld";
+    @include font-size(1.3rem !important);
+    color: #0020da !important;
+}
+.harga{
+    font-family: "Nunito-sbld";
+    color: #191847;
+    @include font-size(1.8rem !important);
+}
+
+.title-faq{
+    font-family: "Nunito-rg";
+    color: #0020da;
+    @include font-size(1.3rem !important);
+}
+
+.jawaban-faq {
+    font-family: "Roboto-reg";
+    @include font-size(1rem !important);
+    padding-left: 24px;
+}
